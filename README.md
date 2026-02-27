@@ -1,5 +1,5 @@
 # BrowserStack (browserstack)
-BrowserStack is a cloud-based testing platform that allows developers and testers to easily test their websites and mobile applications on a wide range of browsers and devices. By providing access to real devices and browsers, BrowserStack helps teams ensure their products are compatible and function correctly across different platforms. With features like automated testing, live testing, and responsive design testing, BrowserStack streamlines the testing process and helps developers deliver high-quality applications to their users. Whether it's debugging issues or ensuring a seamless user experience, BrowserStack is a valuable tool for any software development team.
+BrowserStack provides instant access to 3500+ real mobile devices and desktop browsers for testing web and mobile applications across different platforms and operating systems.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/browserstack/refs/heads/main/apis.yml)
 
@@ -11,7 +11,7 @@ BrowserStack is a cloud-based testing platform that allows developers and tester
 
 ## Tags:
 
- - Testing, Applications
+ - Appium, Applications, Automation, Cross-Browser Testing, Mobile Testing, QA, Selenium, Testing
 
 ## Timestamps
 
@@ -34,9 +34,23 @@ Give your users a seamless experience by testing on 20,000  real devices.Dont co
 
 - [Documentation]( https://www.browserstack.com/)
 
+## Common Properties
+
+- [Authentication](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#authentication)
+- [Getting Started](https://www.browserstack.com/docs)
+- [Status](https://status.browserstack.com)
+- [Blog](https://www.browserstack.com/blog)
+- [Pricing](https://www.browserstack.com/pricing)
+- [Terms of Service](https://www.browserstack.com/terms)
+- [Privacy Policy](https://www.browserstack.com/privacy)
+- [Sign Up](https://www.browserstack.com/users/sign_up)
+- [Login](https://www.browserstack.com/users/sign_in)
+
 ## Maintainers
 
 **FN:** Kin Lane
 
 **Email:** info@apievangelist.com
+**FN:** BrowserStack
 
+**Email:** support@browserstack.com
