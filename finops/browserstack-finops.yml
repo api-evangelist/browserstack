@@ -1,0 +1,268 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: BrowserStack
+providerId: browserstack
+publisherName: BrowserStack
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Accessibility
+  - Appium
+  - Applications
+  - Automation
+  - CI/CD
+  - Cross-Browser Testing
+  - Enterprise
+  - JavaScript
+  - Low Code
+  - Mobile Testing
+  - QA
+  - Regression Testing
+  - Selenium
+  - Testing
+  - Unit Testing
+  - Visual Testing
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the BrowserStack API surface. Provides a FOCUS-aligned mapping
+  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: BrowserStack
+  ServiceCategory: Developer Tools / API
+  ProviderName: BrowserStack
+  PublisherName: BrowserStack
+  InvoiceIssuerName: BrowserStack
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: BrowserStack
+    baseURL: ''
+    tags: []
+    serviceName: BrowserStack
+    serviceCategory: API
+  - name: BrowserStack Automate API
+    baseURL: ''
+    tags:
+      - Automation
+      - Cross-Browser Testing
+      - Selenium
+      - Testing
+    serviceName: BrowserStack Automate API
+    serviceCategory: API
+  - name: BrowserStack App Automate API
+    baseURL: ''
+    tags:
+      - Appium
+      - Automation
+      - Espresso
+      - Mobile Testing
+      - XCUITest
+    serviceName: BrowserStack App Automate API
+    serviceCategory: API
+  - name: BrowserStack Screenshots API
+    baseURL: ''
+    tags:
+      - Cross-Browser Testing
+      - Screenshots
+      - Visual Testing
+    serviceName: BrowserStack Screenshots API
+    serviceCategory: API
+  - name: BrowserStack App Live API
+    baseURL: ''
+    tags:
+      - Applications
+      - Mobile Testing
+    serviceName: BrowserStack App Live API
+    serviceCategory: API
+  - name: BrowserStack Local Testing API
+    baseURL: ''
+    tags:
+      - Debugging
+      - Local Testing
+      - Networking
+    serviceName: BrowserStack Local Testing API
+    serviceCategory: API
+  - name: BrowserStack Automate TurboScale API
+    baseURL: ''
+    tags:
+      - Automation
+      - Scaling
+      - Selenium
+    serviceName: BrowserStack Automate TurboScale API
+    serviceCategory: API
+  - name: BrowserStack Test Management API
+    baseURL: ''
+    tags:
+      - QA
+      - Test Management
+      - Testing
+    serviceName: BrowserStack Test Management API
+    serviceCategory: API
+  - name: BrowserStack Test Reporting and Analytics API
+    baseURL: ''
+    tags:
+      - Analytics
+      - Observability
+      - Reporting
+      - Testing
+    serviceName: BrowserStack Test Reporting and Analytics API
+    serviceCategory: API
+  - name: BrowserStack Accessibility Testing API
+    baseURL: ''
+    tags:
+      - Accessibility
+      - Testing
+      - WCAG
+    serviceName: BrowserStack Accessibility Testing API
+    serviceCategory: API
+  - name: BrowserStack Percy API
+    baseURL: ''
+    tags:
+      - Regression Testing
+      - Screenshots
+      - Visual Testing
+    serviceName: BrowserStack Percy API
+    serviceCategory: API
+  - name: BrowserStack App Percy API
+    baseURL: ''
+    tags:
+      - Mobile Testing
+      - Regression Testing
+      - Visual Testing
+    serviceName: BrowserStack App Percy API
+    serviceCategory: API
+  - name: BrowserStack User Management API
+    baseURL: ''
+    tags:
+      - Administration
+      - Enterprise
+      - User Management
+    serviceName: BrowserStack User Management API
+    serviceCategory: API
+  - name: BrowserStack JavaScript Testing API
+    baseURL: ''
+    tags:
+      - Cross-Browser Testing
+      - JavaScript
+      - Testing
+      - Unit Testing
+    serviceName: BrowserStack JavaScript Testing API
+    serviceCategory: API
+  - name: BrowserStack App Accessibility Testing API
+    baseURL: ''
+    tags:
+      - Accessibility
+      - Mobile Testing
+      - Testing
+    serviceName: BrowserStack App Accessibility Testing API
+    serviceCategory: API
+  - name: BrowserStack Low Code Automation API
+    baseURL: ''
+    tags:
+      - Automation
+      - CI/CD
+      - Low Code
+      - Testing
+    serviceName: BrowserStack Low Code Automation API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+  - name: BrowserStack
+    email: support@browserstack.com
+    url: https://www.browserstack.com
