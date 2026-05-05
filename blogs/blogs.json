@@ -1,0 +1,13 @@
+{
+  "repo": "browserstack",
+  "feeds": [
+    {
+      "source": "https://www.browserstack.com/blog",
+      "feed_url": "https://www.browserstack.com/blog/rss/",
+      "saved": 10,
+      "title": "BrowserStack Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:24:21Z"
+}
