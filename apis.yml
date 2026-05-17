@@ -27,7 +27,7 @@ apis:
       - url: https://www.browserstack.com/docs/automate/api-reference/selenium/automate-api
         type: Reference
       - url: https://www.browserstack.com/docs/automate/selenium
-        type: Getting Started
+        type: GettingStarted
     description: The BrowserStack Automate REST API provides access to plan, project, build, and session details for Selenium-based automated testing on real browsers and devices. It enables managing test sessions, retrieving logs, and integrating CI/CD pipelines with BrowserStack Automate.
   - aid: browserstack:app-automate-api
     name: BrowserStack App Automate API
@@ -44,7 +44,7 @@ apis:
       - url: https://www.browserstack.com/docs/app-automate/api-reference/authentication
         type: Authentication
       - url: https://www.browserstack.com/docs/app-automate/appium
-        type: Getting Started
+        type: GettingStarted
     description: The BrowserStack App Automate REST API enables running mobile automation tests and integrating CI/CD pipelines with BrowserStack. It supports Appium, Espresso, XCUITest, Flutter, Detox, and Maestro frameworks for testing native and hybrid apps on real devices.
   - aid: browserstack:screenshots-api
     name: BrowserStack Screenshots API
@@ -89,7 +89,7 @@ apis:
       - url: https://www.browserstack.com/docs/automate-turboscale/api-reference/introduction
         type: Documentation
       - url: https://www.browserstack.com/docs/automate-turboscale
-        type: Getting Started
+        type: GettingStarted
     description: The BrowserStack Automate TurboScale REST API provides access to projects, builds, sessions, grids, and browser information for tests run on BrowserStack TurboScale infrastructure, including self-hosted grid management.
   - aid: browserstack:test-management-api
     name: BrowserStack Test Management API
@@ -104,7 +104,7 @@ apis:
       - url: https://www.browserstack.com/docs/test-management/api-reference/authentication
         type: Authentication
       - url: https://www.browserstack.com/docs/test-management/api-reference/rate-limit-for-api-calls
-        type: Rate Limits
+        type: RateLimits
     description: The BrowserStack Test Management API provides REST access to manage test projects, folders, test cases, test runs, test plans, test results, attachments, configurations, and custom fields for organizing and executing quality assurance workflows.
   - aid: browserstack:test-reporting-and-analytics-api
     name: BrowserStack Test Reporting and Analytics API
@@ -135,7 +135,7 @@ apis:
       - url: https://www.browserstack.com/docs/accessibility/api
         type: Reference
       - url: https://www.browserstack.com/docs/accessibility/overview/introduction
-        type: Getting Started
+        type: GettingStarted
     description: The BrowserStack Accessibility Testing API provides REST access to workflow analyzer, assisted tests, website scanner, and automated tests results for identifying and managing accessibility issues across web applications.
   - aid: browserstack:percy-api
     name: BrowserStack Percy API
@@ -148,7 +148,7 @@ apis:
       - url: https://www.browserstack.com/docs/percy/api-reference/percy-apis
         type: Documentation
       - url: https://www.browserstack.com/docs/percy
-        type: Getting Started
+        type: GettingStarted
     description: The BrowserStack Percy API provides REST access for managing visual testing projects, builds, snapshots, Visual Git synchronization, and Visual Scanner capabilities to detect visual regressions across browsers and screen widths.
   - aid: browserstack:app-percy-api
     name: BrowserStack App Percy API
@@ -165,7 +165,7 @@ apis:
       - url: https://www.browserstack.com/docs/app-percy/references/overview
         type: Reference
       - url: https://www.browserstack.com/docs/app-percy
-        type: Getting Started
+        type: GettingStarted
     description: The BrowserStack App Percy API provides automated visual testing for mobile applications across real iOS and Android devices, enabling teams to detect visual regressions and deploy with confidence.
   - aid: browserstack:user-management-api
     name: BrowserStack User Management API
@@ -190,7 +190,7 @@ apis:
       - url: https://www.browserstack.com/docs/automate/javascript-testing/api
         type: Documentation
       - url: https://www.browserstack.com/docs/automate/javascript-testing
-        type: Getting Started
+        type: GettingStarted
       - url: https://github.com/browserstack/api
         type: GitHubRepository
     description: The BrowserStack JavaScript Testing API provides HTTPS-based access to run JavaScript unit tests across 3000+ real desktop and mobile browsers in the cloud. It supports popular test frameworks including Jasmine, QUnit, Mocha, and Jest, with language bindings for Node.js, Ruby, and .NET.
@@ -205,7 +205,7 @@ apis:
       - url: https://www.browserstack.com/docs/app-accessibility/api-reference/introduction
         type: Documentation
       - url: https://www.browserstack.com/docs/app-accessibility/overview/introduction
-        type: Getting Started
+        type: GettingStarted
     description: The BrowserStack App Accessibility REST API enables programmatic access to accessibility data for mobile app projects and builds. It provides endpoints for retrieving accessibility results from automated and manual tests, including project lists, build details, test cases, and issue-level analysis.
   - aid: browserstack:low-code-automation-api
     name: BrowserStack Low Code Automation API
@@ -221,7 +221,7 @@ apis:
       - url: https://www.browserstack.com/docs/low-code-automation/cicd-integrations/run-tests-api
         type: Reference
       - url: https://www.browserstack.com/docs/low-code-automation
-        type: Getting Started
+        type: GettingStarted
     description: The BrowserStack Low Code Automation REST API enables triggering test suite executions and retrieving build statuses for CI/CD pipeline integration. It also supports exporting low-code tests as code in .side and Nightwatch.js formats.
 name: BrowserStack
 tags:
@@ -241,7 +241,7 @@ tags:
   - Testing
   - Unit Testing
   - Visual Testing
-type: Contract
+kind: contract
 image: https://www.browserstack.com/images/browserstack-logo.svg
 access: 3rd-Party
 created: '2025-02-17'
@@ -261,21 +261,21 @@ common:
   - url: https://www.browserstack.com/docs
     type: Portal
   - url: https://www.browserstack.com/docs
-    type: Getting Started
+    type: GettingStarted
   - url: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#authentication
     type: Authentication
   - url: https://status.browserstack.com
-    type: Status
+    type: StatusPage
   - url: https://www.browserstack.com/blog
     type: Blog
   - url: https://www.browserstack.com/pricing
     type: Pricing
   - url: https://www.browserstack.com/terms
-    type: Terms of Service
+    type: TermsOfService
   - url: https://www.browserstack.com/privacy
-    type: Privacy Policy
+    type: PrivacyPolicy
   - url: https://www.browserstack.com/users/sign_up
-    type: Sign Up
+    type: SignUp
   - url: https://www.browserstack.com/users/sign_in
     type: Login
   - url: https://www.browserstack.com/contact
@@ -285,7 +285,7 @@ common:
   - url: https://www.browserstack.com/integrations
     type: Integrations
   - url: https://www.browserstack.com/release-notes/en
-    type: Change Log
+    type: ChangeLog
   - url: https://github.com/browserstack
     type: GitHub Org
   - url: https://www.browserstack.com/community
