@@ -256,6 +256,8 @@ maintainers:
     url: https://www.browserstack.com
 specificationVersion: '0.19'
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/browserstack
   - url: https://www.browserstack.com
     type: Website
   - url: https://www.browserstack.com/docs
