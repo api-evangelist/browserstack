@@ -2,12 +2,20 @@
   "repo": "browserstack",
   "feeds": [
     {
-      "source": "https://www.browserstack.com/blog",
+      "source": "https://www.browserstack.com/blog/feed/",
       "feed_url": "https://www.browserstack.com/blog/feed/",
-      "title": "BrowserStack Blog",
-      "saved": 6
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.browserstack.com/blog",
+      "feed_url": "https://www.browserstack.com/blog/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "post_count": 19,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 22,
+  "fetched": "2026-06-01T23:35:02Z"
 }
