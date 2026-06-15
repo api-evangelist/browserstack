@@ -1,0 +1,383 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BrowserStack Automate REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get plan details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/plan.json"
+          },
+          "docs": "Returns details of the current Automate subscription plan including parallel session capacity and current usage."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Browsers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get supported browsers and devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/browsers.json"
+          },
+          "docs": "Returns the list of operating systems, browsers, and real mobile devices supported by Automate."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/projects.json"
+          },
+          "docs": "List projects"
+        },
+        {
+          "info": {
+            "name": "Get project details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/projects/:projectId.json",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get project details"
+        },
+        {
+          "info": {
+            "name": "Update project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.browserstack.com/automate/projects/:projectId.json",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update project"
+        },
+        {
+          "info": {
+            "name": "Delete project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.browserstack.com/automate/projects/:projectId.json",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an Automate project. The project must be empty of builds and sessions."
+        },
+        {
+          "info": {
+            "name": "Get project status badge key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/projects/:projectId/badge_key",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get project status badge key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List recent builds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/builds.json",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List recent builds"
+        },
+        {
+          "info": {
+            "name": "Update build",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.browserstack.com/automate/builds/:buildId.json",
+            "params": [
+              {
+                "name": "buildId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update build"
+        },
+        {
+          "info": {
+            "name": "Delete build",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.browserstack.com/automate/builds/:buildId.json",
+            "params": [
+              {
+                "name": "buildId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete build"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List sessions in a build",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/builds/:buildId/sessions.json",
+            "params": [
+              {
+                "name": "buildId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List sessions in a build"
+        },
+        {
+          "info": {
+            "name": "Get session details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/sessions/:sessionId.json",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get session details"
+        },
+        {
+          "info": {
+            "name": "Update session status / metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.browserstack.com/automate/sessions/:sessionId.json",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update session status / metadata"
+        },
+        {
+          "info": {
+            "name": "Delete session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.browserstack.com/automate/sessions/:sessionId.json",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete session"
+        },
+        {
+          "info": {
+            "name": "Download Selenium logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/sessions/:sessionId/logs",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download Selenium logs"
+        },
+        {
+          "info": {
+            "name": "Download network logs (HAR)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/sessions/:sessionId/networklogs",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download network logs (HAR)"
+        },
+        {
+          "info": {
+            "name": "Download console logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/sessions/:sessionId/consolelogs",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download console logs"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AccessKey",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Recycle access key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.browserstack.com/automate/recycle_key.json"
+          },
+          "docs": "Generates a new access key, invalidating the old one."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
