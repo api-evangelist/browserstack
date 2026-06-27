@@ -9,6 +9,13 @@
       "method": "feed"
     },
     {
+      "source": "https://www.browserstack.com/blog/rss/",
+      "feed_url": "https://www.browserstack.com/blog/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://www.browserstack.com/blog",
       "feed_url": "https://www.browserstack.com/blog/rss/",
       "title": "",
@@ -16,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 24,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 27,
+  "fetched": "2026-06-27T12:03:07Z"
 }

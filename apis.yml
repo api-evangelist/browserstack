@@ -277,7 +277,7 @@ common:
   - url: https://www.browserstack.com/privacy
     type: PrivacyPolicy
   - url: https://www.browserstack.com/users/sign_up
-    type: SignUp
+    type: Signup
   - url: https://www.browserstack.com/users/sign_in
     type: Login
   - url: https://www.browserstack.com/contact
@@ -289,7 +289,7 @@ common:
   - url: https://www.browserstack.com/release-notes/en
     type: ChangeLog
   - url: https://github.com/browserstack
-    type: GitHub Org
+    type: GitHubOrg
   - url: https://www.browserstack.com/community
     type: Community
   - url: https://www.browserstack.com/vulnerability-disclosure-program
