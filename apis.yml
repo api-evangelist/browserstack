@@ -256,6 +256,12 @@ maintainers:
     url: https://www.browserstack.com
 specificationVersion: '0.19'
 common:
+  - type: TrustCenter
+    url: security/browserstack-trust-center.yml
+  - type: DomainSecurity
+    url: security/browserstack-domain-security.yml
+  - type: Authentication
+    url: authentication/browserstack-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/browserstack
   - url: https://www.browserstack.com

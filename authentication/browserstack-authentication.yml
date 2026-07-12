@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/browserstack-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic auth using your BrowserStack username as username and your access
+    key as password.
+  sources:
+  - openapi/browserstack-openapi.yml
