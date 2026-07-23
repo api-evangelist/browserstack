@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: BrowserStack Automate REST AccessKey Plan API
+  description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
+
+    plans, projects, builds, sessions, browsers, devices, access keys, and media used in
+
+    Selenium-based cross-browser automated testing on BrowserStack.
+
+
+    Authentication uses HTTP Basic with your BrowserStack username and access key.
+
+    '
+  version: '1.0'
+  contact:
+    name: BrowserStack
+    url: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+  license:
+    name: BrowserStack Terms of Service
+    url: https://www.browserstack.com/terms
+servers:
+- url: https://api.browserstack.com
+  description: BrowserStack Automate API base URL
+security:
+- basicAuth: []
+tags:
+- name: Plan
+  description: Operations describing the current Automate subscription plan and capacity.
+paths:
+  /automate/plan.json:
+    get:
+      tags:
+      - Plan
+      summary: Get plan details
+      description: Returns details of the current Automate subscription plan including parallel session capacity and current usage.
+      operationId: getPlan
+      responses:
+        '200':
+          description: Plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+components:
+  schemas:
+    Plan:
+      type: object
+      properties:
+        automate_plan:
+          type: string
+        parallel_sessions_running:
+          type: integer
+        team_parallel_sessions_max_allowed:
+          type: integer
+        parallel_sessions_max_allowed:
+          type: integer
+        queued_sessions:
+          type: integer
+        queued_sessions_max_allowed:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using your BrowserStack username as username and your access key as password.

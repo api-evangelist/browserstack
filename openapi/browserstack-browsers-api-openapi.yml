@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: BrowserStack Automate REST AccessKey Browsers API
+  description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
+
+    plans, projects, builds, sessions, browsers, devices, access keys, and media used in
+
+    Selenium-based cross-browser automated testing on BrowserStack.
+
+
+    Authentication uses HTTP Basic with your BrowserStack username and access key.
+
+    '
+  version: '1.0'
+  contact:
+    name: BrowserStack
+    url: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+  license:
+    name: BrowserStack Terms of Service
+    url: https://www.browserstack.com/terms
+servers:
+- url: https://api.browserstack.com
+  description: BrowserStack Automate API base URL
+security:
+- basicAuth: []
+tags:
+- name: Browsers
+  description: Operations describing supported browsers and devices.
+paths:
+  /automate/browsers.json:
+    get:
+      tags:
+      - Browsers
+      summary: Get supported browsers and devices
+      description: Returns the list of operating systems, browsers, and real mobile devices supported by Automate.
+      operationId: getBrowsers
+      responses:
+        '200':
+          description: List of supported browser and device configurations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Browser'
+components:
+  schemas:
+    Browser:
+      type: object
+      properties:
+        os:
+          type: string
+        os_version:
+          type: string
+        browser:
+          type: string
+        device:
+          type:
+          - string
+          - 'null'
+        browser_version:
+          type:
+          - string
+          - 'null'
+        real_mobile:
+          type: boolean
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using your BrowserStack username as username and your access key as password.

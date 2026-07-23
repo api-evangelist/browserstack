@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: BrowserStack Automate REST AccessKey Builds API
+  description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
+
+    plans, projects, builds, sessions, browsers, devices, access keys, and media used in
+
+    Selenium-based cross-browser automated testing on BrowserStack.
+
+
+    Authentication uses HTTP Basic with your BrowserStack username and access key.
+
+    '
+  version: '1.0'
+  contact:
+    name: BrowserStack
+    url: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+  license:
+    name: BrowserStack Terms of Service
+    url: https://www.browserstack.com/terms
+servers:
+- url: https://api.browserstack.com
+  description: BrowserStack Automate API base URL
+security:
+- basicAuth: []
+tags:
+- name: Builds
+  description: Operations on Automate builds.
+paths:
+  /automate/builds.json:
+    get:
+      tags:
+      - Builds
+      summary: List recent builds
+      operationId: listBuilds
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - done
+          - running
+          - failed
+      responses:
+        '200':
+          description: Array of builds
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Build'
+  /automate/builds/{buildId}.json:
+    parameters:
+    - name: buildId
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      tags:
+      - Builds
+      summary: Update build
+      operationId: updateBuild
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Updated build
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Build'
+    delete:
+      tags:
+      - Builds
+      summary: Delete build
+      operationId: deleteBuild
+      responses:
+        '200':
+          description: Build deletion confirmation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusMessage'
+components:
+  schemas:
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    Build:
+      type: object
+      properties:
+        hashed_id:
+          type: string
+        name:
+          type: string
+        duration:
+          type: integer
+        status:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        group_id:
+          type: integer
+        user_id:
+          type: integer
+        automation_project_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using your BrowserStack username as username and your access key as password.

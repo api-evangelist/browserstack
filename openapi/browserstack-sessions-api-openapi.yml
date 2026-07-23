@@ -1,0 +1,233 @@
+openapi: 3.1.0
+info:
+  title: BrowserStack Automate REST AccessKey Sessions API
+  description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
+
+    plans, projects, builds, sessions, browsers, devices, access keys, and media used in
+
+    Selenium-based cross-browser automated testing on BrowserStack.
+
+
+    Authentication uses HTTP Basic with your BrowserStack username and access key.
+
+    '
+  version: '1.0'
+  contact:
+    name: BrowserStack
+    url: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+  license:
+    name: BrowserStack Terms of Service
+    url: https://www.browserstack.com/terms
+servers:
+- url: https://api.browserstack.com
+  description: BrowserStack Automate API base URL
+security:
+- basicAuth: []
+tags:
+- name: Sessions
+  description: Operations on Automate sessions.
+paths:
+  /automate/builds/{buildId}/sessions.json:
+    parameters:
+    - name: buildId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Sessions
+      summary: List sessions in a build
+      operationId: listBuildSessions
+      responses:
+        '200':
+          description: Array of sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+  /automate/sessions/{sessionId}.json:
+    parameters:
+    - name: sessionId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Sessions
+      summary: Get session details
+      operationId: getSession
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+    put:
+      tags:
+      - Sessions
+      summary: Update session status / metadata
+      operationId: updateSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - passed
+                  - failed
+                reason:
+                  type: string
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Updated session
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+    delete:
+      tags:
+      - Sessions
+      summary: Delete session
+      operationId: deleteSession
+      responses:
+        '200':
+          description: Session deletion confirmation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusMessage'
+  /automate/sessions/{sessionId}/logs:
+    parameters:
+    - name: sessionId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Sessions
+      summary: Download Selenium logs
+      operationId: getSessionLogs
+      responses:
+        '200':
+          description: Selenium log text
+          content:
+            text/plain:
+              schema:
+                type: string
+  /automate/sessions/{sessionId}/networklogs:
+    parameters:
+    - name: sessionId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Sessions
+      summary: Download network logs (HAR)
+      operationId: getSessionNetworkLogs
+      responses:
+        '200':
+          description: HAR file
+          content:
+            application/json:
+              schema:
+                type: object
+  /automate/sessions/{sessionId}/consolelogs:
+    parameters:
+    - name: sessionId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Sessions
+      summary: Download console logs
+      operationId: getSessionConsoleLogs
+      responses:
+        '200':
+          description: Console log text
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    Session:
+      type: object
+      properties:
+        hashed_id:
+          type: string
+        name:
+          type: string
+        duration:
+          type: integer
+        os:
+          type: string
+        os_version:
+          type: string
+        browser_version:
+          type: string
+        browser:
+          type: string
+        device:
+          type:
+          - string
+          - 'null'
+        status:
+          type: string
+        reason:
+          type:
+          - string
+          - 'null'
+        build_name:
+          type: string
+        project_name:
+          type: string
+        logs:
+          type: string
+        browser_url:
+          type: string
+        public_url:
+          type: string
+        appium_logs_url:
+          type: string
+        video_url:
+          type: string
+        browser_console_logs_url:
+          type: string
+        har_logs_url:
+          type: string
+        selenium_logs_url:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using your BrowserStack username as username and your access key as password.

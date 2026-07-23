@@ -1,0 +1,187 @@
+openapi: 3.1.0
+info:
+  title: BrowserStack Automate REST AccessKey Projects API
+  description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
+
+    plans, projects, builds, sessions, browsers, devices, access keys, and media used in
+
+    Selenium-based cross-browser automated testing on BrowserStack.
+
+
+    Authentication uses HTTP Basic with your BrowserStack username and access key.
+
+    '
+  version: '1.0'
+  contact:
+    name: BrowserStack
+    url: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+  license:
+    name: BrowserStack Terms of Service
+    url: https://www.browserstack.com/terms
+servers:
+- url: https://api.browserstack.com
+  description: BrowserStack Automate API base URL
+security:
+- basicAuth: []
+tags:
+- name: Projects
+  description: Operations on Automate projects.
+paths:
+  /automate/projects.json:
+    get:
+      tags:
+      - Projects
+      summary: List projects
+      operationId: listProjects
+      responses:
+        '200':
+          description: Array of project objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+  /automate/projects/{projectId}.json:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Projects
+      summary: Get project details
+      operationId: getProject
+      responses:
+        '200':
+          description: Project with associated builds
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDetail'
+    put:
+      tags:
+      - Projects
+      summary: Update project
+      operationId: updateProject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Updated project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+    delete:
+      tags:
+      - Projects
+      summary: Delete project
+      description: Deletes an Automate project. The project must be empty of builds and sessions.
+      operationId: deleteProject
+      responses:
+        '200':
+          description: Deletion confirmation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusMessage'
+  /automate/projects/{projectId}/badge_key:
+    parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Projects
+      summary: Get project status badge key
+      operationId: getProjectBadgeKey
+      responses:
+        '200':
+          description: Badge key string
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        group_id:
+          type: integer
+        user_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        sub_group_id:
+          type:
+          - integer
+          - 'null'
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    Build:
+      type: object
+      properties:
+        hashed_id:
+          type: string
+        name:
+          type: string
+        duration:
+          type: integer
+        status:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        group_id:
+          type: integer
+        user_id:
+          type: integer
+        automation_project_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ProjectDetail:
+      allOf:
+      - $ref: '#/components/schemas/Project'
+      - type: object
+        properties:
+          builds:
+            type: array
+            items:
+              $ref: '#/components/schemas/Build'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using your BrowserStack username as username and your access key as password.
