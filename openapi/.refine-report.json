@@ -1,0 +1,24 @@
+{
+  "provider": "browserstack",
+  "sources": [
+    "browserstack-accesskey-api-openapi.yml",
+    "browserstack-browsers-api-openapi.yml",
+    "browserstack-builds-api-openapi.yml",
+    "browserstack-plan-api-openapi.yml",
+    "browserstack-projects-api-openapi.yml",
+    "browserstack-sessions-api-openapi.yml"
+  ],
+  "outputs": [
+    "browserstack-accesskey-api-openapi.yml",
+    "browserstack-browsers-api-openapi.yml",
+    "browserstack-builds-api-openapi.yml",
+    "browserstack-plan-api-openapi.yml",
+    "browserstack-projects-api-openapi.yml",
+    "browserstack-sessions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
