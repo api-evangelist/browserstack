@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BrowserStack Automate REST AccessKey Plan API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get plan details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/plan.json"
+          },
+          "docs": "Returns details of the current Automate subscription plan including parallel session capacity and current usage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

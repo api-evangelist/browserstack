@@ -1,0 +1,125 @@
+{
+  "item": [
+    {
+      "id": "55e04f3d-6170-4669-9316-fa1da57f8685",
+      "name": "Plan",
+      "description": {
+        "content": "Operations describing the current Automate subscription plan and capacity.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02bc9aad-059d-486d-8b57-80ecd2e37de4",
+          "name": "Get plan details",
+          "request": {
+            "name": "Get plan details",
+            "description": {
+              "content": "Returns details of the current Automate subscription plan including parallel session capacity and current usage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "automate",
+                "plan.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72432869-c178-4ddc-9c91-9cfa28fc4079",
+              "name": "Plan details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "automate",
+                    "plan.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"automate_plan\": \"string\",\n  \"parallel_sessions_running\": 875,\n  \"team_parallel_sessions_max_allowed\": 3190,\n  \"parallel_sessions_max_allowed\": 6619,\n  \"queued_sessions\": 2763,\n  \"queued_sessions_max_allowed\": 1776\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.browserstack.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d80e8ffd-c08e-491d-b045-73bd8684d710",
+    "name": "BrowserStack Automate REST AccessKey Plan API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\n\nContact Support:\n Name: BrowserStack",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BrowserStack Automate REST AccessKey Builds API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List recent builds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/builds.json",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List recent builds"
+        },
+        {
+          "info": {
+            "name": "Update build",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.browserstack.com/automate/builds/:buildId.json",
+            "params": [
+              {
+                "name": "buildId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update build"
+        },
+        {
+          "info": {
+            "name": "Delete build",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.browserstack.com/automate/builds/:buildId.json",
+            "params": [
+              {
+                "name": "buildId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete build"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

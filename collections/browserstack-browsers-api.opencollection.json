@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BrowserStack Automate REST AccessKey Browsers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Browsers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get supported browsers and devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.browserstack.com/automate/browsers.json"
+          },
+          "docs": "Returns the list of operating systems, browsers, and real mobile devices supported by Automate."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

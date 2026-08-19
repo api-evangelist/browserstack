@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BrowserStack Automate REST AccessKey API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AccessKey",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Recycle access key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.browserstack.com/automate/recycle_key.json"
+          },
+          "docs": "Generates a new access key, invalidating the old one."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

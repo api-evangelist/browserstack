@@ -1,0 +1,125 @@
+{
+  "item": [
+    {
+      "id": "924cafe4-3ee7-4c74-a3a5-523450182075",
+      "name": "Browsers",
+      "description": {
+        "content": "Operations describing supported browsers and devices.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1a0539b8-2691-4fbc-a862-86cc6e8cca4f",
+          "name": "Get supported browsers and devices",
+          "request": {
+            "name": "Get supported browsers and devices",
+            "description": {
+              "content": "Returns the list of operating systems, browsers, and real mobile devices supported by Automate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "automate",
+                "browsers.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcadf6a0-c868-430e-b122-78d283c327dd",
+              "name": "List of supported browser and device configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "automate",
+                    "browsers.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"os\": \"string\",\n    \"os_version\": \"string\",\n    \"browser\": \"string\",\n    \"device\": \"string\",\n    \"browser_version\": \"string\",\n    \"real_mobile\": false\n  },\n  {\n    \"os\": \"string\",\n    \"os_version\": \"string\",\n    \"browser\": \"string\",\n    \"device\": \"string\",\n    \"browser_version\": \"string\",\n    \"real_mobile\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.browserstack.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3caa37ec-f3dc-4598-bc3a-95e4f05ed580",
+    "name": "BrowserStack Automate REST AccessKey Browsers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\n\nContact Support:\n Name: BrowserStack",
+      "type": "text/plain"
+    }
+  }
+}
