@@ -365,7 +365,7 @@ maintainers:
   - name: BrowserStack
     email: support@browserstack.com
     url: https://www.browserstack.com
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 common:
   - type: AgenticAccess
     url: agentic-access/browserstack-agentic-access.yml
