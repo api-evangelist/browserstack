@@ -70,6 +70,9 @@ apis:
 - aid: browserstack:app-live-api
   name: BrowserStack App Live API
   tags:
+  - Application
+  - Mobile Testing
+  tags_raw:
   - Applications
   - Mobile Testing
   humanURL: https://www.browserstack.com/app-live/rest-api
@@ -253,6 +256,11 @@ apis:
   tags:
   - Automation
   - CI/CD
+  - Low-Code
+  - Testing
+  tags_raw:
+  - Automation
+  - CI/CD
   - Low Code
   - Testing
   humanURL: https://www.browserstack.com/docs/low-code-automation/cicd-integrations/rest-api
@@ -308,6 +316,8 @@ apis:
   description: Operations on Automate projects.
   humanURL: ' https://www.browserstack.com/'
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -323,6 +333,23 @@ apis:
     url: openapi/browserstack-sessions-api-openapi.yml
 name: BrowserStack
 tags:
+  - Accessibility
+  - Appium
+  - Application
+  - Automation
+  - CI/CD
+  - Cross-Browser Testing
+  - Enterprise
+  - JavaScript
+  - Low-Code
+  - Mobile Testing
+  - QA
+  - Regression Testing
+  - Selenium
+  - Testing
+  - Unit Testing
+  - Visual Testing
+tags_raw:
   - Accessibility
   - Appium
   - Applications
