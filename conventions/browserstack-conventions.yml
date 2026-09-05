@@ -1,0 +1,194 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  BrowserStack product API reference pages (Automate, App Automate, Test Management,
+  Accessibility, Percy, User Management), fetched 2026-09-04, plus live unauthenticated probes
+  of each base URL and the OpenAPI definitions in openapi/.
+provider: BrowserStack
+providerId: browserstack
+summary: >-
+  BrowserStack does not run one API. It runs at least six product APIs on six different hosts,
+  each with its own authentication header, its own error envelope and its own rate-limit
+  policy. There is no cross-cutting API convention document, no shared versioning scheme and no
+  shared error contract. Everything below is recorded per surface, because per surface is the
+  only way it is true.
+surfaces:
+  - api: BrowserStack Automate API
+    base: https://api.browserstack.com/
+    auth: HTTP Basic (username + access key)
+    version: v1 (stated on the API reference index, not in the path)
+    docs: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+  - api: BrowserStack App Automate API
+    base: https://api-cloud.browserstack.com/
+    auth: HTTP Basic (username + access key)
+    version: mixed — Appium/Maestro/Media are v1, Espresso/Flutter/Detox/XCUITest are v2
+    docs: https://www.browserstack.com/docs/app-automate/api-reference/introduction
+  - api: BrowserStack Test Management API
+    base: https://test-management.browserstack.com/api/v2/
+    auth: HTTP Basic (username + access key)
+    version: v2, in the path
+    docs: https://www.browserstack.com/docs/test-management/api-reference/introduction
+  - api: BrowserStack Accessibility Testing API
+    base: https://api-accessibility.browserstack.com/api/
+    auth: HTTP Basic (username + access key)
+    version: not published
+    docs: https://www.browserstack.com/docs/accessibility/api/authentication
+  - api: BrowserStack Percy API
+    base: https://percy.io/api/v1
+    auth: >-
+      Authorization header of the form "Token ${PERCY_TOKEN}" — three token classes
+      (write-only, read-only, full-access), scoped per project
+    version: v1, in the path
+    docs: https://www.browserstack.com/docs/percy/api-reference/authentication
+  - api: BrowserStack User Management API
+    base: https://api-enterprise.browserstack.com/ (also served on
+      https://api.browserstack.com/)
+    auth: HTTP Basic; Enterprise plan and Owner/Admin role required, plus Support enablement
+    version: not published
+    docs: https://www.browserstack.com/docs/enterprise/api-reference/introduction
+authentication:
+  style: HTTP Basic on five of six product APIs; a bearer-style "Token" header on Percy
+  oauth:
+    available: true
+    issuer: https://auth.browserstack.com
+    discovery:
+      - https://www.browserstack.com/.well-known/openid-configuration
+      - https://api.browserstack.com/.well-known/openid-configuration
+      - https://api-enterprise.browserstack.com/.well-known/openid-configuration
+    grant_types: [authorization_code, client_credentials, refresh_token]
+    pkce: [S256, plain]
+    scopes: [read, write, update, jira_integration, service_auth, central_ai_s2s,
+      part11_reauth, automate_tcg, ai_agent, ai_agent_notify]
+    note: >-
+      BrowserStack publishes a complete, working OIDC discovery document, but none of the six
+      product API reference pages documents OAuth as a way to call them — every one of them
+      documents Basic auth with a long-lived access key instead. The OAuth surface appears to
+      exist for the dashboard, integrations and the hosted MCP server rather than for REST
+      clients. This is a real gap: the credential an agent is told to use is a permanent
+      shared secret, while a scoped, revocable one is demonstrably available on the same host.
+  key_rotation:
+    supported: true
+    operationId: recycleAccessKey
+    path: PUT /automate/recycle_key.json
+    note: The Automate access key can be rotated over the API. There is no documented grace
+      period during which the old key keeps working.
+pagination:
+  documented: false
+  note: >-
+    No pagination scheme is documented for the Automate API, and the OpenAPI definitions in
+    this repo declare no page/offset/cursor parameters on any listing operation. The Test
+    Management API reference states that listTestCases-equivalent endpoints "support
+    pagination" and the MCP tool descriptions repeat that, but no parameter names, page-size
+    defaults or link/cursor fields are published. Treat pagination as present-but-unspecified
+    on Test Management and as unknown elsewhere.
+field_expansion:
+  supported: unknown
+  note: Not documented on any product API.
+metadata:
+  supported: false
+  note: No arbitrary metadata/tag field is documented on Automate resources. Test Management
+    test cases carry provider-defined tags and custom fields.
+request_id_tracing:
+  supported: false
+  note: No correlation-ID request header and no request-ID response header is documented or was
+    observed on any probed response.
+versioning:
+  scheme: per-product path versioning, inconsistently applied
+  detail: >-
+    Percy and Test Management version in the path (/api/v1, /api/v2). App Automate versions per
+    framework (v1 for Appium/Maestro/Media, v2 for Espresso/Flutter/Detox/XCUITest). Automate
+    labels its Selenium API "v1" on the reference index but carries no version in the path —
+    /automate/plan.json is unversioned. Accessibility and User Management publish no version at
+    all. There is no Accept-header or date-based versioning anywhere.
+error_envelope:
+  consistent: false
+  formats:
+    - text/html plain string on Automate and App Automate
+    - 'JSON object with error and message keys on Test Management'
+    - JSON:API errors[] on Percy
+  rfc9457: false
+  detail: See errors/browserstack-problem-types.yml — three envelopes across three hosts, one
+    of them not JSON.
+rate_limit_signaling:
+  headers: none
+  status: 429
+  detail: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After header is documented or returned. Limits are
+    published as prose per product API. An agent that is throttled learns only that it was
+    throttled, never for how long. See rate-limits/browserstack-rate-limits.yml.
+idempotency:
+  coverage: none
+  mechanism: null
+  scope: []
+  detail: >-
+    No Idempotency-Key header, no client-supplied request token and no replay-protection
+    mechanism of any kind is documented on any BrowserStack product API. The mutating surface
+    in the captured OpenAPI is eight operations (four PUT, three DELETE, one key rotation) and
+    none of them accepts an idempotency token. A retried PUT /automate/sessions/{sessionId}.json
+    is naturally idempotent because it is a full-state update, but that is a property of PUT
+    semantics, not a guarantee BrowserStack makes. recycleAccessKey is the dangerous one: a
+    retried call rotates the key a second time and invalidates the key the first call just
+    issued.
+dry_run_mode:
+  supported: false
+  detail: No preview, validate-only or dry-run parameter is documented on any write operation.
+reversibility:
+  grade: none
+  detail: >-
+    BrowserStack documents no reversal operation and no reversal window for any write on its
+    published API surface. Every destructive operation in the captured contract is one-way.
+  write_surfaces:
+    - operationId: deleteProject
+      path: DELETE /automate/projects/{projectId}.json
+      reversal: none
+      window: null
+      note: No restore, undelete or trash operation is documented. Deleting an Automate project
+        removes its builds and sessions from the dashboard.
+    - operationId: deleteBuild
+      path: DELETE /automate/builds/{buildId}.json
+      reversal: none
+      window: null
+    - operationId: deleteSession
+      path: DELETE /automate/sessions/{sessionId}.json
+      reversal: none
+      window: null
+      note: Session logs, video and network logs go with it. BrowserStack publishes retention
+        periods for session artifacts but no restore path once a session is deleted.
+    - operationId: recycleAccessKey
+      path: PUT /automate/recycle_key.json
+      reversal: none
+      window: null
+      note: >-
+        Irreversible and immediately breaking. The previous access key stops working; there is
+        no documented grace window and no way to recover the old value. Every CI job, SDK
+        config and tunnel using it fails until updated. This is the single operation on the
+        BrowserStack agent surface that most needs a human in the loop.
+    - operationId: updateProject
+      path: PUT /automate/projects/{projectId}.json
+      reversal: re-issue the same operation with the prior values
+      window: unbounded
+      note: Recoverable only because the caller kept the old value; BrowserStack stores no
+        version history and offers no undo endpoint.
+    - operationId: updateBuild
+      path: PUT /automate/builds/{buildId}.json
+      reversal: re-issue with prior values
+      window: unbounded
+    - operationId: updateSession
+      path: PUT /automate/sessions/{sessionId}.json
+      reversal: re-issue with prior values
+      window: unbounded
+  mcp_surface_note: >-
+    The one reversal-shaped action anywhere on BrowserStack's agent surface is the Percy MCP
+    tool managePercyBuildApproval, which can approve OR reject a build — a two-way state
+    change rather than an undo, and no window is published for it. The MCP server's own README
+    states that fetchRCA and prepareSelfHealingPlan propose code fixes and never apply them,
+    which is a guardrail, not a reversal.
+cross_links:
+  errors: errors/browserstack-problem-types.yml
+  rate_limits: rate-limits/browserstack-rate-limits.yml
+  authentication: authentication/browserstack-authentication.yml
+  lifecycle: lifecycle/browserstack-lifecycle.yml
+  conformance: conformance/browserstack-conformance.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

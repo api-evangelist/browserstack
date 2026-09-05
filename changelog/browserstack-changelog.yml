@@ -1,0 +1,43 @@
+generated: '2026-09-04'
+method: searched
+source: https://www.browserstack.com/release-notes/en
+provider: BrowserStack
+providerId: browserstack
+url: https://www.browserstack.com/release-notes/en
+scheme: dated product release notes, not API versions
+machine_readable: false
+platform: Beamer (getbeamer.com), embedded as a hosted changelog widget
+detail: >-
+  BrowserStack publishes a single dated release-notes stream covering every product. It is
+  faceted by Product (accessibility design toolkit, accessibility testing, app accessibility
+  testing, app automate, app live, app percy, live, low code automation, percy, test
+  management, test reporting and analytics, testing toolkit, website scanner), Feature Type
+  (enhancement, new feature, announcement, device and os, enterprise, speedlab, webinars) and
+  Release Type (beta launch, major release, product launch, minor release, private devices).
+  Those facet vocabularies are the only part of the page present in the served HTML.
+entries: []
+entries_note: >-
+  No dated entries are recorded here because none could be read without executing JavaScript.
+  The page is a Beamer-hosted widget: the served HTML carries the filter vocabulary and page
+  chrome only, and neither https://www.browserstack.com/release-notes/feed (returns the same
+  Beamer HTML shell) nor https://www.browserstack.com/release-notes.rss (returns the marketing
+  homepage) is a usable feed. Recording an empty entries[] with this note is the honest
+  result; inventing dated entries from blog posts would not be.
+api_specific_changelog: false
+api_specific_note: >-
+  The release-notes stream is product-scoped, not API-scoped. There is no changelog that tells
+  an API client which endpoints, fields or response shapes changed, and no deprecation channel.
+evidence:
+  - url: https://www.browserstack.com/release-notes/en
+    status: 200
+  - url: https://www.browserstack.com/release-notes/feed
+    status: 200
+    note: Beamer HTML shell, not a feed.
+  - url: https://www.browserstack.com/release-notes.rss
+    status: 200
+    note: Returns the BrowserStack marketing homepage, not RSS.
+  - url: https://www.browserstack.com/release-notes/en/feed.xml
+    status: 404
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

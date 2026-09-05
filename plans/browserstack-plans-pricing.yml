@@ -4,189 +4,236 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: BrowserStack
 providerId: browserstack
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Accessibility
-  - Appium
-  - Applications
-  - Automation
-  - CI/CD
-  - Cross-Browser Testing
-  - Enterprise
-  - JavaScript
-  - Low Code
-  - Mobile Testing
-  - QA
-  - Regression Testing
-  - Selenium
-  - Testing
-  - Unit Testing
-  - Visual Testing
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+modified: '2026-09-04'
+generated: '2026-09-04'
+method: searched
+source: https://www.browserstack.com/pricing
+note: >-
+  This file REPLACES a 2026-05-04 bulk-sweep scaffold that invented Free / Professional /
+  Enterprise API tiers with per-request quotas and overage pricing. BrowserStack sells no such
+  thing. It sells seat-and-capacity subscriptions per PRODUCT (Live, Automate, App Live, App
+  Automate, Test Management, Percy, Website Scanner, Accessibility), and API access is included
+  with the product subscription rather than metered or priced separately. There is no API-only
+  plan, no per-call price and no published API overage rate.
+  PRICE CAPTURE IS PARTIAL AND SAYS SO. The pricing page renders its per-seat price table in
+  JavaScript; the served HTML carries plan names, the entry-price claims quoted below, and one
+  fully-serialized product matrix (Website Scanner). Per-seat prices for Live, Automate, App
+  Live and App Automate are not in the HTML and are NOT guessed here.
+description: >-
+  BrowserStack published plans and pricing, read from the public pricing page. Product-scoped
+  subscriptions; API access is a feature of the product plan, not a separately priced product.
+currency: USD
+billing_periods:
+  - annual
+  - monthly
+pricing_model: per-seat subscription with capacity add-ons (parallel tests, devices, monitored
+  pages); annual billing is discounted against month-to-month
+api_metering: none-published
+plan_count: 17
 plans:
-  - id: browserstack-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the BrowserStack API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: BrowserStack
-      - name: BrowserStack Automate API
-      - name: BrowserStack App Automate API
-      - name: BrowserStack Screenshots API
-      - name: BrowserStack App Live API
-      - name: BrowserStack Local Testing API
-      - name: BrowserStack Automate TurboScale API
-      - name: BrowserStack Test Management API
-  - id: browserstack-pro
-    name: Professional
+  - id: browserstack-free-trial
+    name: Free Trial
+    product: all products
+    type: trial
+    price: '0.00'
+    description: >-
+      Self-serve free trial available on signup at https://www.browserstack.com/users/sign_up.
+      Trial capacity is stated per product on the pricing page rather than as a single
+      allowance.
+  - id: browserstack-open-source
+    name: Open Source plan
+    product: all products
+    type: free
+    price: '0.00'
+    description: >-
+      Free plan for open-source projects, granted on application at
+      https://www.browserstack.com/open-source. Referenced from the official MCP server README
+      as the route to a no-cost account.
+    source: https://www.browserstack.com/open-source
+  - id: browserstack-live-desktop
+    name: 'Live: Desktop'
+    product: Live (manual cross-browser testing)
     type: paid
-    description: Production tier for BrowserStack. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+    billing: annual
+    price: '12.50'
+    price_note: >-
+      The pricing page title states "Plans Starting From Just $12.50 A Month" and the Live
+      Desktop entry tier is annotated "Billed Annually. $19 month-to-month." and "100 minutes
+      of Live - Desktop & Mobile. Only 1 user/account."
+    monthly_price: '19.00'
+    included: 3000+ desktop browser combinations; unlimited testing minutes on the paid Desktop
+      tier; localhost access
+  - id: browserstack-live-desktop-mobile
+    name: 'Live: Desktop & Mobile'
+    product: Live
+    type: paid
+    billing: annual
+    price: null
+    price_note: Per-seat price is rendered client-side and is not present in the served HTML.
+    included: 3500+ real desktop and mobile browser combinations; localhost and staging access
+  - id: browserstack-live-team
+    name: 'Live: Team'
+    product: Live
+    type: paid
+    billing: annual
+    price: null
+    price_note: Rendered client-side. Page offers "Large team? Contact Sales."
+    included: team access to 30,000+ real iOS and Android device units; shared test history;
+      real-time collaborative debugging
+  - id: browserstack-live-team-pro
+    name: 'Live: Team Pro'
+    product: Live
+    type: paid
+    billing: annual
+    price: null
+    price_note: Rendered client-side.
+    included: Team, plus Bug Capture and Test Case Generator Agent (10 PRD uploads per user per
+      month)
+  - id: browserstack-live-team-ultimate
+    name: 'Live: Team Ultimate'
+    product: Live
+    type: paid
+    billing: annual
+    price: null
+    price_note: Rendered client-side.
+    included: simplified whole-team access at lower per-user cost; all Team Pro features
+  - id: browserstack-automate-desktop
+    name: 'Automate: Desktop'
+    product: Automate (browser automation cloud)
+    type: paid
+    billing: annual
+    price: null
+    price_note: Rendered client-side.
+    included: automated testing on 3000+ desktop browser combinations; unlimited Automate users
+      and testing minutes; localhost access
+    api_access: BrowserStack Automate REST API (https://api.browserstack.com) is included
+  - id: browserstack-automate-desktop-mobile
+    name: 'Automate: Desktop & Mobile'
+    product: Automate
+    type: paid
+    billing: annual
+    price: null
+    price_note: Rendered client-side.
+    included: automated testing on 3500+ desktop and mobile browser combinations
+  - id: browserstack-automate-desktop-mobile-pro
+    name: 'Automate: Desktop & Mobile Pro'
+    product: Automate
+    type: paid
+    billing: annual
+    price: null
+    price_note: Rendered client-side.
+    included: Desktop & Mobile, plus complimentary Team Live access (3 months, 5 users)
+  - id: browserstack-website-scanner-25
+    name: 'Website Scanner: 5 users / 25 pages'
+    product: Website Scanner (accessibility monitoring)
+    type: paid
+    billing: annual
+    price: '439.00'
+    monthly_price: '569.00'
+    annual_contract_value: '5268.00'
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
+      - name: users
+        limit: 5
+        annual_unit_price: '300.00'
+        monthly_unit_price: '400.00'
+      - name: monitored_webpages
+        limit: 25
+        annual_unit_price: '139.00'
+        monthly_unit_price: '169.00'
+    price_note: Read verbatim from the pricing page's serialized plan matrix (annualPlanId
+      124438 / monthlyPlanId 124439).
+  - id: browserstack-website-scanner-50
+    name: 'Website Scanner: 10 users / 50 pages'
+    product: Website Scanner
+    type: paid
+    billing: annual
+    price: '869.00'
+    monthly_price: '1149.00'
+    annual_contract_value: '10428.00'
+    entries:
+      - name: users
+        limit: 10
+        annual_unit_price: '600.00'
+        monthly_unit_price: '800.00'
+      - name: monitored_webpages
+        limit: 50
+        annual_unit_price: '269.00'
+        monthly_unit_price: '349.00'
+  - id: browserstack-website-scanner-100
+    name: 'Website Scanner: 5 users / 100 pages'
+    product: Website Scanner
+    type: paid
+    billing: annual
+    price: '769.00'
+    monthly_price: '999.00'
+    annual_contract_value: '9228.00'
+    entries:
+      - name: users
+        limit: 5
+      - name: monitored_webpages
         limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: BrowserStack
-      - name: BrowserStack Automate API
-      - name: BrowserStack App Automate API
-      - name: BrowserStack Screenshots API
-      - name: BrowserStack App Live API
-      - name: BrowserStack Local Testing API
-      - name: BrowserStack Automate TurboScale API
-      - name: BrowserStack Test Management API
-      - name: BrowserStack Test Reporting and Analytics API
-      - name: BrowserStack Accessibility Testing API
-      - name: BrowserStack Percy API
-      - name: BrowserStack App Percy API
-      - name: BrowserStack User Management API
-      - name: BrowserStack JavaScript Testing API
-      - name: BrowserStack App Accessibility Testing API
-      - name: BrowserStack Low Code Automation API
+        annual_unit_price: '469.00'
+        monthly_unit_price: '599.00'
+  - id: browserstack-website-scanner-200
+    name: 'Website Scanner: 5 users / 200 pages'
+    product: Website Scanner
+    type: paid
+    billing: annual
+    price: '969.00'
+    monthly_price: '1249.00'
+    annual_contract_value: '11628.00'
+    entries:
+      - name: users
+        limit: 5
+      - name: monitored_webpages
+        limit: 200
+        annual_unit_price: '669.00'
+        monthly_unit_price: '849.00'
+  - id: browserstack-website-scanner-500
+    name: 'Website Scanner: 5 users / 500 pages'
+    product: Website Scanner
+    type: paid
+    billing: annual
+    price: '1339.00'
+    monthly_price: '1749.00'
+    annual_contract_value: '16068.00'
+    entries:
+      - name: users
+        limit: 5
+      - name: monitored_webpages
+        limit: 500
+        annual_unit_price: '1039.00'
+        monthly_unit_price: '1349.00'
+  - id: browserstack-website-scanner-1000
+    name: 'Website Scanner: 10 users / 1000 pages'
+    product: Website Scanner
+    type: paid
+    billing: annual
+    price: '2269.00'
+    monthly_price: '2949.00'
+    annual_contract_value: '27228.00'
+    entries:
+      - name: users
+        limit: 10
+        annual_unit_price: '600.00'
+        monthly_unit_price: '800.00'
+      - name: monitored_webpages
+        limit: 1000
+        annual_unit_price: '1669.00'
+        monthly_unit_price: '2149.00'
   - id: browserstack-enterprise
     name: Enterprise
+    product: all products
     type: enterprise
-    description: Custom-negotiated tier for BrowserStack. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: BrowserStack
-      - name: BrowserStack Automate API
-      - name: BrowserStack App Automate API
-      - name: BrowserStack Screenshots API
-      - name: BrowserStack App Live API
-      - name: BrowserStack Local Testing API
-      - name: BrowserStack Automate TurboScale API
-      - name: BrowserStack Test Management API
-      - name: BrowserStack Test Reporting and Analytics API
-      - name: BrowserStack Accessibility Testing API
-      - name: BrowserStack Percy API
-      - name: BrowserStack App Percy API
-      - name: BrowserStack User Management API
-      - name: BrowserStack JavaScript Testing API
-      - name: BrowserStack App Accessibility Testing API
-      - name: BrowserStack Low Code Automation API
+    price: custom
+    description: >-
+      Contact-sales tier across every product line. Adds enterprise features, high-touch
+      support, advanced compliance, team and sub-team management, and user/team-level usage
+      reports. The BrowserStack User Management API
+      (https://api-enterprise.browserstack.com) requires an Enterprise plan and an Owner or
+      Admin role, and access to the Users / Teams / Usage Reports endpoints must additionally
+      be requested from Support.
+    url: https://www.browserstack.com/enterprise
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

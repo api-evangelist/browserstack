@@ -1,0 +1,279 @@
+generated: '2026-09-04'
+method: searched
+source: https://github.com/browserstack/mcp-server (README tool reference, @browserstack/mcp-server 1.3.1)
+  plus live probes of https://mcp.browserstack.com/mcp and its /.well-known/oauth-protected-resource
+provider: BrowserStack
+providerId: browserstack
+name: BrowserStack MCP Server
+status: published
+description: BrowserStack's official Model Context Protocol server. It exposes 44 tools covering Test
+  Management, Automate/App Automate SDK setup, Observability, Live and App Live manual sessions, Accessibility
+  scanning, Percy visual testing, and BrowserStack's AI agents (test-case generation, low-code authoring,
+  self-healing selectors, root-cause analysis).
+deployment:
+  mode: both
+  endpoint: https://mcp.browserstack.com/mcp
+  install: npx -y @browserstack/mcp-server@latest
+  package: https://www.npmjs.com/package/@browserstack/mcp-server
+  auth: oauth
+  verified: probed
+transports:
+- streamable-http (remote)
+- stdio (local, npx)
+x-evidence:
+  fetched: '2026-09-04'
+  endpoint_probe:
+    url: https://mcp.browserstack.com/mcp
+    method: POST tools/list (jsonrpc 2.0)
+    http_status: 401
+    www_authenticate: Bearer realm="https://mcp.browserstack.com/mcp", resource_metadata="https://mcp.browserstack.com/.well-known/oauth-protected-resource"
+    note: Live tool schemas are OAuth-gated. The tool list below is the provider-published catalog from
+      the official repository README, names and descriptions only — inputSchemas require an authenticated
+      tools/list call.
+  protected_resource:
+    url: https://mcp.browserstack.com/.well-known/oauth-protected-resource
+    http_status: 200
+    resource: https://mcp.browserstack.com/mcp
+    authorization_servers:
+    - https://mcp.browserstack.com
+    scopes_supported:
+    - read
+    - write
+    - admin
+    bearer_methods_supported:
+    - header
+    - body
+  authorization_server:
+    url: https://mcp.browserstack.com/.well-known/oauth-authorization-server
+    http_status: 200
+    issuer: https://mcp.browserstack.com/
+    registration_endpoint: https://mcp.browserstack.com/auth/oauth2/register
+    grant_types_supported:
+    - authorization_code
+    - refresh_token
+    code_challenge_methods_supported:
+    - S256
+    note: 'Dynamic client registration is open (token_endpoint_auth_methods_supported: none), so an MCP
+      client can register itself with no pre-shared secret.'
+authentication:
+  remote: OAuth 2.1 authorization-code with PKCE (S256) against https://mcp.browserstack.com; dynamic
+    client registration supported. No password or access key is shared with the client.
+  local: Environment variables BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY, read from the account
+    settings page.
+remote_limitations:
+- No Local Testing support — the hosted server cannot reach apps behind a VPN, firewall or localhost.
+  Local Testing requires the stdio (npx) server.
+- 'Five tools that depend on local file or process state are disabled on the remote server: createTestCasesFromFile,
+  addPercySnapshotCommands, listTestFiles, runPercyScan, uploadProductRequirementFile.'
+- Slightly higher latency than the local server (provider-stated).
+tool_count: 44
+tools_available_remote: 39
+tools:
+- name: createProjectOrFolder
+  category: Test Management
+  description: Create a Test Management project and/or folders to organize test cases. Returns with Folder
+    ID, Project ID and Test Management Link to access the TM Project Dashboard.
+  remote_available: true
+- name: createTestCase
+  category: Test Management
+  description: Add a manual test case under a specific project/folder (uses project identifier like PR-xxxxx
+    and a folder ID).
+  remote_available: true
+- name: updateTestCase
+  category: Test Management
+  description: Update an existing test case. Any subset of fields may be changed (name, priority, status,
+    steps, tags, etc.); only supplied fields are modified.
+  remote_available: true
+- name: listTestCases
+  category: Test Management
+  description: List test cases for a project, optionally scoped to a folder (supports filters like case_type,
+    priority, and pagination).
+  remote_available: true
+- name: listFolders
+  category: Test Management
+  description: List folders in a Test Management project (returns each folder's id, name, case counts,
+    and sub-folder counts). Pass a parent_id to list sub-folders.
+  remote_available: true
+- name: listTestCaseTemplates
+  category: Test Management
+  description: List test-case templates with their numeric template_id, for use with createTestCase to
+    apply a custom template.
+  remote_available: true
+- name: createTestRun
+  category: Test Management
+  description: Create a test run (suite) for selected test cases in a project.
+  remote_available: true
+- name: listTestRuns
+  category: Test Management
+  description: List test runs for a project (filter by dates, assignee, state).
+  remote_available: true
+- name: updateTestRun
+  category: Test Management
+  description: Update a test run's name/state and/or add test cases to it.
+  remote_available: true
+- name: addTestResult
+  category: Test Management
+  description: Add a manual execution result (passed/failed/blocked/skipped) for a test case within a
+    run.
+  remote_available: true
+- name: createTestCasesFromFile
+  category: Test Management
+  description: Generate test cases in bulk from an uploaded file using the Test Case Generator AI Agent.
+  remote_available: false
+- name: listTestPlans
+  category: Test Management
+  description: List test plans (TP-*) in a project, with name, status, dates, and active/closed run counts.
+    Supports pagination.
+  remote_available: true
+- name: getTestPlan
+  category: Test Management
+  description: Fetch a test plan by identifier (TP-*) with its metadata, linked test runs, total test-case
+    count, and status summary.
+  remote_available: true
+- name: listSubTestPlans
+  category: Test Management
+  description: List sub-test-plans (STP-*) under a parent test plan (TP-*). Supports pagination.
+  remote_available: true
+- name: getSubTestPlan
+  category: Test Management
+  description: Fetch a sub-test-plan (STP-*) under a parent plan, with its metadata and linked test runs.
+  remote_available: true
+- name: setupBrowserStackAutomateTests
+  category: BrowserStack SDK Setup / Automate Test
+  description: Integrate BrowserStack SDK and run web tests on BrowserStack. For visual testing/Percy,
+    use the dedicated Percy tools.
+  remote_available: true
+- name: fetchAutomationScreenshots
+  category: BrowserStack SDK Setup / Automate Test
+  description: Fetch screenshots captured during a given Automate/App Automate session.
+  remote_available: true
+- name: getFailureLogs
+  category: Observability
+  description: Retrieve error logs for Automate/App Automate sessions (optionally by Build ID for App
+    Automate).
+  remote_available: true
+- name: fetchBuildInsights
+  category: Observability
+  description: Fetch insights about a BrowserStack build by combining build details and quality-gate results.
+  remote_available: true
+- name: runAppLiveSession
+  category: App Live
+  description: Start a manual app testing session on a real device in the cloud.
+  remote_available: true
+- name: runBrowserLiveSession
+  category: Live
+  description: Start a Live session for website testing on desktop or mobile browsers.
+  remote_available: true
+- name: takeAppScreenshot
+  category: App Automate
+  description: Launch the app on a specified device and capture a quick verification screenshot to confirm
+    your app has launched.
+  remote_available: true
+- name: runAppTestsOnBrowserStack
+  category: App Automate
+  description: Run pre-built native mobile test suites (Espresso/XCUITest) by direct upload of compiled
+    .apk/.ipa test files.
+  remote_available: true
+- name: setupBrowserStackAppAutomateTests
+  category: App Automate
+  description: Set up BrowserStack App Automate SDK integration for Appium-based mobile app testing.
+  remote_available: true
+- name: accessibilityExpert
+  category: Accessibility
+  description: Ask the A11y Expert (WCAG 2.0/2.1/2.2, mobile/web usability, best practices).
+  remote_available: true
+- name: startAccessibilityScan
+  category: Accessibility
+  description: Start a web accessibility scan and retrieve a local CSV report path.
+  remote_available: true
+- name: createAccessibilityAuthConfig
+  category: Accessibility
+  description: Create an authentication configuration (form-based or basic) for accessibility scans behind
+    a login.
+  remote_available: true
+- name: getAccessibilityAuthConfig
+  category: Accessibility
+  description: Retrieve an existing accessibility authentication configuration by ID.
+  remote_available: true
+- name: fetchAccessibilityIssues
+  category: Accessibility
+  description: Fetch accessibility issues from a completed scan, with pagination support.
+  remote_available: true
+- name: percyVisualTestIntegrationAgent
+  category: Percy Visual Testing
+  description: Integrate Percy visual testing into a new project and demonstrate visual change detection
+    with a step-by-step simulation.
+  remote_available: true
+- name: expandPercyVisualTesting
+  category: Percy Visual Testing
+  description: Set up or expand Percy visual testing coverage for existing projects (Percy Web Standalone
+    and Percy Automate).
+  remote_available: true
+- name: addPercySnapshotCommands
+  category: Percy Visual Testing
+  description: Add Percy snapshot commands to the specified test files.
+  remote_available: false
+- name: listTestFiles
+  category: Percy Visual Testing
+  description: List all test files for a given set of directories.
+  remote_available: false
+- name: runPercyScan
+  category: Percy Visual Testing
+  description: Run a Percy visual test scan.
+  remote_available: false
+- name: fetchPercyChanges
+  category: Percy Visual Testing
+  description: Retrieve and summarize visual changes detected by Percy AI between the latest and previous
+    builds.
+  remote_available: true
+- name: managePercyBuildApproval
+  category: Percy Visual Testing
+  description: Approve or reject a Percy build.
+  remote_available: true
+- name: uploadProductRequirementFile
+  category: BrowserStack AI Agents
+  description: Upload a PRD/screenshot/PDF and get a file mapping ID (used with createTestCasesFromFile).
+  remote_available: false
+- name: createLCASteps
+  category: BrowserStack AI Agents
+  description: Generate Low Code Automation (LCA) steps from a manual test case in Test Management.
+  remote_available: true
+- name: fetchSelfHealedSelectors
+  category: BrowserStack AI Agents
+  description: Retrieve AI self-healed selectors (plus test source) to fix flaky tests caused by DOM changes.
+  remote_available: true
+- name: prepareSelfHealingPlan
+  category: BrowserStack AI Agents
+  description: Build a self-healing edit plan that bundles locator pairs with test source for your LLM
+    to apply. Does NOT modify files itself.
+  remote_available: true
+- name: fetchRCA
+  category: BrowserStack AI Agents
+  description: Fetch AI Root Cause Analysis for your failed Automate/App-Automate tests (by numeric test
+    ID). Suggests fixes only; never auto-applies.
+  remote_available: true
+- name: getBuildId
+  category: BrowserStack AI Agents
+  description: Get the BrowserStack build ID for a given project and build name, scoped to your builds.
+  remote_available: true
+- name: listBuildId
+  category: BrowserStack AI Agents
+  description: Get the latest build ID for a project and build name, across all users (no user filter).
+  remote_available: true
+- name: listTestIds
+  category: BrowserStack AI Agents
+  description: List test IDs from a BrowserStack Automate build, filtered by status (passed/failed/pending/skipped).
+  remote_available: true
+clients_recommended_by_provider:
+- GitHub Copilot
+- Cursor
+- Claude Desktop
+- VS Code
+links:
+  docs: https://www.browserstack.com/docs/browserstack-mcp-server/overview
+  repository: https://github.com/browserstack/mcp-server
+  package: https://www.npmjs.com/package/@browserstack/mcp-server
+  one_click_setup: https://mcp.browserstack.com/one-click-setup
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

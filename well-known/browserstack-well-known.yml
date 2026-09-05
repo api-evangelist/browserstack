@@ -1,0 +1,171 @@
+generated: '2026-09-04'
+method: probed
+source: live HTTP probes of every host named in apis.yml, the OpenAPI servers[] block, the
+  documented product API base URLs, and the authorization_servers named in the fetched
+  discovery documents
+provider: BrowserStack
+providerId: browserstack
+note: >-
+  BrowserStack serves OAuth 2.0 / OpenID Connect discovery documents from its marketing host,
+  its Automate API host and its Enterprise API host, all pointing at a single issuer,
+  https://auth.browserstack.com. The hosted Remote MCP server at mcp.browserstack.com
+  publishes its own separate authorization server plus an RFC 9728 protected-resource
+  document. No security.txt, api-catalog, ai-plugin.json or A2A agent card is served on any
+  BrowserStack-controlled host. Two hosts answered 200 with an HTML shell for every
+  /.well-known/* path and are recorded as misses, not documents: percy.io (BrowserStack's
+  Percy product host) and test-management.browserstack.com. The security.txt served at
+  status.browserstack.com belongs to Atlassian (Statuspage), not BrowserStack, and is
+  excluded.
+hosts:
+- host: www.browserstack.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: browserstack-www-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: browserstack-www-oauth-authorization-server.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: browserstack.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 301
+    note: redirects to www.browserstack.com
+  - path: /.well-known/security.txt
+    status: 301
+  - path: /.well-known/api-catalog
+    status: 301
+- host: api.browserstack.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: browserstack-api-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    note: identical body to /.well-known/openid-configuration on this host
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: api-enterprise.browserstack.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: browserstack-api-enterprise-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    note: identical body to /.well-known/openid-configuration on this host
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+- host: auth.browserstack.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: browserstack-auth-openid-configuration.json
+    note: the issuer named by every other host's discovery document
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+- host: mcp.browserstack.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: browserstack-mcp-oauth-authorization-server.json
+    note: separate issuer for the hosted Remote MCP server; supports dynamic client registration
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json
+    file: browserstack-mcp-oauth-protected-resource.json
+    note: RFC 9728 protected-resource metadata naming https://mcp.browserstack.com/mcp
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: api-cloud.browserstack.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: api-accessibility.browserstack.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+- host: test-management.browserstack.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: >-
+      NOT a document. This host answers 200 with the same 3,672-byte HTML shell for every
+      /.well-known/* path probed, including paths that cannot exist. Recorded as a miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: HTML shell, same catch-all. Not an agent card.
+- host: percy.io
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: >-
+      NOT a document. SPA catch-all returning the same 17,415-byte HTML marketing page for
+      every /.well-known/* path. Recorded as a miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: HTML shell, same catch-all. Not an agent card.
+- host: status.browserstack.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: >-
+      Served by Atlassian Statuspage and signed by Atlassian — Contact
+      security@atlassian.com, Canonical https://www.atlassian.com/.well-known/security.txt.
+      This is the vendor's document, not BrowserStack's, and is NOT credited to BrowserStack.
+  - path: /.well-known/openid-configuration
+    status: 404

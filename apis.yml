@@ -4,14 +4,15 @@ apis:
 - aid: browserstack:browserstack
   name: BrowserStack
   tags: []
-  humanURL: ' https://www.browserstack.com/'
+  humanURL: https://www.browserstack.com/
   properties:
-  - url: ' https://www.browserstack.com/'
+  - url: https://www.browserstack.com/
     type: Documentation
   description: >-
     Give your users a seamless experience by testing on 20,000 real devices.Dont compromise with emulators
     and simulators.
 - aid: browserstack:automate-api
+  baseURL: https://api.browserstack.com
   name: BrowserStack Automate API
   tags:
   - Automation
@@ -34,6 +35,7 @@ apis:
     Selenium-based automated testing on real browsers and devices. It enables managing test sessions,
     retrieving logs, and integrating CI/CD pipelines with BrowserStack Automate.
 - aid: browserstack:app-automate-api
+  baseURL: https://api-cloud.browserstack.com
   name: BrowserStack App Automate API
   tags:
   - Appium
@@ -54,6 +56,7 @@ apis:
     pipelines with BrowserStack. It supports Appium, Espresso, XCUITest, Flutter, Detox, and Maestro frameworks
     for testing native and hybrid apps on real devices.
 - aid: browserstack:screenshots-api
+  baseURL: https://www.browserstack.com/screenshots
   name: BrowserStack Screenshots API
   tags:
   - Cross-Browser Testing
@@ -68,6 +71,7 @@ apis:
     browser and OS combinations. It supports generating, managing, and retrieving screenshots via REST
     endpoints.
 - aid: browserstack:app-live-api
+  baseURL: https://api-cloud.browserstack.com
   name: BrowserStack App Live API
   tags:
   - Application
@@ -84,6 +88,7 @@ apis:
     line or automation scripts. It enables managing .apk, .aab, and .ipa files for manual testing on real
     devices.
 - aid: browserstack:local-testing-api
+  baseURL: https://www.browserstack.com/local/v1
   name: BrowserStack Local Testing API
   tags:
   - Debugging
@@ -113,6 +118,7 @@ apis:
     and browser information for tests run on BrowserStack TurboScale infrastructure, including self-hosted
     grid management.
 - aid: browserstack:test-management-api
+  baseURL: https://test-management.browserstack.com/api/v2
   name: BrowserStack Test Management API
   tags:
   - QA
@@ -148,6 +154,7 @@ apis:
     and Allure reports, manage projects and builds, retrieve test executions, and check Quality Gate status
     for automated quality workflows.
 - aid: browserstack:accessibility-testing-api
+  baseURL: https://api-accessibility.browserstack.com/api
   name: BrowserStack Accessibility Testing API
   tags:
   - Accessibility
@@ -168,6 +175,7 @@ apis:
     website scanner, and automated tests results for identifying and managing accessibility issues across
     web applications.
 - aid: browserstack:percy-api
+  baseURL: https://percy.io/api/v1
   name: BrowserStack Percy API
   tags:
   - Regression Testing
@@ -203,6 +211,7 @@ apis:
     The BrowserStack App Percy API provides automated visual testing for mobile applications across real
     iOS and Android devices, enabling teams to detect visual regressions and deploy with confidence.
 - aid: browserstack:user-management-api
+  baseURL: https://api-enterprise.browserstack.com
   name: BrowserStack User Management API
   tags:
   - Administration
@@ -276,45 +285,58 @@ apis:
     build statuses for CI/CD pipeline integration. It also supports exporting low-code tests as code in
     .side and Nightwatch.js formats.
 - aid: browserstack:browserstack-accesskey-api
+  baseURL: https://api.browserstack.com
   name: BrowserStack AccessKey API
   description: Operations on Automate access keys.
-  humanURL: ' https://www.browserstack.com/'
+  humanURL: https://www.browserstack.com/
   tags:
   - AccessKey
   properties:
   - type: OpenAPI
     url: openapi/browserstack-accesskey-api-openapi.yml
+  - type: Overlay
+    url: overlays/browserstack-accesskey-api-overlay.yaml
 - aid: browserstack:browserstack-browsers-api
+  baseURL: https://api.browserstack.com
   name: BrowserStack Browsers API
   description: Operations describing supported browsers and devices.
-  humanURL: ' https://www.browserstack.com/'
+  humanURL: https://www.browserstack.com/
   tags:
   - Browsers
   properties:
   - type: OpenAPI
     url: openapi/browserstack-browsers-api-openapi.yml
+  - type: Overlay
+    url: overlays/browserstack-browsers-api-overlay.yaml
 - aid: browserstack:browserstack-builds-api
+  baseURL: https://api.browserstack.com
   name: BrowserStack Builds API
   description: Operations on Automate builds.
-  humanURL: ' https://www.browserstack.com/'
+  humanURL: https://www.browserstack.com/
   tags:
   - Builds
   properties:
   - type: OpenAPI
     url: openapi/browserstack-builds-api-openapi.yml
+  - type: Overlay
+    url: overlays/browserstack-builds-api-overlay.yaml
 - aid: browserstack:browserstack-plan-api
+  baseURL: https://api.browserstack.com
   name: BrowserStack Plan API
   description: Operations describing the current Automate subscription plan and capacity.
-  humanURL: ' https://www.browserstack.com/'
+  humanURL: https://www.browserstack.com/
   tags:
   - Plan
   properties:
   - type: OpenAPI
     url: openapi/browserstack-plan-api-openapi.yml
+  - type: Overlay
+    url: overlays/browserstack-plan-api-overlay.yaml
 - aid: browserstack:browserstack-projects-api
+  baseURL: https://api.browserstack.com
   name: BrowserStack Projects API
   description: Operations on Automate projects.
-  humanURL: ' https://www.browserstack.com/'
+  humanURL: https://www.browserstack.com/
   tags:
   - Project
   tags_raw:
@@ -322,15 +344,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/browserstack-projects-api-openapi.yml
+  - type: Overlay
+    url: overlays/browserstack-projects-api-overlay.yaml
 - aid: browserstack:browserstack-sessions-api
+  baseURL: https://api.browserstack.com
   name: BrowserStack Sessions API
   description: Operations on Automate sessions.
-  humanURL: ' https://www.browserstack.com/'
+  humanURL: https://www.browserstack.com/
   tags:
   - Sessions
   properties:
   - type: OpenAPI
     url: openapi/browserstack-sessions-api-openapi.yml
+  - type: Overlay
+    url: overlays/browserstack-sessions-api-overlay.yaml
 name: BrowserStack
 tags:
   - Accessibility
@@ -397,9 +424,16 @@ accessModel:
 image: https://www.browserstack.com/images/browserstack-logo.svg
 access: 3rd-Party
 created: '2025-02-17'
-modified: '2026-04-21'
+modified: '2026-09-04'
 position: Consuming
-description: BrowserStack provides instant access to 3500+ real mobile devices and desktop browsers for testing web and mobile applications across different platforms and operating systems.
+description: >-
+  BrowserStack provides instant access to 3,500+ real desktop browsers and 30,000+ real mobile
+  device units for manual and automated software testing. Its products span cross-browser testing
+  (Live, Automate), mobile app testing (App Live, App Automate), visual regression testing (Percy,
+  App Percy), accessibility testing, test management, test reporting and analytics, and low-code
+  automation. Each product exposes its own REST API on its own host, and BrowserStack ships an
+  official Model Context Protocol server — hosted at mcp.browserstack.com and distributed as an npm
+  package — carrying 44 tools across those products.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
@@ -456,3 +490,48 @@ common:
     type: Security
   - url: https://www.browserstack.com/docs/browserstack-mcp-server/overview
     type: Developer Tools
+  - type: WellKnown
+    url: well-known/browserstack-well-known.yml
+  - type: Packages
+    url: packages/browserstack-packages.yml
+  - type: SDKs
+    url: packages/browserstack-packages.yml
+  - type: MCPServer
+    url: mcp/browserstack-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/browserstack-tool-crosswalk.yml
+  - type: LLMsTxt
+    url: llms/browserstack-llms.txt
+  - type: Conformance
+    url: conformance/browserstack-conformance.yml
+  - type: Compliance
+    url: security/browserstack-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/browserstack-vulnerability-disclosure.yml
+  - type: ErrorCatalog
+    url: errors/browserstack-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/browserstack-lifecycle.yml
+  - type: Conventions
+    url: conventions/browserstack-conventions.yml
+  - type: ChangeLog
+    url: changelog/browserstack-changelog.yml
+  - type: CLI
+    url: cli/browserstack-cli.yml
+  - type: DataModel
+    url: data-model/browserstack-data-model.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: RateLimits
+    url: rate-limits/browserstack-rate-limits.yml
+  - type: Plans
+    url: plans/browserstack-plans-pricing.yml
+  - type: Documentation
+    url: https://www.browserstack.com/docs
+  - type: APIReference
+    url: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+x-enrichment:
+  date: '2026-09-04'
+  status: enriched
+  artifacts_added: 30
+  pass: local-v3

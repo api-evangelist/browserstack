@@ -1,0 +1,56 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay — BrowserStack plan-api
+  version: 1.0.0
+extends: browserstack-plan-api-openapi.yml
+x-generated: '2026-09-04'
+x-method: generated
+x-source: conventions/browserstack-conventions.yml, rate-limits/browserstack-rate-limits.yml, errors/browserstack-problem-types.yml,
+  authentication/browserstack-authentication.yml, conformance/browserstack-conformance.yml
+x-note: 'API Evangelist enhancements for this BrowserStack contract. The underlying OpenAPI is an API
+  Evangelist reconstruction from BrowserStack''s HTML API reference — the provider publishes no machine-readable
+  contract — so this overlay records what the reconstruction cannot state on its own: the real published
+  rate limits, the non-JSON error envelope, the absence of idempotency and reversal, and the authentication
+  detail. It never mutates the source document.'
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enrichment:
+      contract_provenance: reconstructed-from-docs
+      provider_publishes_openapi: false
+      docs: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+- target: $.info
+  update:
+    x-rate-limits:
+      per_user: 1600 requests per 5 minutes
+      per_ip: 160 requests per second
+      exhaustion_status: 429
+      response_headers: none — no Retry-After, no RateLimit-*
+      source: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+- target: $.info
+  update:
+    x-error-envelope:
+      rfc9457: false
+      content_type_on_401: text/html; charset=utf-8
+      body_on_401: 'HTTP Basic: Access denied.'
+      note: The source contract declares only 200 responses. Authentication failures on api.browserstack.com
+        return HTML, not JSON, despite the docs stating all API responses are JSON.
+      catalog: errors/browserstack-problem-types.yml
+- target: $.info
+  update:
+    x-agent-semantics:
+      idempotency: none — no Idempotency-Key or replay-protection mechanism is documented
+      dry_run: none
+      reversibility: none — no reversal operation and no reversal window is published for any write
+      pagination: undocumented on this surface
+      request_id_tracing: none
+      detail: conventions/browserstack-conventions.yml
+- target: $.components.securitySchemes.basicAuth
+  update:
+    x-credential:
+      kind: long-lived account access key
+      scoped: false
+      source: https://www.browserstack.com/accounts/profile/details
+      rotation: PUT /automate/recycle_key.json — immediate, irreversible, no grace period
+      alternative: An OAuth 2.0 provider exists at https://auth.browserstack.com and is advertised from
+        this API host, but no product API reference documents it as a way to call the API.

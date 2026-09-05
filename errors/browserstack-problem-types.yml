@@ -1,0 +1,119 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Live unauthenticated requests to each documented BrowserStack API base URL on 2026-09-04,
+  cross-read against the product API reference pages. The OpenAPI definitions in openapi/
+  declare no 4xx or 5xx responses at all, so nothing here could be derived from the spec.
+provider: BrowserStack
+providerId: browserstack
+format: bespoke
+rfc9457: false
+note: >-
+  BrowserStack has NO single error contract. Three different envelopes were observed across
+  three of its own API hosts, and one of them is not JSON. This is the most consequential
+  finding for an agent integrating BrowserStack: an authentication failure against the
+  Automate API returns text/html, so a client that assumes the documented "all API responses
+  are in JSON format" and parses the body will throw on the one response it most needs to read.
+  No BrowserStack API returns application/problem+json, and no error-code reference page is
+  published for any product.
+envelopes:
+  - id: automate-html
+    apis:
+      - BrowserStack Automate API
+      - BrowserStack App Automate API
+    host: api.browserstack.com, api-cloud.browserstack.com
+    content_type: text/html; charset=utf-8
+    shape: plain text, not JSON
+    example: 'HTTP Basic: Access denied.'
+    evidence:
+      url: https://api.browserstack.com/automate/plan.json
+      http_status: 401
+      www_authenticate: Basic realm="Application"
+      fetched: '2026-09-04'
+  - id: test-management-json
+    apis:
+      - BrowserStack Test Management API
+    host: test-management.browserstack.com
+    content_type: application/json; charset=utf-8
+    shape: '{ "error": <string>, "message": <string> }'
+    example: '{"error":"Unauthorized","message":"API-TOKEN value is invalid. Try again with
+      correct token."}'
+    evidence:
+      url: https://test-management.browserstack.com/api/v2/projects
+      http_status: 401
+      fetched: '2026-09-04'
+  - id: percy-jsonapi
+    apis:
+      - BrowserStack Percy API
+      - BrowserStack App Percy API
+    host: percy.io
+    content_type: application/json; charset=utf-8
+    shape: 'JSON:API errors array — { "errors": [ { "status": <string>, "detail": <string> } ] }'
+    example: '{"errors":[{"status":"unauthorized","detail":"Percy::Errors::AuthenticationRequired"}]}'
+    evidence:
+      url: https://percy.io/api/v1/projects
+      http_status: 401
+      www_authenticate: Token realm="Application"
+      fetched: '2026-09-04'
+    note: >-
+      The only BrowserStack API that follows a published error standard. The docs state the
+      Percy API "is based on the JSON API standard", and the observed error body matches the
+      JSON:API error-object shape.
+  - id: edge-nginx
+    apis:
+      - all
+    content_type: text/html
+    shape: nginx default error page
+    example: <html><head><title>404 Not Found</title></head>...
+    evidence:
+      url: https://api.browserstack.com/automate/nonexistent.json
+      http_status: 404
+      fetched: '2026-09-04'
+    note: >-
+      An unrecognised path on any BrowserStack API host is answered by the edge, not the
+      application, and returns HTML regardless of the Accept header.
+problem_types:
+  - status: 401
+    title: Authentication required or credentials invalid
+    apis: all
+    remediation: >-
+      Send HTTP Basic credentials (BrowserStack username plus access key) for Automate, App
+      Automate, Test Management, Accessibility and User Management; send
+      "Authorization: Token ${PERCY_TOKEN}" for the Percy API. Credentials are read from
+      https://www.browserstack.com/accounts/profile/details.
+    body_format: text/html on Automate and App Automate; JSON on Test Management and Percy
+  - status: 403
+    title: Insufficient role or plan
+    apis:
+      - BrowserStack User Management API
+    remediation: >-
+      The User Management API requires an Enterprise plan and an Owner or Admin role, and
+      access to the Users, Teams and Usage Reports endpoints must be enabled by BrowserStack
+      Support on request.
+    source: https://www.browserstack.com/docs/enterprise/api-reference/introduction
+  - status: 404
+    title: Resource or path not found
+    apis: all
+    remediation: Verify the base URL for the product — the five product APIs sit on five
+      different hosts. An unknown path returns an nginx HTML page, not a JSON body.
+  - status: 429
+    title: Too Many Requests
+    apis:
+      - BrowserStack Automate API
+      - BrowserStack App Automate API
+      - BrowserStack Test Management API
+      - BrowserStack User Management API
+    remediation: >-
+      Back off for the fixed window documented for that product API. No Retry-After or
+      RateLimit-* header is returned, so the wait must come from the docs: Test Management
+      states 60 seconds. See rate-limits/browserstack-rate-limits.yml.
+    source: https://www.browserstack.com/docs/test-management/api-reference/rate-limit-for-api-calls
+gaps:
+  - No published error-code reference page for any BrowserStack product API.
+  - No application/problem+json (RFC 9457) anywhere.
+  - No machine-readable error codes — only HTTP status plus a human-readable string.
+  - The OpenAPI definitions in this repo declare only 200 responses; a client generated from
+    them has no error handling at all.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,190 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  npm registry.npmjs.org, PyPI pypi.org, RubyGems rubygems.org, Maven Central
+  search.maven.org (g:com.browserstack), NuGet api.nuget.org registration, and the
+  github.com/browserstack organization. Versions and dates read from each registry's
+  unauthenticated metadata endpoint on 2026-09-04.
+provider: BrowserStack
+providerId: browserstack
+note: >-
+  BrowserStack publishes first-party client libraries across six ecosystems. The npm scope
+  @browserstack and the npm publishers `browserstack` / `browserstack-admin`, the Maven
+  groupId com.browserstack, the PyPI projects browserstack-sdk / browserstack-local, the
+  RubyGems gem browserstack-local and the NuGet packages authored by "BrowserStack" are the
+  first-party markers used here. Community wrappers (karma-browserstack-launcher,
+  testcafe-browser-provider-browserstack, MartinCostello.BrowserStack.Automate, the
+  scottgonzalez `browserstack` npm package) are excluded — they are not BrowserStack-authored.
+packages:
+- name: '@browserstack/mcp-server'
+  registry: npm
+  official: true
+  language: TypeScript
+  version: 1.3.1
+  published: '2026-08-31'
+  url: https://www.npmjs.com/package/@browserstack/mcp-server
+  repository: https://github.com/browserstack/mcp-server
+  description: BrowserStack's official Model Context Protocol server (44 tools). Also runs
+    hosted at https://mcp.browserstack.com/mcp.
+- name: browserstack-node-sdk
+  registry: npm
+  official: true
+  language: JavaScript
+  version: 1.68.2
+  published: '2026-09-04'
+  url: https://www.npmjs.com/package/browserstack-node-sdk
+  description: Node SDK for BrowserStack selenium-webdriver tests.
+- name: browserstack-cypress-cli
+  registry: npm
+  official: true
+  language: JavaScript
+  version: 1.36.19
+  published: '2026-09-01'
+  url: https://www.npmjs.com/package/browserstack-cypress-cli
+  repository: https://github.com/browserstack/browserstack-cypress-cli
+  description: CLI for running Cypress suites on BrowserStack infrastructure.
+- name: browserstack-local
+  registry: npm
+  official: true
+  language: JavaScript
+  version: 1.5.13
+  published: '2026-04-09'
+  url: https://www.npmjs.com/package/browserstack-local
+  repository: https://github.com/browserstack/browserstack-local-nodejs
+  description: Node.js bindings for the BrowserStack Local tunnel binary.
+- name: '@wdio/browserstack-service'
+  registry: npm
+  official: true
+  language: TypeScript
+  version: 9.35.2
+  published: '2026-09-04'
+  url: https://www.npmjs.com/package/@wdio/browserstack-service
+  repository: https://github.com/browserstack/wdio-browserstack-service
+  description: WebdriverIO service maintained in the browserstack GitHub organization;
+    published under the @wdio scope by the WebdriverIO release pipeline.
+- name: '@browserstack/ai-sdk'
+  registry: npm
+  official: true
+  language: TypeScript
+  version: 1.0.0-beta.21
+  published: '2026-08-25'
+  url: https://www.npmjs.com/package/@browserstack/ai-sdk
+  description: BrowserStack AI SDK for Node.js — LLM observability, evaluation and tracing.
+    Still pre-1.0 (beta channel).
+- name: '@browserstack/accessibility-devtools'
+  registry: npm
+  official: true
+  language: TypeScript
+  version: 1.5.2
+  published: '2026-08-10'
+  url: https://www.npmjs.com/package/@browserstack/accessibility-devtools
+  description: Command-line interface for BrowserStack Accessibility DevTools.
+- name: '@browserstack/accessibility-devtools-cli'
+  registry: npm
+  official: true
+  language: TypeScript
+  version: 0.0.10
+  published: '2026-02-25'
+  url: https://www.npmjs.com/package/@browserstack/accessibility-devtools-cli
+  description: CLI for the BrowserStack Accessibility Linter. Still 0.0.x.
+- name: '@browserstack/mobilewright'
+  registry: npm
+  official: true
+  language: TypeScript
+  version: 0.1.1
+  published: '2026-08-19'
+  url: https://www.npmjs.com/package/@browserstack/mobilewright
+  description: BrowserStack App Automate driver for Mobilewright.
+- name: '@browserstack/ai-sdk-node'
+  registry: npm
+  official: true
+  language: JavaScript
+  version: 1.5.17
+  published: '2024-11-29'
+  url: https://www.npmjs.com/package/@browserstack/ai-sdk-node
+  description: Earlier BrowserStack AI integrations package. Last published 2024-11-29 —
+    superseded in practice by @browserstack/ai-sdk, but never formally deprecated on npm.
+- name: browserstack-sdk
+  registry: pypi
+  official: true
+  language: Python
+  version: 1.51.2
+  published: '2026-07-01'
+  url: https://pypi.org/project/browserstack-sdk/
+  description: Python SDK for BrowserStack selenium-webdriver tests.
+- name: browserstack-local
+  registry: pypi
+  official: true
+  language: Python
+  version: 1.2.16
+  published: '2026-08-07'
+  url: https://pypi.org/project/browserstack-local/
+  repository: https://github.com/browserstack/browserstack-local-python
+  description: Python bindings for the BrowserStack Local tunnel binary.
+- name: browserstack-local
+  registry: rubygems
+  official: true
+  language: Ruby
+  version: 1.5.0
+  published: '2026-06-05'
+  url: https://rubygems.org/gems/browserstack-local
+  repository: https://github.com/browserstack/browserstack-local-ruby
+  description: Ruby bindings for the BrowserStack Local tunnel binary.
+- name: com.browserstack:browserstack-java-sdk
+  registry: maven
+  official: true
+  language: Java
+  version: 1.34.0
+  published: '2025-06-27'
+  url: https://central.sonatype.com/artifact/com.browserstack/browserstack-java-sdk
+  description: Java SDK for running tests on BrowserStack. Latest Maven Central release is
+    from 2025-06-27 — over a year behind the Node and Python SDKs, which both shipped in the
+    last ten weeks.
+- name: com.browserstack:browserstack-local-java
+  registry: maven
+  official: true
+  language: Java
+  version: 1.1.6
+  published: '2025-06-19'
+  url: https://central.sonatype.com/artifact/com.browserstack/browserstack-local-java
+  repository: https://github.com/browserstack/browserstack-local-java
+  description: Java bindings for the BrowserStack Local tunnel binary.
+- name: com.browserstack:automate-client-java
+  registry: maven
+  official: true
+  language: Java
+  version: '0.15'
+  published: '2025-01-02'
+  url: https://central.sonatype.com/artifact/com.browserstack/automate-client-java
+  description: Java client for the Automate REST API. Still 0.x and last released 2025-01-02.
+- name: browserstack-sdk
+  registry: nuget
+  official: true
+  language: C#
+  version: 1.47.3
+  published: null
+  url: https://www.nuget.org/packages/browserstack-sdk
+  note: >-
+    Present in NuGet search with 2,055,122 total downloads, but the registration index for
+    this id did not return a resolvable catalog entry on 2026-09-04, so no version publish
+    date could be read. Version shown is the one NuGet search reports as latest.
+- name: BrowserStackLocal
+  registry: nuget
+  official: true
+  language: C#
+  version: 3.1.0
+  published: '2026-06-04'
+  url: https://www.nuget.org/packages/BrowserStackLocal
+  description: .NET bindings for the BrowserStack Local tunnel binary. Authors field is
+    "BrowserStack".
+- name: BrowserStack.TestAdapter
+  registry: nuget
+  official: true
+  language: C#
+  version: 0.43.3
+  published: '2026-09-04'
+  url: https://www.nuget.org/packages/BrowserStack.TestAdapter
+  description: .NET test adapter for BrowserStack. Authors field is "BrowserStack".
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

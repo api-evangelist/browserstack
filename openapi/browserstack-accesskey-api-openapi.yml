@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: BrowserStack Automate REST AccessKey API
+  title: BrowserStack Automate REST Access Key API
   description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
 
     plans, projects, builds, sessions, browsers, devices, access keys, and media used in

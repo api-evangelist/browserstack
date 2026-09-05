@@ -1,14 +1,144 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/browserstack-openapi.yml
+generated: '2026-09-04'
+method: searched
+source: >-
+  BrowserStack product API authentication pages (Automate, Test Management, Accessibility,
+  Percy, App Percy, App Automate, User Management), the OAuth/OIDC discovery documents served
+  from www.browserstack.com, api.browserstack.com, api-enterprise.browserstack.com and
+  auth.browserstack.com, and openapi/_original/browserstack-openapi.yml. Fetched 2026-09-04.
+docs: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#authentication
+provider: BrowserStack
+providerId: browserstack
 summary:
   types:
-  - http
+    - http
+    - oauth2
+    - openIdConnect
+  primary: HTTP Basic with a long-lived account access key
+  detail: >-
+    Five of BrowserStack's six product APIs authenticate with HTTP Basic — the account username
+    as the user and the account access key as the password. Percy is the exception: it uses an
+    Authorization header of the form "Token <PERCY_TOKEN>" with per-project tokens in three
+    classes. A full OAuth 2.0 / OpenID Connect provider exists at auth.browserstack.com and
+    advertises itself from three BrowserStack hosts, but no product API reference documents it
+    as a way to call the API. The hosted MCP server is the one BrowserStack surface that
+    actually requires OAuth.
 schemes:
-- name: basicAuth
-  type: http
-  scheme: basic
-  description: HTTP Basic auth using your BrowserStack username as username and your access
-    key as password.
-  sources:
-  - openapi/browserstack-openapi.yml
+  - name: basicAuth
+    type: http
+    scheme: basic
+    description: >-
+      HTTP Basic using the BrowserStack username and access key, read from
+      https://www.browserstack.com/accounts/profile/details. Applies to Automate, App Automate,
+      Test Management, Accessibility Testing and User Management.
+    applies_to:
+      - BrowserStack Automate API
+      - BrowserStack App Automate API
+      - BrowserStack Test Management API
+      - BrowserStack Accessibility Testing API
+      - BrowserStack User Management API
+    sources:
+      - openapi/_original/browserstack-openapi.yml
+      - https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+      - https://www.browserstack.com/docs/test-management/api-reference/authentication
+      - https://www.browserstack.com/docs/accessibility/api/authentication
+    rotation:
+      supported: true
+      operationId: recycleAccessKey
+      path: PUT /automate/recycle_key.json
+      note: Rotation is immediate and irreversible; no grace period is documented for the old
+        key.
+    observed_failure:
+      url: https://api.browserstack.com/automate/plan.json
+      http_status: 401
+      www_authenticate: Basic realm="Application"
+      content_type: text/html; charset=utf-8
+      body: 'HTTP Basic: Access denied.'
+      note: The failure response is HTML, not JSON. See errors/browserstack-problem-types.yml.
+  - name: percyToken
+    type: http
+    scheme: bearer
+    bearerFormat: Token
+    header: 'Authorization: Token ${PERCY_TOKEN}'
+    description: >-
+      Per-project Percy API tokens in three classes — write-only (create builds, create
+      snapshots; SDK use), read-only (read builds, download snapshots; API use) and full-access
+      (all project read and write). Tokens are found on a project's Settings page.
+    applies_to:
+      - BrowserStack Percy API
+      - BrowserStack App Percy API
+    source: https://www.browserstack.com/docs/percy/api-reference/authentication
+    note: >-
+      The only BrowserStack credential with any scoping. It is per-project and has three
+      capability classes, which is meaningfully safer to hand an agent than the account-wide
+      access key every other product API requires.
+    observed_failure:
+      url: https://percy.io/api/v1/projects
+      http_status: 401
+      www_authenticate: Token realm="Application"
+      body: '{"errors":[{"status":"unauthorized","detail":"Percy::Errors::AuthenticationRequired"}]}'
+  - name: browserstackOAuth
+    type: oauth2
+    description: >-
+      BrowserStack operates a full OAuth 2.0 authorization server at
+      https://auth.browserstack.com, discoverable from www.browserstack.com,
+      api.browserstack.com and api-enterprise.browserstack.com.
+    issuer: https://auth.browserstack.com
+    authorization_endpoint: https://auth.browserstack.com/oauth2/v2/authorize
+    token_endpoint: https://auth.browserstack.com/oauth2/v2/token
+    revocation_endpoint: https://auth.browserstack.com/oauth2/v2/revoke
+    introspection_endpoint: https://auth.browserstack.com/oauth2/v2/introspect
+    userinfo_endpoint: https://auth.browserstack.com/oauth2/v3/userinfo
+    jwks_uri: https://auth.browserstack.com/oauth2/v2/discovery/keys
+    grant_types: [authorization_code, client_credentials, refresh_token]
+    code_challenge_methods: [S256, plain]
+    token_endpoint_auth_methods: [client_secret_basic, client_secret_post]
+    scopes:
+      - read
+      - write
+      - update
+      - jira_integration
+      - service_auth
+      - central_ai_s2s
+      - part11_reauth
+      - automate_tcg
+      - ai_agent
+      - ai_agent_notify
+    source: https://www.browserstack.com/.well-known/oauth-authorization-server
+    file: well-known/browserstack-www-oauth-authorization-server.json
+    documented_for_rest_api: false
+    note: >-
+      Not documented on any product API reference page. The scope names suggest it serves
+      integrations (jira_integration), service-to-service calls (service_auth, central_ai_s2s),
+      the Automate test-case generator (automate_tcg), the AI agents (ai_agent,
+      ai_agent_notify) and a Part 11 re-authentication flow, rather than general REST access.
+  - name: browserstackOIDC
+    type: openIdConnect
+    openIdConnectUrl: https://www.browserstack.com/.well-known/openid-configuration
+    id_token_signing_alg_values_supported: [RS256]
+    subject_types_supported: [public]
+    claims_supported: [iss, sub, aud, exp, iat]
+    file: well-known/browserstack-www-openid-configuration.json
+  - name: mcpOAuth
+    type: oauth2
+    description: >-
+      Separate OAuth 2.1 authorization server for the hosted Remote MCP server. Open dynamic
+      client registration (token_endpoint_auth_methods_supported: none), so an MCP client
+      registers itself without a pre-shared secret.
+    issuer: https://mcp.browserstack.com/
+    authorization_endpoint: https://mcp.browserstack.com/auth/oauth2/authorize
+    token_endpoint: https://mcp.browserstack.com/auth/oauth2/token
+    registration_endpoint: https://mcp.browserstack.com/auth/oauth2/register
+    grant_types: [authorization_code, refresh_token]
+    code_challenge_methods: [S256]
+    scopes: [read, write, admin]
+    protected_resource: https://mcp.browserstack.com/mcp
+    source: https://mcp.browserstack.com/.well-known/oauth-authorization-server
+    file: well-known/browserstack-mcp-oauth-authorization-server.json
+    note: >-
+      This is the only BrowserStack surface where OAuth is the documented and enforced
+      authentication path, and the only one where a caller gets a scoped, revocable credential
+      instead of the account access key. The provider's own README frames it as a benefit —
+      "Secure OAuth integration – no password sharing or manual credential handling."
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,39 @@
+generated: '2026-09-04'
+method: generated
+source: >-
+  Authored from the operationIds in openapi/browserstack-*-openapi.yml (every operationId
+  referenced was grepped from the specs, none invented), plus the runtime semantics recorded in
+  conventions/, errors/ and rate-limits/. BrowserStack publishes no agent skills of its own —
+  the github.com/browserstack/agent-skills repository exists but contains only a README with no
+  skill files (checked 2026-09-04), and no AGENTS.md is served on the docs host.
+provider: BrowserStack
+providerId: browserstack
+scope: >-
+  Skills are grounded in the BrowserStack Automate API, the one product for which this
+  repository holds a contract. No skill is written for Test Management, App Automate,
+  Accessibility, Percy or User Management, because those APIs are documented in HTML only and
+  their operationIds cannot be verified.
+skills:
+  - name: browserstack-triage-failed-build
+    file: browserstack-triage-failed-build.md
+    description: Find the latest Automate build for a project, list its failed sessions, and
+      pull the logs needed to diagnose each failure.
+    operations: [listProjects, listBuilds, listBuildSessions, getSession, getSessionLogs,
+      getSessionConsoleLogs, getSessionNetworkLogs]
+    consequence: read
+  - name: browserstack-check-capacity-before-run
+    file: browserstack-check-capacity-before-run.md
+    description: Check parallel-session headroom and confirm a target browser/device
+      combination is supported before launching a run.
+    operations: [getPlan, getBrowsers]
+    consequence: read
+  - name: browserstack-rotate-access-key
+    file: browserstack-rotate-access-key.md
+    description: Rotate the Automate access key. Irreversible, account-wide, and gated on
+      explicit human approval.
+    operations: [recycleAccessKey]
+    consequence: write
+    human_in_the_loop: required
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

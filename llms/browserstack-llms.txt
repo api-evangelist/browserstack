@@ -1,0 +1,115 @@
+# BrowserStack
+
+> Cloud software-testing platform providing on-demand access to 3,500+ real desktop browsers
+> and 30,000+ real mobile device units for manual and automated testing. Products span
+> cross-browser testing (Live, Automate), mobile app testing (App Live, App Automate), visual
+> regression (Percy, App Percy), accessibility (Accessibility Testing, App Accessibility,
+> Website Scanner), test management, test reporting and analytics, and low-code automation.
+
+<!--
+generated: 2026-09-04
+method: generated
+source: apis.yml plus the artifacts in this repository. BrowserStack publishes no llms.txt of
+  its own — https://www.browserstack.com/llms.txt returns 404 (checked 2026-09-04), as do the
+  equivalent paths on api.browserstack.com, api-cloud.browserstack.com and
+  mcp.browserstack.com. This file is an API Evangelist reconstruction, not a provider
+  document.
+-->
+
+## What an agent should know first
+
+BrowserStack does not run one API. It runs six product APIs on six different hosts, each with
+its own base URL, its own authentication header, its own error envelope and its own rate limit.
+Pick the host for the product before anything else.
+
+- Automate (Selenium) — `https://api.browserstack.com/` — HTTP Basic
+- App Automate (Appium, Espresso, XCUITest, Flutter, Detox, Maestro) — `https://api-cloud.browserstack.com/` — HTTP Basic
+- Test Management — `https://test-management.browserstack.com/api/v2/` — HTTP Basic
+- Accessibility Testing — `https://api-accessibility.browserstack.com/api/` — HTTP Basic
+- Percy (visual testing) — `https://percy.io/api/v1` — `Authorization: Token ${PERCY_TOKEN}`
+- User Management (Enterprise) — `https://api-enterprise.browserstack.com/` — HTTP Basic, Owner/Admin role, Support enablement required
+
+Three cautions that will bite an agent:
+
+1. **Auth failures on Automate and App Automate return `text/html`, not JSON.** The body is the
+   string `HTTP Basic: Access denied.` A client that assumes JSON will throw on the response it
+   most needs to read.
+2. **There are no rate-limit headers anywhere.** Exhaustion returns 429 with no `Retry-After`
+   and no `RateLimit-*`. The wait interval exists only in the docs.
+3. **There is no idempotency mechanism and no reversal path.** Every delete is one-way, and
+   `PUT /automate/recycle_key.json` rotates the account access key immediately and
+   irreversibly, breaking every CI job and tunnel using it.
+
+## Agent surfaces
+
+- [BrowserStack MCP Server (hosted)](https://mcp.browserstack.com/mcp): 44 tools, OAuth 2.1 with
+  PKCE and open dynamic client registration. RFC 9728 protected-resource metadata at
+  `https://mcp.browserstack.com/.well-known/oauth-protected-resource`. Scopes: read, write, admin.
+- [BrowserStack MCP Server (local)](https://www.npmjs.com/package/@browserstack/mcp-server):
+  `npx -y @browserstack/mcp-server@latest`, authenticated with `BROWSERSTACK_USERNAME` and
+  `BROWSERSTACK_ACCESS_KEY`. Required for Local Testing (localhost, VPN, firewalled targets),
+  which the hosted server cannot do. Five file/process tools are local-only.
+- [MCP server docs](https://www.browserstack.com/docs/browserstack-mcp-server/overview)
+- [MCP server repository](https://github.com/browserstack/mcp-server)
+- No A2A agent card is served on any BrowserStack host (checked 2026-09-04).
+
+## API documentation
+
+- [Automate API reference](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction)
+- [App Automate API reference](https://www.browserstack.com/docs/app-automate/api-reference/introduction)
+- [Test Management API reference](https://www.browserstack.com/docs/test-management/api-reference/introduction)
+- [Accessibility Testing API reference](https://www.browserstack.com/docs/accessibility/api-reference)
+- [Percy API reference](https://www.browserstack.com/docs/percy/api-reference/percy-apis)
+- [User Management API reference](https://www.browserstack.com/docs/enterprise/api-reference/introduction)
+- [Automate TurboScale API reference](https://www.browserstack.com/docs/automate-turboscale/api-reference/introduction)
+- [Test Reporting and Analytics API reference](https://www.browserstack.com/docs/test-reporting-and-analytics/api-reference)
+- [Screenshots API](https://www.browserstack.com/screenshots/api)
+- [App Live REST API](https://www.browserstack.com/app-live/rest-api)
+- [Local Testing API](https://www.browserstack.com/docs/local-testing/api)
+- [JavaScript Testing API](https://www.browserstack.com/docs/automate/javascript-testing/api)
+- [Low Code Automation REST API](https://www.browserstack.com/docs/low-code-automation/cicd-integrations/rest-api)
+
+**BrowserStack publishes no OpenAPI, Swagger or Postman contract for any of these.** Every
+reference is HTML. The OpenAPI definitions in this repository are API Evangelist
+reconstructions of the Automate API from those docs — 18 operations across plan, projects,
+builds, sessions, browsers and access-key rotation.
+
+## Machine-readable surfaces that DO exist
+
+- [OpenID Connect discovery](https://www.browserstack.com/.well-known/openid-configuration) —
+  issuer `https://auth.browserstack.com`, ten scopes, PKCE. Also served from
+  `api.browserstack.com` and `api-enterprise.browserstack.com`.
+- [MCP authorization server](https://mcp.browserstack.com/.well-known/oauth-authorization-server)
+- [MCP protected resource](https://mcp.browserstack.com/.well-known/oauth-protected-resource)
+- [Status page API](https://status.browserstack.com/api/v2/summary.json) — Atlassian Statuspage
+  v2, 35 components, no credentials required. The one BrowserStack operational surface an agent
+  can poll freely.
+
+## Client libraries
+
+First-party SDKs on npm, PyPI, RubyGems, Maven Central (`com.browserstack`) and NuGet. Node and
+Python ship weekly; the Java SDK's most recent Maven Central release is from June 2025. Full
+inventory with versions and publish dates: `packages/browserstack-packages.yml`.
+
+## Rate limits
+
+- Automate: 1,600 requests per 5 minutes per user; 160 requests per second per IP address.
+- App Automate: 90 requests/second per user; app and test-suite uploads 5 per minute per user.
+- Test Management: 300 requests per minute per group; wait 60 seconds after a 429.
+- User Management: burst of 5, then 15 per minute per group.
+- Accessibility, Percy, Test Reporting, Screenshots, App Live, Local Testing, TurboScale and
+  Low Code Automation publish no limits.
+
+## Company and commercial
+
+- [Website](https://www.browserstack.com)
+- [Documentation](https://www.browserstack.com/docs)
+- [Pricing](https://www.browserstack.com/pricing) — per-seat product subscriptions; API access
+  is included with the product plan and is not separately metered or priced.
+- [Sign up](https://www.browserstack.com/users/sign_up) · [Open source plan](https://www.browserstack.com/open-source)
+- [Status](https://status.browserstack.com) · [Release notes](https://www.browserstack.com/release-notes/en)
+- [Security](https://www.browserstack.com/security) — SOC 2, GDPR
+- [Vulnerability disclosure](https://www.browserstack.com/vulnerability-disclosure-program) —
+  `api.browserstack.com` and `api-cloud.browserstack.com` are explicitly in scope
+- [Terms](https://www.browserstack.com/terms) · [Privacy](https://www.browserstack.com/privacy)
+- [GitHub](https://github.com/browserstack)

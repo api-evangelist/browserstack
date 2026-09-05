@@ -1,0 +1,308 @@
+generated: '2026-09-04'
+method: derived
+source: mcp/browserstack-mcp.yml (44 provider-published tools) bound against openapi/browserstack-*-openapi.yml
+  (18 Automate operations)
+provider: BrowserStack
+providerId: browserstack
+note: Both sides of this crosswalk are partial by different causes. The MCP tool list is complete and
+  provider-published, but its inputSchemas are OAuth-gated (401 on an anonymous tools/list), so every
+  binding here is by name and documented semantics, never by comparing schemas. The REST side covers only
+  the Automate API, the one BrowserStack product this repo holds an OpenAPI for; the Test Management,
+  App Automate, Accessibility, Percy and Test Reporting APIs are all documented with base URLs and reference
+  pages but published as HTML only, so tools backed by them land in mcp_only for lack of a contract to
+  bind to, not for lack of a REST operation.
+surfaces:
+  openapi:
+    files:
+    - openapi/browserstack-plan-api-openapi.yml
+    - openapi/browserstack-projects-api-openapi.yml
+    - openapi/browserstack-builds-api-openapi.yml
+    - openapi/browserstack-sessions-api-openapi.yml
+    - openapi/browserstack-browsers-api-openapi.yml
+    - openapi/browserstack-accesskey-api-openapi.yml
+    server: https://api.browserstack.com
+    operations: 18
+    gated: false
+    note: Covers BrowserStack Automate only.
+  mcp:
+    url: https://mcp.browserstack.com/mcp
+    tools: 44
+    gated: true
+    note: Anonymous tools/list returns 401 with an RFC 9728 WWW-Authenticate challenge.
+  graphql:
+    endpoint: null
+    note: No GraphQL surface. POST {__schema{...}} returned 404 on api.browserstack.com and www.browserstack.com;
+      percy.io/graphql returned 405 (method not allowed on a marketing SPA), not a GraphQL endpoint.
+  undocumented_as_openapi:
+  - api: Test Management API
+    base: https://test-management.browserstack.com
+    docs: https://www.browserstack.com/docs/test-management/api-reference/introduction
+  - api: App Automate API
+    base: https://api-cloud.browserstack.com
+    docs: https://www.browserstack.com/docs/app-automate/api-reference/introduction
+  - api: Accessibility Testing API
+    base: https://api-accessibility.browserstack.com
+    docs: https://www.browserstack.com/docs/accessibility/api/authentication
+  - api: Percy API
+    base: https://percy.io/api/v1
+    docs: https://www.browserstack.com/docs/percy/api-reference/percy-apis
+  - api: User Management API
+    base: https://api-enterprise.browserstack.com
+    docs: https://www.browserstack.com/docs/enterprise/api-reference/introduction
+coverage:
+  mcp_tools: 44
+  mcp_tools_bound: 5
+  mcp_tools_unbound: 39
+  rest_operations: 18
+  rest_operations_bound: 5
+  rest_operations_unbound: 13
+  binding_rate_mcp: 0.114
+  binding_rate_rest: 0.278
+crosswalk:
+- tool: getFailureLogs
+  category: Observability
+  rest:
+  - getSessionLogs
+  - getSessionConsoleLogs
+  - getSessionNetworkLogs
+  binding: semantic
+  confidence: medium
+  note: The tool retrieves error logs for an Automate/App Automate session. The Automate REST surface
+    exposes three log endpoints on /automate/sessions/{sessionId}; which of them the tool calls is not
+    stated in the provider docs and the live MCP schema is OAuth-gated, so this is a name/semantics binding,
+    not a verified one.
+- tool: getBuildId
+  category: BrowserStack AI Agents
+  rest:
+  - listBuilds
+  binding: semantic
+  confidence: medium
+  note: Resolves a build name to a build ID scoped to the caller. /automate/builds.json is the listing
+    operation that carries build names and IDs.
+- tool: listBuildId
+  category: BrowserStack AI Agents
+  rest:
+  - listBuilds
+  binding: semantic
+  confidence: medium
+  note: Same listing operation, without the per-user filter. The Automate REST spec in this repo has no
+    documented cross-user variant, so the group-wide behaviour may come from a different internal surface.
+- tool: listTestIds
+  category: BrowserStack AI Agents
+  rest:
+  - listBuildSessions
+  binding: semantic
+  confidence: low
+  note: '"Tests" in an Automate build correspond to sessions in /automate/builds/{buildId}/sessions.json,
+    but the tool filters by passed/failed/pending/skipped and the REST operation is not documented as
+    supporting that filter. Low confidence.'
+- tool: fetchBuildInsights
+  category: Observability
+  rest:
+  - listBuilds
+  binding: partial
+  confidence: low
+  note: The tool combines build details with quality-gate results. Only the build half maps to the Automate
+    REST surface; the quality-gate half is served by the Test Reporting and Analytics API, which is not
+    captured as an OpenAPI in this repo.
+mcp_only:
+- tool: createProjectOrFolder
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: createTestCase
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: updateTestCase
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: listTestCases
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: listFolders
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: listTestCaseTemplates
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: createTestRun
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: listTestRuns
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: updateTestRun
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: addTestResult
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: createTestCasesFromFile
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: listTestPlans
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: getTestPlan
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: listSubTestPlans
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: getSubTestPlan
+  category: Test Management
+  reason: Backed by the Test Management REST API on test-management.browserstack.com (documented at /docs/test-management/api-reference),
+    which BrowserStack does not publish as an OpenAPI and which is not captured in this repo.
+- tool: setupBrowserStackAutomateTests
+  category: BrowserStack SDK Setup / Automate Test
+  reason: Local workspace tool — it edits the caller's project to integrate the BrowserStack SDK. Not
+    an API call.
+- tool: fetchAutomationScreenshots
+  category: BrowserStack SDK Setup / Automate Test
+  reason: Local workspace tool — it edits the caller's project to integrate the BrowserStack SDK. Not
+    an API call.
+- tool: runAppLiveSession
+  category: App Live
+  reason: Composite tool that provisions and drives a manual real-device session; no public REST operation
+    performs this.
+- tool: runBrowserLiveSession
+  category: Live
+  reason: Composite tool that provisions and drives a manual browser session; no public REST operation
+    performs this.
+- tool: takeAppScreenshot
+  category: App Automate
+  reason: Backed by the App Automate REST API on api-cloud.browserstack.com, documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: runAppTestsOnBrowserStack
+  category: App Automate
+  reason: Backed by the App Automate REST API on api-cloud.browserstack.com, documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: setupBrowserStackAppAutomateTests
+  category: App Automate
+  reason: Backed by the App Automate REST API on api-cloud.browserstack.com, documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: accessibilityExpert
+  category: Accessibility
+  reason: Backed by the Accessibility Testing API on api-accessibility.browserstack.com, documented but
+    not published as an OpenAPI and not captured in this repo.
+- tool: startAccessibilityScan
+  category: Accessibility
+  reason: Backed by the Accessibility Testing API on api-accessibility.browserstack.com, documented but
+    not published as an OpenAPI and not captured in this repo.
+- tool: createAccessibilityAuthConfig
+  category: Accessibility
+  reason: Backed by the Accessibility Testing API on api-accessibility.browserstack.com, documented but
+    not published as an OpenAPI and not captured in this repo.
+- tool: getAccessibilityAuthConfig
+  category: Accessibility
+  reason: Backed by the Accessibility Testing API on api-accessibility.browserstack.com, documented but
+    not published as an OpenAPI and not captured in this repo.
+- tool: fetchAccessibilityIssues
+  category: Accessibility
+  reason: Backed by the Accessibility Testing API on api-accessibility.browserstack.com, documented but
+    not published as an OpenAPI and not captured in this repo.
+- tool: percyVisualTestIntegrationAgent
+  category: Percy Visual Testing
+  reason: Backed by the Percy API at https://percy.io/api/v1 (JSON:API), documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: expandPercyVisualTesting
+  category: Percy Visual Testing
+  reason: Backed by the Percy API at https://percy.io/api/v1 (JSON:API), documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: addPercySnapshotCommands
+  category: Percy Visual Testing
+  reason: Backed by the Percy API at https://percy.io/api/v1 (JSON:API), documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: listTestFiles
+  category: Percy Visual Testing
+  reason: Backed by the Percy API at https://percy.io/api/v1 (JSON:API), documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: runPercyScan
+  category: Percy Visual Testing
+  reason: Backed by the Percy API at https://percy.io/api/v1 (JSON:API), documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: fetchPercyChanges
+  category: Percy Visual Testing
+  reason: Backed by the Percy API at https://percy.io/api/v1 (JSON:API), documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: managePercyBuildApproval
+  category: Percy Visual Testing
+  reason: Backed by the Percy API at https://percy.io/api/v1 (JSON:API), documented but not published
+    as an OpenAPI and not captured in this repo.
+- tool: uploadProductRequirementFile
+  category: BrowserStack AI Agents
+  reason: Backed by BrowserStack AI agent services (test-case generation, low-code authoring, self-healing,
+    RCA) with no public REST contract.
+- tool: createLCASteps
+  category: BrowserStack AI Agents
+  reason: Backed by BrowserStack AI agent services (test-case generation, low-code authoring, self-healing,
+    RCA) with no public REST contract.
+- tool: fetchSelfHealedSelectors
+  category: BrowserStack AI Agents
+  reason: Backed by BrowserStack AI agent services (test-case generation, low-code authoring, self-healing,
+    RCA) with no public REST contract.
+- tool: prepareSelfHealingPlan
+  category: BrowserStack AI Agents
+  reason: Backed by BrowserStack AI agent services (test-case generation, low-code authoring, self-healing,
+    RCA) with no public REST contract.
+- tool: fetchRCA
+  category: BrowserStack AI Agents
+  reason: Backed by BrowserStack AI agent services (test-case generation, low-code authoring, self-healing,
+    RCA) with no public REST contract.
+rest_only:
+- operationId: getPlan
+  path: /automate/plan.json
+  reason: No MCP tool reports Automate plan or parallel-session capacity.
+- operationId: getBrowsers
+  path: /automate/browsers.json
+  reason: No MCP tool enumerates the supported browser/device matrix; the Live/App Live tools take a device
+    name in prose instead.
+- operationId: listProjects
+  path: /automate/projects.json
+  reason: MCP project tools address Test Management projects, not Automate projects.
+- operationId: getProject
+  path: /automate/projects/{projectId}.json
+  reason: Same — no Automate-project tool.
+- operationId: updateProject
+  path: /automate/projects/{projectId}.json
+  reason: No MCP tool renames or updates an Automate project.
+- operationId: deleteProject
+  path: /automate/projects/{projectId}.json
+  reason: No destructive Automate-project tool is exposed over MCP.
+- operationId: getProjectBadgeKey
+  path: /automate/projects/{projectId}/badge_key
+  reason: No MCP tool.
+- operationId: updateBuild
+  path: /automate/builds/{buildId}.json
+  reason: No MCP tool updates an Automate build.
+- operationId: deleteBuild
+  path: /automate/builds/{buildId}.json
+  reason: No destructive Automate-build tool is exposed over MCP.
+- operationId: getSession
+  path: /automate/sessions/{sessionId}.json
+  reason: Session detail is only reachable through the log/screenshot tools.
+- operationId: updateSession
+  path: /automate/sessions/{sessionId}.json
+  reason: No MCP tool marks a session passed/failed.
+- operationId: deleteSession
+  path: /automate/sessions/{sessionId}.json
+  reason: No destructive Automate-session tool is exposed over MCP.
+- operationId: recycleAccessKey
+  path: /automate/recycle_key.json
+  reason: Credential rotation is deliberately absent from the agent surface.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

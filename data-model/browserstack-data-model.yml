@@ -1,0 +1,145 @@
+generated: '2026-09-04'
+method: derived
+source: >-
+  openapi/_original/browserstack-openapi.yml (component schemas and id-reference fields),
+  cross-read against
+  https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+provider: BrowserStack
+providerId: browserstack
+scope: BrowserStack Automate API only
+scope_note: >-
+  This graph covers the one BrowserStack product for which a contract exists in this repo. The
+  Test Management, App Automate, Accessibility, Percy and User Management APIs each have their
+  own object model, documented in HTML only, and are not represented here.
+identifiers:
+  - entity: Project
+    field: id
+    type: integer
+    note: Numeric auto-increment ID. Distinct from the Test Management project identifier,
+      which is a PR-xxxxx string on a different API.
+  - entity: Build
+    field: hashed_id
+    type: string
+    note: Opaque hash, not the numeric id. This is the value every downstream Automate path
+      takes.
+  - entity: Session
+    field: hashed_id
+    type: string
+    note: >-
+      Opaque hash. It is also the session ID returned by the WebDriver grid, which is how a
+      running test correlates itself to the REST management API — the single most useful join
+      in the whole surface.
+  - entity: Group
+    field: group_id
+    type: integer
+    note: >-
+      Appears as a foreign key on Project, Build and Session but has no addressable resource in
+      the Automate API. Groups are managed through the Enterprise User Management API on a
+      different host, so the reference dangles from this contract's point of view.
+  - entity: User
+    field: user_id
+    type: integer
+    note: Same — a foreign key with no resource in this API. Users live in the User Management
+      API on api-enterprise.browserstack.com.
+entities:
+  - name: Plan
+    description: Current Automate subscription capacity and live usage. A singleton, not a
+      collection.
+    operations: [getPlan]
+    fields: [automate_plan, parallel_sessions_running, parallel_sessions_max_allowed,
+      team_parallel_sessions_max_allowed, queued_sessions, queued_sessions_max_allowed]
+    note: The only read that tells an agent whether it has capacity to start work. Worth
+      calling before any session-provisioning flow.
+  - name: Browser
+    description: One supported OS / OS version / browser / browser version / device
+      combination.
+    operations: [getBrowsers]
+    fields: [os, os_version, browser, browser_version, device, real_mobile]
+    note: A value object with no identifier — the combination itself is the key. Not referenced
+      by any other entity.
+  - name: Project
+    description: Top-level grouping for Automate builds.
+    operations: [listProjects, getProject, updateProject, deleteProject, getProjectBadgeKey]
+    fields: [id, name, group_id, user_id, sub_group_id, created_at, updated_at]
+  - name: Build
+    description: A grouping of sessions, normally one CI run.
+    operations: [listBuilds, updateBuild, deleteBuild, listBuildSessions]
+    fields: [hashed_id, name, duration, status, tags, group_id, user_id,
+      automation_project_id, created_at, updated_at]
+  - name: Session
+    description: One executed test — a single browser or device session with its artifacts.
+    operations: [getSession, updateSession, deleteSession, getSessionLogs,
+      getSessionNetworkLogs, getSessionConsoleLogs]
+    fields: [hashed_id, name, duration, status, reason, os, os_version, browser,
+      browser_version, device, build_name, project_name, logs, browser_url, public_url,
+      video_url, appium_logs_url, browser_console_logs_url, har_logs_url, selenium_logs_url,
+      created_at, updated_at]
+    note: >-
+      Session carries denormalised build_name and project_name strings alongside the artifact
+      URLs, so a client reading a session does not have to walk back up the graph to label it.
+      The six *_url fields are pre-signed artifact links, not sub-resources.
+  - name: StatusMessage
+    description: Generic acknowledgement envelope returned by the mutating and rotation
+      operations.
+    fields: [status, message]
+    note: Not a domain entity. It is also the closest thing this contract has to an error
+      shape — and it is only ever declared on 200 responses.
+relationships:
+  - from: Project
+    to: Build
+    type: has_many
+    via: Build.automation_project_id
+    note: >-
+      The link is a numeric project ID on the build, but there is no path that lists a
+      project's builds. GET /automate/builds.json is account-scoped, so a client must list all
+      builds and filter client-side on automation_project_id. This is the sharpest usability
+      gap in the graph.
+  - from: Build
+    to: Project
+    type: belongs_to
+    via: Build.automation_project_id
+  - from: Build
+    to: Session
+    type: has_many
+    via: GET /automate/builds/{buildId}/sessions.json
+    note: The only relationship in the contract with a dedicated traversal path. buildId is
+      Build.hashed_id.
+  - from: Session
+    to: Build
+    type: belongs_to
+    via: Session.build_name
+    note: >-
+      Denormalised by NAME, not by ID. A session does not carry its build's hashed_id, so
+      resolving a session back to its build means matching a string that is not guaranteed
+      unique. Traversal is reliable downward and unreliable upward.
+  - from: Session
+    to: Project
+    type: belongs_to
+    via: Session.project_name
+    note: Also by name only. Same caveat.
+  - from: Project
+    to: Group
+    type: belongs_to
+    via: Project.group_id
+    note: Dangling — Group has no resource in this API.
+  - from: Build
+    to: Group
+    type: belongs_to
+    via: Build.group_id
+    note: Dangling.
+  - from: Session
+    to: Browser
+    type: has_one
+    via: the os / os_version / browser / browser_version / device fields
+    note: >-
+      Embedded by value, not referenced. The same field vocabulary appears on Session and on
+      Browser, so a capability listed by getBrowsers can be matched against what a session
+      actually ran on — an implicit join with no declared key.
+  - from: Plan
+    to: Session
+    type: aggregates
+    via: parallel_sessions_running
+    note: Plan counts live sessions but names none of them.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

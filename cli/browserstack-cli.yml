@@ -1,0 +1,84 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  npm registry metadata, the github.com/browserstack organization, and the BrowserStack docs.
+  Fetched 2026-09-04.
+provider: BrowserStack
+providerId: browserstack
+note: >-
+  BrowserStack ships no single unified `browserstack` CLI. It ships several purpose-built
+  command-line tools plus a downloadable Local tunnel binary, each scoped to one product or
+  framework. They are listed separately because they install separately and share no command
+  namespace.
+tools:
+  - name: browserstack-cypress
+    package: browserstack-cypress-cli
+    registry: npm
+    version: 1.36.19
+    published: '2026-09-01'
+    install: npm install -g browserstack-cypress-cli
+    repository: https://github.com/browserstack/browserstack-cypress-cli
+    purpose: Run a Cypress test suite on BrowserStack infrastructure.
+    surface: init, run, build-info, build-stop, generate-report, generate-downloads
+    surface_note: Command list read from the package's published README/repository; not
+      verified by executing the binary.
+  - name: browserstack-sdk
+    package: browserstack-node-sdk
+    registry: npm
+    version: 1.68.2
+    published: '2026-09-04'
+    install: npm i -D browserstack-node-sdk
+    purpose: >-
+      Wraps an existing Selenium/Playwright/Jest runner so it executes on BrowserStack. Invoked
+      as `npx browserstack-node-sdk <your test command>` rather than as a standalone CLI.
+  - name: browserstack-sdk (Python)
+    package: browserstack-sdk
+    registry: pypi
+    version: 1.51.2
+    published: '2026-07-01'
+    install: pip install browserstack-sdk
+    purpose: Python equivalent of the Node SDK runner wrapper.
+  - name: accessibility-devtools
+    package: '@browserstack/accessibility-devtools'
+    registry: npm
+    version: 1.5.2
+    published: '2026-08-10'
+    install: npx @browserstack/accessibility-devtools
+    purpose: Command-line interface for BrowserStack Accessibility DevTools — scans a codebase
+      or running site for WCAG issues.
+  - name: accessibility-devtools-cli
+    package: '@browserstack/accessibility-devtools-cli'
+    registry: npm
+    version: 0.0.10
+    published: '2026-02-25'
+    install: npx @browserstack/accessibility-devtools-cli
+    purpose: CLI for the BrowserStack Accessibility Linter. Still 0.0.x; last published
+      2026-02-25.
+  - name: AccessibilityDevTools (Swift)
+    package: swift-package
+    registry: github
+    repository: https://github.com/browserstack/AccessibilityDevTools
+    purpose: Swift Package Manager command plugin and CLI that scans an iOS Swift codebase for
+      accessibility issues using BrowserStack's rule engine.
+    version: null
+    note: Distributed as an SPM package from the GitHub repository; no registry version to read.
+  - name: BrowserStackLocal
+    package: BrowserStackLocal binary
+    registry: cdn
+    install: Downloaded per-platform from the BrowserStack docs (Windows, macOS, Linux).
+    purpose: >-
+      Opens the Local Testing tunnel so BrowserStack's cloud browsers can reach localhost and
+      firewalled staging environments. Managed programmatically through the Local Testing API
+      and the language bindings in packages/.
+    version: null
+    note: >-
+      The binary is distributed as an unpinned per-platform download, not through a package
+      registry, so no version or release date can be read from the distribution URL. Language
+      bindings that wrap it ARE versioned — see packages/browserstack-packages.yml
+      (browserstack-local on npm 1.5.13, PyPI 1.2.16, RubyGems 1.5.0, NuGet BrowserStackLocal
+      3.1.0, Maven com.browserstack:browserstack-local-java 1.1.6). The BrowserStack
+      vulnerability-disclosure program scopes the binary to "only the latest released version",
+      which is the closest thing to a support statement published for it.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

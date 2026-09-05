@@ -1,0 +1,66 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  BrowserStack product API reference pages, https://www.browserstack.com/release-notes/en,
+  https://status.browserstack.com (+ its Statuspage API), and the OpenAPI definitions in
+  openapi/. Fetched 2026-09-04.
+provider: BrowserStack
+providerId: browserstack
+versioning:
+  scheme: per-product path versioning, inconsistently applied
+  detail: >-
+    Percy is /api/v1. Test Management is /api/v2. App Automate versions per framework — Appium,
+    Maestro and Media are v1 while Espresso, Flutter Android, Flutter iOS, Detox Android and
+    XCUITest are v2. Automate labels its Selenium API "v1" on the reference index but serves
+    unversioned paths (/automate/plan.json). Accessibility Testing and User Management publish
+    no version at all. There is no Accept-header or date-based versioning on any surface.
+  breaking_change_policy: not published
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  detail: >-
+    BrowserStack publishes no API deprecation policy, no notice period, and no RFC 8594
+    Deprecation/Sunset headers. No deprecated operation is marked in any captured OpenAPI —
+    though the specs in this repo are documentation-derived, so an absent `deprecated: true`
+    is weak evidence either way. Product-level end-of-life announcements appear in the release
+    notes feed under the "announcement" feature type, but there is no API-specific deprecation
+    channel a client could subscribe to.
+  deprecated_operations: []
+  evidence:
+    - url: https://www.browserstack.com/docs/automate/api-reference/selenium/introduction
+      status: 200
+      note: No deprecation or versioning-policy section.
+    - url: https://www.browserstack.com/docs/automate/api-reference/selenium/deprecated
+      status: 404
+sla:
+  published: false
+  detail: >-
+    No public SLA document. https://www.browserstack.com/sla returns 404. Contractual SLAs are
+    named as an Enterprise-plan feature on the pricing page but the terms are not published.
+  enterprise_sla_referenced: https://www.browserstack.com/enterprise
+status_page:
+  url: https://status.browserstack.com
+  provider: Atlassian Statuspage
+  machine_readable: true
+  api: https://status.browserstack.com/api/v2/summary.json
+  components: 35
+  history_feed: https://status.browserstack.com/history.rss
+  evidence:
+    url: https://status.browserstack.com/api/v2/summary.json
+    status: 200
+    fetched: '2026-09-04'
+    page_id: f5nrccjx59n6
+  note: >-
+    The status page is fully machine-readable through the standard Statuspage v2 API — 35
+    components covering Automate, App Automate, Live, App Live, Percy, Test Management and the
+    dashboard. This is the one BrowserStack operational surface an agent can poll without
+    credentials.
+support:
+  url: https://www.browserstack.com/support
+  contact: https://www.browserstack.com/contact
+  community: https://www.browserstack.com/community
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
