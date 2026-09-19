@@ -302,6 +302,8 @@ apis:
   description: Operations describing supported browsers and devices.
   humanURL: https://www.browserstack.com/
   tags:
+  - Browser
+  tags_raw:
   - Browsers
   properties:
   - type: OpenAPI
