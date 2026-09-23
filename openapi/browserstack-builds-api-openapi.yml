@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BrowserStack Automate REST AccessKey Builds API
+  title: BrowserStack Automate REST Builds API
   description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
 
     plans, projects, builds, sessions, browsers, devices, access keys, and media used in
@@ -8,9 +8,7 @@ info:
     Selenium-based cross-browser automated testing on BrowserStack.
 
 
-    Authentication uses HTTP Basic with your BrowserStack username and access key.
-
-    '
+    Authentication uses HTTP Basic with your BrowserStack username and access key.'
   version: '1.0'
   contact:
     name: BrowserStack

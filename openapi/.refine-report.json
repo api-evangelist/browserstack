@@ -1,12 +1,7 @@
 {
   "provider": "browserstack",
   "sources": [
-    "browserstack-accesskey-api-openapi.yml",
-    "browserstack-browsers-api-openapi.yml",
-    "browserstack-builds-api-openapi.yml",
-    "browserstack-plan-api-openapi.yml",
-    "browserstack-projects-api-openapi.yml",
-    "browserstack-sessions-api-openapi.yml"
+    "_original/browserstack-openapi.yml"
   ],
   "outputs": [
     "browserstack-accesskey-api-openapi.yml",
@@ -20,13 +15,16 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "browserstack-accesskey-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "browserstack-browsers-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "browserstack-builds-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "browserstack-plan-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "browserstack-projects-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "browserstack-sessions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "browserstack-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "browserstack-accesskey-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "browserstack-browsers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "browserstack-builds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "browserstack-plan-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "browserstack-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "browserstack-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

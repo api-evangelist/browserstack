@@ -1,21 +1,23 @@
-generated: '2026-09-04'
+generated: '2026-09-19'
 method: probed
-source: live HTTP probes of every host named in apis.yml, the OpenAPI servers[] block, the
-  documented product API base URLs, and the authorization_servers named in the fetched
-  discovery documents
+source: live HTTP probes of every host named in apis.yml, the OpenAPI servers[] block, the documented
+  product API base URLs, and the authorization_servers named in the fetched discovery documents
 provider: BrowserStack
 providerId: browserstack
-note: >-
-  BrowserStack serves OAuth 2.0 / OpenID Connect discovery documents from its marketing host,
-  its Automate API host and its Enterprise API host, all pointing at a single issuer,
-  https://auth.browserstack.com. The hosted Remote MCP server at mcp.browserstack.com
-  publishes its own separate authorization server plus an RFC 9728 protected-resource
-  document. No security.txt, api-catalog, ai-plugin.json or A2A agent card is served on any
-  BrowserStack-controlled host. Two hosts answered 200 with an HTML shell for every
-  /.well-known/* path and are recorded as misses, not documents: percy.io (BrowserStack's
-  Percy product host) and test-management.browserstack.com. The security.txt served at
-  status.browserstack.com belongs to Atlassian (Statuspage), not BrowserStack, and is
-  excluded.
+note: 'BrowserStack serves OAuth 2.0 / OpenID Connect discovery documents from its marketing host, its
+  Automate API host and its Enterprise API host, all pointing at a single issuer, https://auth.browserstack.com.
+  The hosted Remote MCP server at mcp.browserstack.com publishes its own separate authorization server
+  plus an RFC 9728 protected-resource document. No security.txt, api-catalog, ai-plugin.json or A2A agent
+  card is served on any BrowserStack-controlled host. Two hosts answered 200 with an HTML shell for every
+  /.well-known/* path and are recorded as misses, not documents: percy.io (BrowserStack''s Percy product
+  host) and test-management.browserstack.com. The security.txt served at status.browserstack.com belongs
+  to Atlassian (Statuspage), not BrowserStack, and is excluded.
+
+
+  MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s primary
+  hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed and
+  were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'
 hosts:
 - host: www.browserstack.com
   documents:
@@ -117,6 +119,7 @@ hosts:
     status: 404
   - path: /.well-known/agent.json
     status: 404
+  path_echo_control: passed
 - host: api-cloud.browserstack.com
   documents:
   - path: /.well-known/openid-configuration
@@ -143,9 +146,8 @@ hosts:
   documents:
   - path: /.well-known/openid-configuration
     status: 200
-    note: >-
-      NOT a document. This host answers 200 with the same 3,672-byte HTML shell for every
-      /.well-known/* path probed, including paths that cannot exist. Recorded as a miss.
+    note: NOT a document. This host answers 200 with the same 3,672-byte HTML shell for every /.well-known/*
+      path probed, including paths that cannot exist. Recorded as a miss.
   - path: /.well-known/agent-card.json
     status: 200
     note: HTML shell, same catch-all. Not an agent card.
@@ -153,9 +155,8 @@ hosts:
   documents:
   - path: /.well-known/openid-configuration
     status: 200
-    note: >-
-      NOT a document. SPA catch-all returning the same 17,415-byte HTML marketing page for
-      every /.well-known/* path. Recorded as a miss.
+    note: NOT a document. SPA catch-all returning the same 17,415-byte HTML marketing page for every /.well-known/*
+      path. Recorded as a miss.
   - path: /.well-known/agent-card.json
     status: 200
     note: HTML shell, same catch-all. Not an agent card.
@@ -163,9 +164,20 @@ hosts:
   documents:
   - path: /.well-known/security.txt
     status: 200
-    note: >-
-      Served by Atlassian Statuspage and signed by Atlassian — Contact
-      security@atlassian.com, Canonical https://www.atlassian.com/.well-known/security.txt.
-      This is the vendor's document, not BrowserStack's, and is NOT credited to BrowserStack.
+    note: Served by Atlassian Statuspage and signed by Atlassian — Contact security@atlassian.com, Canonical
+      https://www.atlassian.com/.well-known/security.txt. This is the vendor's document, not BrowserStack's,
+      and is NOT credited to BrowserStack.
   - path: /.well-known/openid-configuration
     status: 404
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://mcp.browserstack.com
+    path: /.well-known/oauth-protected-resource
+    file: browserstack-mcp-oauth-protected-resource.json
+  - host: https://mcp.browserstack.com
+    path: /.well-known/oauth-authorization-server
+    file: browserstack-mcp-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host

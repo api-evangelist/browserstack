@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BrowserStack Automate REST AccessKey Sessions API
+  title: BrowserStack Automate REST Sessions API
   description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
 
     plans, projects, builds, sessions, browsers, devices, access keys, and media used in
@@ -8,9 +8,7 @@ info:
     Selenium-based cross-browser automated testing on BrowserStack.
 
 
-    Authentication uses HTTP Basic with your BrowserStack username and access key.
-
-    '
+    Authentication uses HTTP Basic with your BrowserStack username and access key.'
   version: '1.0'
   contact:
     name: BrowserStack
@@ -166,13 +164,6 @@ paths:
                 type: string
 components:
   schemas:
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
     Session:
       type: object
       properties:
@@ -226,6 +217,13 @@ components:
         updated_at:
           type: string
           format: date-time
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

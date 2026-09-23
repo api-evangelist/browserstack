@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BrowserStack Automate REST AccessKey Projects API
+  title: BrowserStack Automate REST Projects API
   description: 'Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing
 
     plans, projects, builds, sessions, browsers, devices, access keys, and media used in
@@ -8,9 +8,7 @@ info:
     Selenium-based cross-browser automated testing on BrowserStack.
 
 
-    Authentication uses HTTP Basic with your BrowserStack username and access key.
-
-    '
+    Authentication uses HTTP Basic with your BrowserStack username and access key.'
   version: '1.0'
   contact:
     name: BrowserStack
@@ -116,6 +114,15 @@ paths:
                 type: string
 components:
   schemas:
+    ProjectDetail:
+      allOf:
+      - $ref: '#/components/schemas/Project'
+      - type: object
+        properties:
+          builds:
+            type: array
+            items:
+              $ref: '#/components/schemas/Build'
     Build:
       type: object
       properties:
@@ -143,22 +150,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-    ProjectDetail:
-      allOf:
-      - $ref: '#/components/schemas/Project'
-      - type: object
-        properties:
-          builds:
-            type: array
-            items:
-              $ref: '#/components/schemas/Build'
     Project:
       type: object
       properties:
@@ -180,6 +171,13 @@ components:
           type:
           - integer
           - 'null'
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
   securitySchemes:
     basicAuth:
       type: http
