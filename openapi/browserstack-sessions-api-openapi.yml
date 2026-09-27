@@ -164,6 +164,13 @@ paths:
                 type: string
 components:
   schemas:
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
     Session:
       type: object
       properties:
@@ -217,13 +224,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
   securitySchemes:
     basicAuth:
       type: http
