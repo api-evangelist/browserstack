@@ -121,15 +121,6 @@ components:
           type: string
         message:
           type: string
-    ProjectDetail:
-      allOf:
-      - $ref: '#/components/schemas/Project'
-      - type: object
-        properties:
-          builds:
-            type: array
-            items:
-              $ref: '#/components/schemas/Build'
     Project:
       type: object
       properties:
@@ -178,6 +169,15 @@ components:
         updated_at:
           type: string
           format: date-time
+    ProjectDetail:
+      allOf:
+      - $ref: '#/components/schemas/Project'
+      - type: object
+        properties:
+          builds:
+            type: array
+            items:
+              $ref: '#/components/schemas/Build'
   securitySchemes:
     basicAuth:
       type: http
