@@ -1,0 +1,37 @@
+slug: browserstack
+provider: BrowserStack
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Sessions
+  spec_file: browserstack-sessions-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.8
+  evidence: GET /automate/sessions/{sessionId}/logs 'Download Selenium logs'; 'Update session status /
+    metadata'; 'Download network logs (HAR)'
+  reason: Sessions are individual Selenium test runs with status, console and network logs — retrieval
+    and annotation of automated test execution results, which is test suite stewardship under Software
+    Quality Engineering.
+- tag: Builds
+  spec_file: browserstack-builds-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.75
+  evidence: GET /automate/builds.json 'List recent builds'; API is for 'builds, sessions, browsers, devices
+    ... used in Selenium-based cross-browser automated testing on BrowserStack'
+  reason: A 'build' here is a grouping of automated Selenium test runs, so listing/updating/deleting builds
+    is stewardship of automated test execution records — software quality engineering. Not a CI artefact
+    build, hence not release management, though that ambiguity caps confidence.
