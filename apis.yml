@@ -447,6 +447,8 @@ maintainers:
     url: https://www.browserstack.com
 specificationVersion: '0.23'
 common:
+  - type: FinOps
+    url: finops/browserstack-finops.yml
   - type: CapabilityMap
     url: capabilities/browserstack-capability-edges.yml
     name: BrowserStack Business Capability Map
