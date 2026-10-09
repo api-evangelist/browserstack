@@ -1,0 +1,32 @@
+# Front Door AI Index — browserstack — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: browserstack
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: www.browserstack.com
+  final_host: www.browserstack.com
+  ownership: own
+  owner: browserstack
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 40
+  band: 6
+  band_label: dominant
+  host_score: 40
+  density: 18.73
+  words: 2136
+  tiers:
+    agentic: 18
+    core: 22
+    model: 0
+  ambiguous: 57
+  top_terms:
+    automation: 29
+    agent: 28
+    AI: 22
+    AI agent: 9
+    agentic: 9

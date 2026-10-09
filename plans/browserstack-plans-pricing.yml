@@ -240,3 +240,114 @@ maintainers:
   - name: BrowserStack
     email: support@browserstack.com
     url: https://www.browserstack.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  - subscription
+  units: []
+  plans:
+  - name: Free Trial
+    access: trial
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Open Source plan
+    access: free
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Live: Desktop'
+    access: paid
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Live: Desktop & Mobile'
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Live: Team'
+    access: paid
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Live: Team Pro'
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Live: Team Ultimate'
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Automate: Desktop'
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Automate: Desktop & Mobile'
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Automate: Desktop & Mobile Pro'
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Website Scanner: 5 users / 25 pages'
+    access: paid
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Website Scanner: 10 users / 50 pages'
+    access: paid
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Website Scanner: 5 users / 100 pages'
+    access: paid
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Website Scanner: 5 users / 200 pages'
+    access: paid
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Website Scanner: 5 users / 500 pages'
+    access: paid
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: 'Website Scanner: 10 users / 1000 pages'
+    access: paid
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
