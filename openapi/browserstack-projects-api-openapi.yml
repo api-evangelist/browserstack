@@ -114,22 +114,6 @@ paths:
                 type: string
 components:
   schemas:
-    ProjectDetail:
-      allOf:
-      - $ref: '#/components/schemas/Project'
-      - type: object
-        properties:
-          builds:
-            type: array
-            items:
-              $ref: '#/components/schemas/Build'
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
     Build:
       type: object
       properties:
@@ -157,6 +141,15 @@ components:
         updated_at:
           type: string
           format: date-time
+    ProjectDetail:
+      allOf:
+      - $ref: '#/components/schemas/Project'
+      - type: object
+        properties:
+          builds:
+            type: array
+            items:
+              $ref: '#/components/schemas/Build'
     Project:
       type: object
       properties:
@@ -178,6 +171,13 @@ components:
           type:
           - integer
           - 'null'
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

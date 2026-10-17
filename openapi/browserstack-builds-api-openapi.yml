@@ -99,13 +99,6 @@ paths:
                 $ref: '#/components/schemas/StatusMessage'
 components:
   schemas:
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
     Build:
       type: object
       properties:
@@ -133,6 +126,13 @@ components:
         updated_at:
           type: string
           format: date-time
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
   securitySchemes:
     basicAuth:
       type: http
