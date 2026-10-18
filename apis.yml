@@ -290,6 +290,8 @@ apis:
   description: Operations on Automate access keys.
   humanURL: https://www.browserstack.com/
   tags:
+  - Access Key
+  tags_raw:
   - AccessKey
   properties:
   - type: OpenAPI
