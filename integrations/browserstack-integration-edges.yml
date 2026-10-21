@@ -23,6 +23,12 @@ checked:
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 - okta/integrations/okta-integration-edges.yml
 - slack/integrations/slack-integration-edges.yml
+- https://github.com/w3c/wai-evaluation-tools-list
+- https://www.accessibilityassociation.org/organizational-directory
+- https://www.dhs.gov/trusted-tester
+- https://www.itic.org/policy/accessibility/vpat
+- https://www.section508.gov/
+- https://www.w3.org/WAI/test-evaluate/tools/list/
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -378,6 +384,36 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
+- partner_name: W3C WAI Web Accessibility Evaluation Tools List
+  partner: w3c
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.w3.org/WAI/test-evaluate/tools/list/
+  category: accessibility evaluation tool listing
+  contract_reference:
+    register: W3C WAI Web Accessibility Evaluation Tools List (w3.org/WAI/test-evaluate/tools/list/, built from
+      github.com/w3c/wai-evaluation-tools-list)
+    standard: WCAG (W3C Web Content Accessibility Guidelines)
+    spec_file: null
+    role: wai-evaluation-tool-vendor
+    registered_name: BrowserStack
+    register_id: e46e1bf0-04d2-11f0-9d9e-697970187972.json
+    matched_domain: browserstack.com
+    matched_by: domain
+    listed_tools:
+    - BrowserStack Web Accessibility Testing
+    listed_tool_types:
+    - Document
+    - Website
+    signal_note: 'listing only: the WAI tools list is self-submitted and W3C states it does not endorse or certify
+      any tool; no certified_products. Tool types are context, never counted'
+    detected_by: sweep-digital-accessibility-certification.py
+    detected: '2026-10-21'
+  detected_by: sweep-digital-accessibility-certification.py
+  first_seen: '2026-10-21'
 source:
 - https://github.com/marketplace?type=actions
 - https://github.com/marketplace?type=apps

@@ -295,3 +295,34 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: browserstack-w3c-wai-web-accessibility-evaluation-tools-list
+  label: W3C WAI Web Accessibility Evaluation Tools List
+  partner: w3c
+  partner_name: W3C WAI Web Accessibility Evaluation Tools List
+  category: accessibility evaluation tool listing
+  type: register
+  channel: standard-directory
+  evidence: https://www.w3.org/WAI/test-evaluate/tools/list/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: W3C WAI Web Accessibility Evaluation Tools List (w3.org/WAI/test-evaluate/tools/list/, built from
+      github.com/w3c/wai-evaluation-tools-list)
+    standard: WCAG (W3C Web Content Accessibility Guidelines)
+    spec_file: null
+    role: wai-evaluation-tool-vendor
+    registered_name: BrowserStack
+    register_id: e46e1bf0-04d2-11f0-9d9e-697970187972.json
+    matched_domain: browserstack.com
+    matched_by: domain
+    listed_tools:
+    - BrowserStack Web Accessibility Testing
+    listed_tool_types:
+    - Document
+    - Website
+    signal_note: 'listing only: the WAI tools list is self-submitted and W3C states it does not endorse or certify
+      any tool; no certified_products. Tool types are context, never counted'
+    detected_by: sweep-digital-accessibility-certification.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
