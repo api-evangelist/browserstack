@@ -33,6 +33,7 @@ checked:
 - https://marketplace.atlassian.com/rest/2/addons
 - https://partnerdirectory.atlassian.com/
 - https://www.atlassian.com/licensing/marketplace/cloud-fortified
+- github/integrations/github-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -50,66 +51,6 @@ edges:
   seller_name: BrowserStack
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
-- partner_name: Okta (own)
-  partner: okta
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.okta.com/integrations/bstackscimstaging/
-  mirror_of: okta/integrations/okta-integration-edges.yml
-  apps:
-  - BrowserStack
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Single Sign-On
-  badges:
-  - OKTA_VERIFIED
-  features:
-  - CREATE
-  - DEACTIVATE
-  - SAML
-  - UPDATE
-- partner_name: Microsoft Teams (own)
-  partner: microsoft-teams
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://appsource.microsoft.com/en-us/product/office/WA200004404
-  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
-  apps:
-  - BrowserStack
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Microsoft Teams app
-  publisher_verified:
-  - Microsoft 365 Certified
-- partner_name: Slack (own)
-  partner: slack
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://slack.com/marketplace/ADB1N7VMY-browserstack
-  mirror_of: slack/integrations/slack-integration-edges.yml
-  apps:
-  - Browserstack
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Slack app
 - partner_name: Maven Central
   partner: maven-central
   partner_match: register
@@ -456,6 +397,82 @@ edges:
     detected: '2026-10-21'
   detected_by: sweep-atlassian-marketplace.py
   first_seen: '2026-10-21'
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/bstackscimstaging/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - BrowserStack
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Single Sign-On
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - SAML
+  - UPDATE
+- partner_name: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA200004404
+  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+  apps:
+  - BrowserStack
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Microsoft Teams app
+  publisher_verified:
+  - Microsoft 365 Certified
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/ADB1N7VMY-browserstack
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Browserstack
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+- partner_name: GitHub (own)
+  partner: github
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://github.com/marketplace/accessibility-devtools
+  mirror_of: github/integrations/github-integration-edges.yml
+  apps:
+  - Accessibility DevTools
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
 source:
 - https://github.com/marketplace?type=actions
 - https://github.com/marketplace?type=apps
