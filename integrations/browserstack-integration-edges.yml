@@ -29,6 +29,10 @@ checked:
 - https://www.itic.org/policy/accessibility/vpat
 - https://www.section508.gov/
 - https://www.w3.org/WAI/test-evaluate/tools/list/
+- https://admin.partnerpage.io/search/directory_vendor/service_partners/9429c824-eaaf-40ec-ac82-2a650002064a/
+- https://marketplace.atlassian.com/rest/2/addons
+- https://partnerdirectory.atlassian.com/
+- https://www.atlassian.com/licensing/marketplace/cloud-fortified
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -413,6 +417,44 @@ edges:
     detected_by: sweep-digital-accessibility-certification.py
     detected: '2026-10-21'
   detected_by: sweep-digital-accessibility-certification.py
+  first_seen: '2026-10-21'
+- partner_name: Atlassian Cloud Fortified apps
+  partner: atlassian
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.atlassian.com/licensing/marketplace/cloud-fortified
+  category: Cloud Fortified Marketplace publisher
+  publisher_verified:
+  - Cloud Fortified
+  contract_reference:
+    register: Atlassian Marketplace REST API, cloudFortifiedStatus=approved per host application
+    standard: Atlassian Cloud Fortified
+    spec_file: null
+    role: cloud-fortified-publisher
+    registered_name: BrowserStack
+    register_country: United States of America
+    matched_domain: browserstack.com
+    matched_by: domain
+    identity_source: the vendor's own developer-space homepageUrl (no lookup)
+    certified_products:
+    - product: Cloud Fortified Jira app
+      product_type: Cloud Fortified Jira app
+      host_application: jira
+      certifier: Atlassian (Cloud Fortified apps programme)
+      listings: 2
+      example_listing: https://marketplace.atlassian.com/apps/1230699/browserstack-test-management-webapp-integration-for-jira
+      lapsed: false
+      lapsed_note: the API's cloudFortifiedStatus=approved filter returns only CURRENT approvals; Atlassian publishes
+        no lapse list, so no entry is marked lapsed
+    signal_note: certified_products = ONE entry per product type (host application of the fortified app), never
+      per app; app counts are context
+    requirement: https://www.atlassian.com/licensing/marketplace/cloud-fortified
+    detected_by: sweep-atlassian-marketplace.py
+    detected: '2026-10-21'
+  detected_by: sweep-atlassian-marketplace.py
   first_seen: '2026-10-21'
 source:
 - https://github.com/marketplace?type=actions
