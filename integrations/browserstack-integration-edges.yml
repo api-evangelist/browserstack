@@ -34,6 +34,9 @@ checked:
 - https://partnerdirectory.atlassian.com/
 - https://www.atlassian.com/licensing/marketplace/cloud-fortified
 - github/integrations/github-integration-edges.yml
+- https://landscape.cd.foundation/data/full.json
+- https://plugins.jenkins.io/api/plugin/
+- https://plugins.jenkins.io/api/plugins
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -473,6 +476,25 @@ edges:
   listing_count: 1
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
+- partner_name: Jenkins (own)
+  partner: jenkins
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://plugins.jenkins.io/browserstack-integration/
+  mirror_of: jenkins/integrations/jenkins-integration-edges.yml
+  apps:
+  - BrowserStack (browserstack-integration)
+  listing_count: 1
+  category: Jenkins plugin
+  signal_note: 'publisher side of the all/jenkins listing; vendor-control: browserstack-integration: maintainer
+    account ''browserstack'' is the GitHub organization on all/browserstack''s apis.yml'
+  detected: '2026-10-22'
+  detected_by: sweep-jenkins-cd-foundation-plugins.py
 source:
 - https://github.com/marketplace?type=actions
 - https://github.com/marketplace?type=apps
