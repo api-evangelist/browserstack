@@ -388,3 +388,35 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: browserstack-drupal-association-supporter-programmes
+  label: Drupal Association supporter programmes
+  partner: drupal-org
+  partner_name: Drupal Association supporter programmes
+  category: Drupal Association partner / supporter programme
+  type: register
+  channel: standard-directory
+  evidence: https://www.drupal.org/browserstack
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: drupal.org organization directory, Drupal Association supporter flags (api-d7 organization)
+    standard: null
+    spec_file: null
+    role: drupal-association-supporter
+    registered_name: BrowserStack
+    register_id: '3086836'
+    register_country: null
+    matched_domain: browserstack.com
+    matched_by: domain
+    programmes:
+    - programme: Drupal Association supporting partner
+      levels:
+      - premium
+    support_flags:
+    - supporting_premium
+    signal_note: 'participation only: Drupal Association partner / supporter programme flags; listing is not conformance
+      (no certified_products)'
+    detected_by: sweep-drupal-contrib-ecosystem.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null

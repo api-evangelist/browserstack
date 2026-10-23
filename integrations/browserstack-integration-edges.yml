@@ -37,6 +37,8 @@ checked:
 - https://landscape.cd.foundation/data/full.json
 - https://plugins.jenkins.io/api/plugin/
 - https://plugins.jenkins.io/api/plugins
+- https://www.drupal.org/api-d7/node.json?type=organization
+- https://www.drupal.org/api-d7/node.json?type=project_module
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -495,6 +497,38 @@ edges:
     account ''browserstack'' is the GitHub organization on all/browserstack''s apis.yml'
   detected: '2026-10-22'
   detected_by: sweep-jenkins-cd-foundation-plugins.py
+- partner_name: Drupal Association supporter programmes
+  partner: drupal-org
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  partner_tier: premium
+  evidence: https://www.drupal.org/browserstack
+  category: Drupal Association partner / supporter programme
+  contract_reference:
+    register: drupal.org organization directory, Drupal Association supporter flags (api-d7 organization)
+    standard: null
+    spec_file: null
+    role: drupal-association-supporter
+    registered_name: BrowserStack
+    register_id: '3086836'
+    register_country: null
+    matched_domain: browserstack.com
+    matched_by: domain
+    programmes:
+    - programme: Drupal Association supporting partner
+      levels:
+      - premium
+    support_flags:
+    - supporting_premium
+    signal_note: 'participation only: Drupal Association partner / supporter programme flags; listing is not conformance
+      (no certified_products)'
+    detected_by: sweep-drupal-contrib-ecosystem.py
+    detected: '2026-10-22'
+  detected_by: sweep-drupal-contrib-ecosystem.py
+  first_seen: '2026-10-22'
 source:
 - https://github.com/marketplace?type=actions
 - https://github.com/marketplace?type=apps
