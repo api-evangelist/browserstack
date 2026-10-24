@@ -1,468 +1,490 @@
 {
+  "info": {
+    "_postman_id": "e4a7161e-44c5-40cf-8f7c-21deab5516a3",
+    "name": "BrowserStack Automate REST Projects API",
+    "description": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\nContact Support:\n Name: BrowserStack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:58:06.000Z",
+    "updatedAt": "2026-10-22T02:58:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e4a7161e-44c5-40cf-8f7c-21deab5516a3"
+  },
   "item": [
     {
-      "id": "e4f9add6-18cc-41b6-96a9-58ca0911cc66",
-      "name": "Projects",
-      "description": {
-        "content": "Operations on Automate projects.",
-        "type": "text/plain"
-      },
+      "name": "automate",
       "item": [
         {
-          "id": "fbb81682-ec49-4948-bcc9-13d4691a0c35",
-          "name": "List projects",
-          "request": {
-            "name": "List projects",
-            "description": {},
-            "url": {
-              "path": [
-                "automate",
-                "projects.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "projects.json",
+          "item": [
             {
-              "id": "cbf45961-1c81-4bd4-b391-bc8db4689445",
-              "name": "Array of project objects",
-              "originalRequest": {
+              "name": "List projects",
+              "id": "67ae3514-0d94-46bc-bbf6-9daedf26710c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/automate/projects.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "automate",
                     "projects.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": 5852,\n    \"name\": \"string\",\n    \"group_id\": 7404,\n    \"user_id\": 3225,\n    \"created_at\": \"1969-12-13T14:40:14.806Z\",\n    \"updated_at\": \"1970-08-24T11:58:23.491Z\",\n    \"sub_group_id\": 8668\n  },\n  {\n    \"id\": 9449,\n    \"name\": \"string\",\n    \"group_id\": 3860,\n    \"user_id\": 6895,\n    \"created_at\": \"1958-01-17T15:37:09.476Z\",\n    \"updated_at\": \"2018-01-28T19:02:37.681Z\",\n    \"sub_group_id\": 3018\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "18629291-a169-4233-b2a2-4ef31ff4ef4f",
-          "name": "Get project details",
-          "request": {
-            "name": "Get project details",
-            "description": {},
-            "url": {
-              "path": [
-                "automate",
-                "projects",
-                "{{projectId}}.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ae311e5b-1acf-46c5-821b-a9592cb3b4af",
-              "name": "Project with associated builds",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "automate",
-                    "projects",
-                    "{{projectId}}.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 982,\n  \"name\": \"string\",\n  \"group_id\": 4038,\n  \"user_id\": 4450,\n  \"created_at\": \"1955-05-27T19:45:31.886Z\",\n  \"updated_at\": \"2012-03-11T01:19:04.632Z\",\n  \"sub_group_id\": 9282,\n  \"builds\": [\n    {\n      \"hashed_id\": \"string\",\n      \"name\": \"string\",\n      \"duration\": 5484,\n      \"status\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"group_id\": 1812,\n      \"user_id\": 8653,\n      \"automation_project_id\": 1634,\n      \"created_at\": \"1953-08-20T01:49:27.958Z\",\n      \"updated_at\": \"1964-02-11T00:38:09.055Z\"\n    },\n    {\n      \"hashed_id\": \"string\",\n      \"name\": \"string\",\n      \"duration\": 489,\n      \"status\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"group_id\": 4261,\n      \"user_id\": 2735,\n      \"automation_project_id\": 5933,\n      \"created_at\": \"2018-09-22T00:48:22.693Z\",\n      \"updated_at\": \"1977-10-06T18:14:18.437Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d6dfa0fb-4653-4c51-87c6-f5d22671c88c",
-          "name": "Update project",
-          "request": {
-            "name": "Update project",
-            "description": {},
-            "url": {
-              "path": [
-                "automate",
-                "projects",
-                "{{projectId}}.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "9c7e0123-27d3-457d-8e6e-9ff3c4f30431",
-              "name": "Updated project",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "automate",
-                    "projects",
-                    "{{projectId}}.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 3667,\n  \"name\": \"string\",\n  \"group_id\": 1796,\n  \"user_id\": 8992,\n  \"created_at\": \"1994-10-31T23:54:07.308Z\",\n  \"updated_at\": \"1980-02-24T06:31:09.375Z\",\n  \"sub_group_id\": 6161\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "84a91c3f-c763-4b4a-a666-aefc0afe8914",
-          "name": "Delete project",
-          "request": {
-            "name": "Delete project",
-            "description": {
-              "content": "Deletes an Automate project. The project must be empty of builds and sessions.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "automate",
-                "projects",
-                "{{projectId}}.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "bbd00b52-aac8-405d-8291-96d6efd951f0",
-              "name": "Deletion confirmation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "automate",
-                    "projects",
-                    "{{projectId}}.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4a352e6f-63c2-4650-bb33-c1d136320298",
-          "name": "Get project status badge key",
-          "request": {
-            "name": "Get project status badge key",
-            "description": {},
-            "url": {
-              "path": [
-                "automate",
-                "projects",
-                ":projectId",
-                "badge_key"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "projectId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "text/plain"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "145dab6e-48e4-4ae4-9b98-316eb8b6f2d9",
-              "name": "Badge key string",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "automate",
-                    "projects",
-                    ":projectId",
-                    "badge_key"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "projectId",
-                      "description": "(Required) "
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "08facaba-9cc3-431f-a2c4-34528aa6c3b6",
+                  "name": "Array of project objects",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/projects.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "projects.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"group_id\": \"<integer>\",\n    \"user_id\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"sub_group_id\": \"<integer,null>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"group_id\": \"<integer>\",\n    \"user_id\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"sub_group_id\": \"<integer,null>\"\n  }\n]",
+                  "createdAt": "2026-10-22T02:58:06.000Z",
+                  "updatedAt": "2026-10-22T02:58:06.000Z",
+                  "uid": "35240-08facaba-9cc3-431f-a2c4-34528aa6c3b6"
                 }
               ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T02:58:06.000Z",
+              "updatedAt": "2026-10-22T02:58:06.000Z",
+              "uid": "35240-67ae3514-0d94-46bc-bbf6-9daedf26710c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e970cf02-f7d1-4a47-a874-cc540efd7f98",
+          "createdAt": "2026-10-22T02:58:06.000Z",
+          "updatedAt": "2026-10-22T02:58:06.000Z",
+          "uid": "35240-e970cf02-f7d1-4a47-a874-cc540efd7f98"
+        },
+        {
+          "name": "projects",
+          "item": [
+            {
+              "name": "{projectId}.json",
+              "item": [
+                {
+                  "name": "Get project details",
+                  "id": "56a76315-d406-4145-8b7e-c41c2662fb77",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/projects/{{projectId}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "projects",
+                        "{{projectId}}.json"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "6978f896-6030-4be2-bfb7-caa9b47ddfcc",
+                      "name": "Project with associated builds",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/automate/projects/{{projectId}}.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "automate",
+                            "projects",
+                            "{{projectId}}.json"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"group_id\": \"<integer>\",\n  \"user_id\": \"<integer>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"sub_group_id\": \"<integer,null>\",\n  \"builds\": [\n    {\n      \"hashed_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"duration\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"group_id\": \"<integer>\",\n      \"user_id\": \"<integer>\",\n      \"automation_project_id\": \"<integer>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"hashed_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"duration\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"group_id\": \"<integer>\",\n      \"user_id\": \"<integer>\",\n      \"automation_project_id\": \"<integer>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T02:58:06.000Z",
+                      "updatedAt": "2026-10-22T02:58:06.000Z",
+                      "uid": "35240-6978f896-6030-4be2-bfb7-caa9b47ddfcc"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:58:06.000Z",
+                  "updatedAt": "2026-10-22T02:58:06.000Z",
+                  "uid": "35240-56a76315-d406-4145-8b7e-c41c2662fb77"
+                },
+                {
+                  "name": "Update project",
+                  "id": "17668f7d-41ad-47ee-b377-2595c239f53f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/projects/{{projectId}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "projects",
+                        "{{projectId}}.json"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "0ff2d5be-cf7a-45b0-997a-8ea9212f3385",
+                      "name": "Updated project",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/automate/projects/{{projectId}}.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "automate",
+                            "projects",
+                            "{{projectId}}.json"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"group_id\": \"<integer>\",\n  \"user_id\": \"<integer>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"sub_group_id\": \"<integer,null>\"\n}",
+                      "createdAt": "2026-10-22T02:58:06.000Z",
+                      "updatedAt": "2026-10-22T02:58:06.000Z",
+                      "uid": "35240-0ff2d5be-cf7a-45b0-997a-8ea9212f3385"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:58:06.000Z",
+                  "updatedAt": "2026-10-22T02:58:06.000Z",
+                  "uid": "35240-17668f7d-41ad-47ee-b377-2595c239f53f"
+                },
+                {
+                  "name": "Delete project",
+                  "id": "168b2b92-660b-4c93-987f-0611170a78b9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/projects/{{projectId}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "projects",
+                        "{{projectId}}.json"
+                      ]
+                    },
+                    "description": "Deletes an Automate project. The project must be empty of builds and sessions."
+                  },
+                  "response": [
+                    {
+                      "id": "44b89703-f05e-4acc-a606-b5e84f5c236c",
+                      "name": "Deletion confirmation",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/automate/projects/{{projectId}}.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "automate",
+                            "projects",
+                            "{{projectId}}.json"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:58:06.000Z",
+                      "updatedAt": "2026-10-22T02:58:06.000Z",
+                      "uid": "35240-44b89703-f05e-4acc-a606-b5e84f5c236c"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:58:06.000Z",
+                  "updatedAt": "2026-10-22T02:58:06.000Z",
+                  "uid": "35240-168b2b92-660b-4c93-987f-0611170a78b9"
+                }
+              ],
+              "id": "7faf52f5-2d39-48f5-abbd-9786f81be8d9",
+              "createdAt": "2026-10-22T02:58:06.000Z",
+              "updatedAt": "2026-10-22T02:58:06.000Z",
+              "uid": "35240-7faf52f5-2d39-48f5-abbd-9786f81be8d9"
+            },
+            {
+              "name": "{projectId}",
+              "item": [
+                {
+                  "name": "badge_key",
+                  "item": [
+                    {
+                      "name": "Get project status badge key",
+                      "id": "e58e7875-3954-420d-a28d-4dd86c4bfd31",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/automate/projects/:projectId/badge_key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "automate",
+                            "projects",
+                            ":projectId",
+                            "badge_key"
+                          ],
+                          "variable": [
+                            {
+                              "id": "dbb13e0b-567b-45d9-88df-61b2486371fa",
+                              "key": "projectId",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2ef2fb0a-fef3-42b9-ae61-653cd3d91be9",
+                          "name": "Badge key string",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/automate/projects/:projectId/badge_key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "automate",
+                                "projects",
+                                ":projectId",
+                                "badge_key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/plain"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-10-22T02:58:06.000Z",
+                          "updatedAt": "2026-10-22T02:58:06.000Z",
+                          "uid": "35240-2ef2fb0a-fef3-42b9-ae61-653cd3d91be9"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:58:06.000Z",
+                      "updatedAt": "2026-10-22T02:58:06.000Z",
+                      "uid": "35240-e58e7875-3954-420d-a28d-4dd86c4bfd31"
+                    }
+                  ],
+                  "id": "64d860d3-e2a0-4c7c-8ea0-5578f643043c",
+                  "createdAt": "2026-10-22T02:58:06.000Z",
+                  "updatedAt": "2026-10-22T02:58:06.000Z",
+                  "uid": "35240-64d860d3-e2a0-4c7c-8ea0-5578f643043c"
+                }
+              ],
+              "id": "28b7fe65-c302-4f4e-90b9-5908ee047a62",
+              "createdAt": "2026-10-22T02:58:06.000Z",
+              "updatedAt": "2026-10-22T02:58:06.000Z",
+              "uid": "35240-28b7fe65-c302-4f4e-90b9-5908ee047a62"
+            }
+          ],
+          "id": "6b1cc21b-a9bf-4bcd-be3c-b8d316e175d2",
+          "createdAt": "2026-10-22T02:58:06.000Z",
+          "updatedAt": "2026-10-22T02:58:06.000Z",
+          "uid": "35240-6b1cc21b-a9bf-4bcd-be3c-b8d316e175d2"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.browserstack.com",
-      "key": "baseUrl"
-    },
-    {
-      "disabled": false,
-      "description": {
-        "content": "(Required) ",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "<integer>",
-      "key": "projectId"
+      "id": "9921db38-f310-40a8-92c5-fe5e5bf09ec6",
+      "createdAt": "2026-10-22T02:58:06.000Z",
+      "updatedAt": "2026-10-22T02:58:06.000Z",
+      "uid": "35240-9921db38-f310-40a8-92c5-fe5e5bf09ec6"
     }
   ],
   "auth": {
@@ -470,21 +492,24 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "992b3e60-a35d-4085-a714-b33aefe70c51",
-    "name": "BrowserStack Automate REST AccessKey Projects API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\n\nContact Support:\n Name: BrowserStack",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.browserstack.com"
+    },
+    {
+      "key": "projectId",
+      "value": "<integer>"
     }
-  }
+  ]
 }

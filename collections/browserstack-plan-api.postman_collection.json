@@ -1,103 +1,107 @@
 {
+  "info": {
+    "_postman_id": "a6a88240-9eba-4b96-a819-35b65e1dd0fb",
+    "name": "BrowserStack Automate REST Plan API",
+    "description": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\nContact Support:\n Name: BrowserStack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:58:00.000Z",
+    "updatedAt": "2026-10-22T02:58:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a6a88240-9eba-4b96-a819-35b65e1dd0fb"
+  },
   "item": [
     {
-      "id": "55e04f3d-6170-4669-9316-fa1da57f8685",
-      "name": "Plan",
-      "description": {
-        "content": "Operations describing the current Automate subscription plan and capacity.",
-        "type": "text/plain"
-      },
+      "name": "automate",
       "item": [
         {
-          "id": "02bc9aad-059d-486d-8b57-80ecd2e37de4",
-          "name": "Get plan details",
-          "request": {
-            "name": "Get plan details",
-            "description": {
-              "content": "Returns details of the current Automate subscription plan including parallel session capacity and current usage.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "automate",
-                "plan.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "plan.json",
+          "item": [
             {
-              "id": "72432869-c178-4ddc-9c91-9cfa28fc4079",
-              "name": "Plan details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "automate",
-                    "plan.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get plan details",
+              "id": "9e986a43-7ed4-4f19-9d2a-82e2b1017750",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/automate/plan.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "automate",
+                    "plan.json"
+                  ]
+                },
+                "description": "Returns details of the current Automate subscription plan including parallel session capacity and current usage."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "fa562c5e-7632-446e-91eb-c95436b131be",
+                  "name": "Plan details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/plan.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "plan.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"automate_plan\": \"<string>\",\n  \"parallel_sessions_running\": \"<integer>\",\n  \"team_parallel_sessions_max_allowed\": \"<integer>\",\n  \"parallel_sessions_max_allowed\": \"<integer>\",\n  \"queued_sessions\": \"<integer>\",\n  \"queued_sessions_max_allowed\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-22T02:58:01.000Z",
+                  "updatedAt": "2026-10-22T02:58:01.000Z",
+                  "uid": "35240-fa562c5e-7632-446e-91eb-c95436b131be"
                 }
               ],
-              "body": "{\n  \"automate_plan\": \"string\",\n  \"parallel_sessions_running\": 875,\n  \"team_parallel_sessions_max_allowed\": 3190,\n  \"parallel_sessions_max_allowed\": 6619,\n  \"queued_sessions\": 2763,\n  \"queued_sessions_max_allowed\": 1776\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T02:58:01.000Z",
+              "updatedAt": "2026-10-22T02:58:01.000Z",
+              "uid": "35240-9e986a43-7ed4-4f19-9d2a-82e2b1017750"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b6930788-2731-4156-87c4-6ac0cf1ec29b",
+          "createdAt": "2026-10-22T02:58:01.000Z",
+          "updatedAt": "2026-10-22T02:58:01.000Z",
+          "uid": "35240-b6930788-2731-4156-87c4-6ac0cf1ec29b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.browserstack.com",
-      "key": "baseUrl"
+      "id": "0fc74713-0b23-4f4c-9e53-6e012743200b",
+      "createdAt": "2026-10-22T02:58:01.000Z",
+      "updatedAt": "2026-10-22T02:58:01.000Z",
+      "uid": "35240-0fc74713-0b23-4f4c-9e53-6e012743200b"
     }
   ],
   "auth": {
@@ -105,21 +109,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "d80e8ffd-c08e-491d-b045-73bd8684d710",
-    "name": "BrowserStack Automate REST AccessKey Plan API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\n\nContact Support:\n Name: BrowserStack",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.browserstack.com"
     }
-  }
+  ]
 }

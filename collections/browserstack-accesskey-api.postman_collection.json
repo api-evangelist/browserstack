@@ -1,103 +1,107 @@
 {
+  "info": {
+    "_postman_id": "5c24ee69-76c7-4493-9988-edce42366b4e",
+    "name": "BrowserStack Automate REST Access Key API",
+    "description": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\nContact Support:\n Name: BrowserStack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:57:38.000Z",
+    "updatedAt": "2026-10-22T02:57:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5c24ee69-76c7-4493-9988-edce42366b4e"
+  },
   "item": [
     {
-      "id": "507b7191-42d8-4226-9cd2-7db359c98df8",
-      "name": "AccessKey",
-      "description": {
-        "content": "Operations on Automate access keys.",
-        "type": "text/plain"
-      },
+      "name": "automate",
       "item": [
         {
-          "id": "8e407ee6-1ab2-416b-b486-b17fee59fb40",
-          "name": "Recycle access key",
-          "request": {
-            "name": "Recycle access key",
-            "description": {
-              "content": "Generates a new access key, invalidating the old one.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "automate",
-                "recycle_key.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null
-          },
-          "response": [
+          "name": "recycle_key.json",
+          "item": [
             {
-              "id": "5b0c70a7-21ed-4750-8bc8-46120e6ae986",
-              "name": "New access key",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "automate",
-                    "recycle_key.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Recycle access key",
+              "id": "efd404d5-c622-44e0-8194-fd4e89f6a278",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "PUT",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/automate/recycle_key.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "automate",
+                    "recycle_key.json"
+                  ]
+                },
+                "description": "Generates a new access key, invalidating the old one."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "15be7176-6f04-42fb-8612-b4fdd8666040",
+                  "name": "New access key",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/recycle_key.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "recycle_key.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"old_key\": \"<string>\",\n  \"new_key\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:57:39.000Z",
+                  "updatedAt": "2026-10-22T02:57:39.000Z",
+                  "uid": "35240-15be7176-6f04-42fb-8612-b4fdd8666040"
                 }
               ],
-              "body": "{\n  \"old_key\": \"string\",\n  \"new_key\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T02:57:39.000Z",
+              "updatedAt": "2026-10-22T02:57:39.000Z",
+              "uid": "35240-efd404d5-c622-44e0-8194-fd4e89f6a278"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0ef1bb6b-625e-41a6-a1f5-a98fbbb7fa66",
+          "createdAt": "2026-10-22T02:57:39.000Z",
+          "updatedAt": "2026-10-22T02:57:39.000Z",
+          "uid": "35240-0ef1bb6b-625e-41a6-a1f5-a98fbbb7fa66"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.browserstack.com",
-      "key": "baseUrl"
+      "id": "2d21ffa6-e2d1-4e7c-80b1-d6ab26341c50",
+      "createdAt": "2026-10-22T02:57:39.000Z",
+      "updatedAt": "2026-10-22T02:57:39.000Z",
+      "uid": "35240-2d21ffa6-e2d1-4e7c-80b1-d6ab26341c50"
     }
   ],
   "auth": {
@@ -105,21 +109,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8f8042f1-2227-4105-8ed6-fcd24289a9f8",
-    "name": "BrowserStack Automate REST AccessKey API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\n\nContact Support:\n Name: BrowserStack",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.browserstack.com"
     }
-  }
+  ]
 }

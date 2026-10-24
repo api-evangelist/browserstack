@@ -1,67 +1,43 @@
 {
+  "info": {
+    "_postman_id": "cf10e1f1-10f5-4c17-be22-476cf82541f0",
+    "name": "BrowserStack Automate REST Builds API",
+    "description": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\nContact Support:\n Name: BrowserStack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:57:52.000Z",
+    "updatedAt": "2026-10-22T02:57:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cf10e1f1-10f5-4c17-be22-476cf82541f0"
+  },
   "item": [
     {
-      "id": "d28a4f35-a7f0-430d-9938-e8f592d322fd",
-      "name": "Builds",
-      "description": {
-        "content": "Operations on Automate builds.",
-        "type": "text/plain"
-      },
+      "name": "automate",
       "item": [
         {
-          "id": "0850fc31-8d51-456b-94cf-b5d284e01009",
-          "name": "List recent builds",
-          "request": {
-            "name": "List recent builds",
-            "description": {},
-            "url": {
-              "path": [
-                "automate",
-                "builds.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "<integer>"
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<integer>"
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "builds.json",
+          "item": [
             {
-              "id": "59d6feaa-9ceb-44d9-9097-f76d48b3cc55",
-              "name": "Array of builds",
-              "originalRequest": {
+              "name": "List recent builds",
+              "id": "b48ecb7e-e69c-438f-8a60-362853c217f9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/automate/builds.json?limit=<integer>&offset=<integer>&status=running",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "automate",
                     "builds.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
                   ],
                   "query": [
                     {
@@ -74,245 +50,283 @@
                     },
                     {
                       "key": "status",
-                      "value": "<string>"
+                      "value": "running"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "730f2cbd-7f0e-41d9-863e-1f78eedbf8e1",
+                  "name": "Array of builds",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/builds.json?limit=<integer>&offset=<integer>&status=running",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "builds.json"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "status",
+                          "value": "running"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"hashed_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"duration\": \"<integer>\",\n    \"status\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"group_id\": \"<integer>\",\n    \"user_id\": \"<integer>\",\n    \"automation_project_id\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  {\n    \"hashed_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"duration\": \"<integer>\",\n    \"status\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"group_id\": \"<integer>\",\n    \"user_id\": \"<integer>\",\n    \"automation_project_id\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n]",
+                  "createdAt": "2026-10-22T02:57:53.000Z",
+                  "updatedAt": "2026-10-22T02:57:53.000Z",
+                  "uid": "35240-730f2cbd-7f0e-41d9-863e-1f78eedbf8e1"
                 }
               ],
-              "body": "[\n  {\n    \"hashed_id\": \"string\",\n    \"name\": \"string\",\n    \"duration\": 9548,\n    \"status\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"group_id\": 4555,\n    \"user_id\": 666,\n    \"automation_project_id\": 6473,\n    \"created_at\": \"1989-08-31T18:28:48.296Z\",\n    \"updated_at\": \"1970-10-19T00:00:24.668Z\"\n  },\n  {\n    \"hashed_id\": \"string\",\n    \"name\": \"string\",\n    \"duration\": 3712,\n    \"status\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"group_id\": 7312,\n    \"user_id\": 9748,\n    \"automation_project_id\": 6267,\n    \"created_at\": \"1992-02-07T02:06:49.786Z\",\n    \"updated_at\": \"1970-12-30T23:03:51.475Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T02:57:53.000Z",
+              "updatedAt": "2026-10-22T02:57:53.000Z",
+              "uid": "35240-b48ecb7e-e69c-438f-8a60-362853c217f9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "83120970-5256-48de-a2e9-67be9a5f27cd",
+          "createdAt": "2026-10-22T02:57:53.000Z",
+          "updatedAt": "2026-10-22T02:57:53.000Z",
+          "uid": "35240-83120970-5256-48de-a2e9-67be9a5f27cd"
         },
         {
-          "id": "adf8f596-abf2-4515-82d1-7c596cd742e3",
-          "name": "Update build",
-          "request": {
-            "name": "Update build",
-            "description": {},
-            "url": {
-              "path": [
-                "automate",
-                "builds",
-                "{{buildId}}.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "builds",
+          "item": [
             {
-              "id": "9a776a84-0320-4b5a-b0e5-f71793ff8dac",
-              "name": "Updated build",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "automate",
-                    "builds",
-                    "{{buildId}}.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "{buildId}.json",
+              "item": [
+                {
+                  "name": "Update build",
+                  "id": "d47e22d9-a6ef-4959-a65c-12397c43a298",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/builds/{{buildId}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "builds",
+                        "{{buildId}}.json"
+                      ]
                     }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"hashed_id\": \"string\",\n  \"name\": \"string\",\n  \"duration\": 1929,\n  \"status\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"group_id\": 7617,\n  \"user_id\": 8712,\n  \"automation_project_id\": 360,\n  \"created_at\": \"2025-06-23T05:08:05.385Z\",\n  \"updated_at\": \"1956-03-18T05:01:15.386Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "43d5bfbe-ee6d-471f-b57e-3f7dd9ce42a7",
-          "name": "Delete build",
-          "request": {
-            "name": "Delete build",
-            "description": {},
-            "url": {
-              "path": [
-                "automate",
-                "builds",
-                "{{buildId}}.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7717000f-a16c-4bb6-b9bc-e3d554f637b3",
-              "name": "Build deletion confirmation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "automate",
-                    "builds",
-                    "{{buildId}}.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                  "response": [
+                    {
+                      "id": "b6c6d7d7-091d-4758-ac5c-2ab53de457fa",
+                      "name": "Updated build",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/automate/builds/{{buildId}}.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "automate",
+                            "builds",
+                            "{{buildId}}.json"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hashed_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"duration\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"group_id\": \"<integer>\",\n  \"user_id\": \"<integer>\",\n  \"automation_project_id\": \"<integer>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-22T02:57:53.000Z",
+                      "updatedAt": "2026-10-22T02:57:53.000Z",
+                      "uid": "35240-b6c6d7d7-091d-4758-ac5c-2ab53de457fa"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:57:53.000Z",
+                  "updatedAt": "2026-10-22T02:57:53.000Z",
+                  "uid": "35240-d47e22d9-a6ef-4959-a65c-12397c43a298"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Delete build",
+                  "id": "0829fd18-addb-46bb-bf11-54f86f93a45c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/automate/builds/{{buildId}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "automate",
+                        "builds",
+                        "{{buildId}}.json"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f53d31dc-781f-417b-909e-3dfc57325bab",
+                      "name": "Build deletion confirmation",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/automate/builds/{{buildId}}.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "automate",
+                            "builds",
+                            "{{buildId}}.json"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:57:53.000Z",
+                      "updatedAt": "2026-10-22T02:57:53.000Z",
+                      "uid": "35240-f53d31dc-781f-417b-909e-3dfc57325bab"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:57:53.000Z",
+                  "updatedAt": "2026-10-22T02:57:53.000Z",
+                  "uid": "35240-0829fd18-addb-46bb-bf11-54f86f93a45c"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "5c51feef-16c5-468c-88a3-b312444bcb23",
+              "createdAt": "2026-10-22T02:57:53.000Z",
+              "updatedAt": "2026-10-22T02:57:53.000Z",
+              "uid": "35240-5c51feef-16c5-468c-88a3-b312444bcb23"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ad7f3f2d-7a8b-46f3-9496-5aa02e164124",
+          "createdAt": "2026-10-22T02:57:53.000Z",
+          "updatedAt": "2026-10-22T02:57:53.000Z",
+          "uid": "35240-ad7f3f2d-7a8b-46f3-9496-5aa02e164124"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.browserstack.com",
-      "key": "baseUrl"
-    },
-    {
-      "disabled": false,
-      "description": {
-        "content": "(Required) ",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "<string>",
-      "key": "buildId"
+      "id": "84095bf1-e348-49f8-981b-04c754fc9310",
+      "createdAt": "2026-10-22T02:57:53.000Z",
+      "updatedAt": "2026-10-22T02:57:53.000Z",
+      "uid": "35240-84095bf1-e348-49f8-981b-04c754fc9310"
     }
   ],
   "auth": {
@@ -320,21 +334,24 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "c7e3c99b-b7d6-47a7-9782-6a0dee23860e",
-    "name": "BrowserStack Automate REST AccessKey Builds API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Best-effort OpenAPI 3.1 description of the BrowserStack Automate REST API for managing\nplans, projects, builds, sessions, browsers, devices, access keys, and media used in\nSelenium-based cross-browser automated testing on BrowserStack.\n\nAuthentication uses HTTP Basic with your BrowserStack username and access key.\n\n\nContact Support:\n Name: BrowserStack",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.browserstack.com"
+    },
+    {
+      "key": "buildId",
+      "value": "<string>"
     }
-  }
+  ]
 }
