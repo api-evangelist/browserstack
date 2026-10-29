@@ -1,4 +1,4 @@
-# BrowserStack (browserstack)
+# BrowserStack
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,375 +64,179 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-BrowserStack provides instant access to 3500+ real mobile devices and desktop browsers for testing web and mobile applications across different platforms and operating systems.
+BrowserStack provides instant access to 3,500+ real desktop browsers and 30,000+ real mobile device units for manual and automated software testing. Its products span cross-browser testing (Live, Automate), mobile app testing (App Live, App Automate), visual regression testing (Percy, App Percy), accessibility testing, test management, test reporting and analytics, and low-code automation. Each product exposes its own REST API on its own host, and BrowserStack ships an official Model Context Protocol server — hosted at mcp.browserstack.com and distributed as an npm package — carrying 44 tools across those products.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/browserstack/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/browserstack/refs/heads/main/apis.yml)
+**Areas:** Accessibility · Appium · Application · Automation · CI/CD · Cross-Browser Testing · Enterprise · JavaScript · Low-Code · Mobile Testing · QA · Regression Testing
 
-## Scope
+## BrowserStack on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for BrowserStack is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/browserstack/](https://apis.io/providers/browserstack/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (22)
 
-- Accessibility
-- Appium
-- Applications
-- Automation
-- CI/CD
-- Cross-Browser Testing
-- Enterprise
-- JavaScript
-- Low Code
-- Mobile Testing
-- QA
-- Regression Testing
-- Selenium
-- Testing
-- Unit Testing
-- Visual Testing
+- [BrowserStack](https://apis.io/apis/browserstack/browserstack/) — Give your users a seamless experience by testing on 20,000 real devices.Dont compromise with emulators and simulators.
+- [BrowserStack Automate API](https://apis.io/apis/browserstack/automate-api/) — The BrowserStack Automate REST API provides access to plan, project, build, and session details for Selenium-based automated testing on real browsers and…
+- [BrowserStack App Automate API](https://apis.io/apis/browserstack/app-automate-api/) — The BrowserStack App Automate REST API enables running mobile automation tests and integrating CI/CD pipelines with BrowserStack. It supports Appium,…
+- [BrowserStack Screenshots API](https://apis.io/apis/browserstack/screenshots-api/) — The BrowserStack Screenshots API enables headless screenshot creation for any URL across 3000+ real browser and OS combinations. It supports generating,…
+- [BrowserStack App Live API](https://apis.io/apis/browserstack/app-live-api/) — The BrowserStack App Live REST API supports uploading, viewing, and deleting mobile apps via command line or automation scripts. It enables managing .apk,…
+- [BrowserStack Local Testing API](https://apis.io/apis/browserstack/local-testing-api/) — The BrowserStack Local Testing API helps manage and debug multiple Local Testing connections. It provides endpoints to list active binary instances,…
+- [BrowserStack Automate TurboScale API](https://apis.io/apis/browserstack/automate-turboscale-api/) — The BrowserStack Automate TurboScale REST API provides access to projects, builds, sessions, grids, and browser information for tests run on BrowserStack…
+- [BrowserStack Test Management API](https://apis.io/apis/browserstack/test-management-api/) — The BrowserStack Test Management API provides REST access to manage test projects, folders, test cases, test runs, test plans, test results, attachments,…
+- [BrowserStack Test Reporting and Analytics API](https://apis.io/apis/browserstack/test-reporting-and-analytics-api/) — The BrowserStack Test Reporting and Analytics API provides programmatic access to upload JUnit XML and Allure reports, manage projects and builds, retrieve…
+- [BrowserStack Accessibility Testing API](https://apis.io/apis/browserstack/accessibility-testing-api/) — The BrowserStack Accessibility Testing API provides REST access to workflow analyzer, assisted tests, website scanner, and automated tests results for…
+- [BrowserStack Percy API](https://apis.io/apis/browserstack/percy-api/) — The BrowserStack Percy API provides REST access for managing visual testing projects, builds, snapshots, Visual Git synchronization, and Visual Scanner…
+- [BrowserStack App Percy API](https://apis.io/apis/browserstack/app-percy-api/) — The BrowserStack App Percy API provides automated visual testing for mobile applications across real iOS and Android devices, enabling teams to detect…
+- [BrowserStack User Management API](https://apis.io/apis/browserstack/user-management-api/) — The BrowserStack User Management REST API enables enterprise account management including creating and managing users, teams, service accounts, usage…
+- [BrowserStack JavaScript Testing API](https://apis.io/apis/browserstack/javascript-testing-api/) — The BrowserStack JavaScript Testing API provides HTTPS-based access to run JavaScript unit tests across 3000+ real desktop and mobile browsers in the cloud.…
+- [BrowserStack App Accessibility Testing API](https://apis.io/apis/browserstack/app-accessibility-testing-api/) — The BrowserStack App Accessibility REST API enables programmatic access to accessibility data for mobile app projects and builds. It provides endpoints for…
+- [BrowserStack Low Code Automation API](https://apis.io/apis/browserstack/low-code-automation-api/) — The BrowserStack Low Code Automation REST API enables triggering test suite executions and retrieving build statuses for CI/CD pipeline integration. It also…
+- [BrowserStack AccessKey API](https://apis.io/apis/browserstack/browserstack-accesskey-api/) — Operations on Automate access keys.
+- [BrowserStack Browsers API](https://apis.io/apis/browserstack/browserstack-browsers-api/) — Operations describing supported browsers and devices.
+- [BrowserStack Builds API](https://apis.io/apis/browserstack/browserstack-builds-api/) — Operations on Automate builds.
+- [BrowserStack Plan API](https://apis.io/apis/browserstack/browserstack-plan-api/) — Operations describing the current Automate subscription plan and capacity.
+- [BrowserStack Projects API](https://apis.io/apis/browserstack/browserstack-projects-api/) — Operations on Automate projects.
+- [BrowserStack Sessions API](https://apis.io/apis/browserstack/browserstack-sessions-api/) — Operations on Automate sessions.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-17
-- **Modified:** 2026-04-21
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### BrowserStack
+Model Context Protocol servers that expose the API to agents.
 
-Give your users a seamless experience by testing on 20,000 real devices.Dont compromise with emulators and simulators.
+- [BrowserStack MCP Server](https://apis.io/servers/browserstack/browserstack-mcp-server/)
 
-- **Human URL:** [ https://www.browserstack.com/]( https://www.browserstack.com/)
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation]( https://www.browserstack.com/)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Browserstack Agentic Access](https://apis.io/agentic-access/browserstack/browserstack-agentic-access/)
 
-### BrowserStack Automate API
+#### Collections (7)
 
-The BrowserStack Automate REST API provides access to plan, project, build, and session details for Selenium-based automated testing on real browsers and devices. It enables managing test sessions, retrieving logs, and integrating CI/CD pipelines with BrowserStack Automate.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://www.browserstack.com/docs/automate/api-reference/selenium/introduction](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction)
+- [BrowserStack Automate REST API](https://apis.io/collections/browserstack/open-browserstack/)
+- [BrowserStack Automate REST AccessKey API](https://apis.io/collections/browserstack/open-browserstack-accesskey-api/)
+- [BrowserStack Automate REST AccessKey Browsers API](https://apis.io/collections/browserstack/open-browserstack-browsers-api/)
+- [BrowserStack Automate REST AccessKey Builds API](https://apis.io/collections/browserstack/open-browserstack-builds-api/)
+- [BrowserStack Automate REST AccessKey Plan API](https://apis.io/collections/browserstack/open-browserstack-plan-api/)
+- [BrowserStack Automate REST AccessKey Projects API](https://apis.io/collections/browserstack/open-browserstack-projects-api/)
+- [BrowserStack Automate REST AccessKey Sessions API](https://apis.io/collections/browserstack/open-browserstack-sessions-api/)
 
-#### Tags
+#### Overlays (12)
 
-- Automation
-- Cross-Browser Testing
-- Selenium
-- Testing
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Properties
+- [Browserstack Accesskey Api Overlay](https://apis.io/overlays/browserstack/browserstack-accesskey-api-overlay/)
+- [Browserstack Accesskey Api Phrasing Overlay](https://apis.io/overlays/browserstack/browserstack-accesskey-api-phrasing-overlay/)
+- [Browserstack Browsers Api Overlay](https://apis.io/overlays/browserstack/browserstack-browsers-api-overlay/)
+- [Browserstack Browsers Api Phrasing Overlay](https://apis.io/overlays/browserstack/browserstack-browsers-api-phrasing-overlay/)
+- [Browserstack Builds Api Overlay](https://apis.io/overlays/browserstack/browserstack-builds-api-overlay/)
+- [Browserstack Builds Api Phrasing Overlay](https://apis.io/overlays/browserstack/browserstack-builds-api-phrasing-overlay/)
+- [Browserstack Plan Api Overlay](https://apis.io/overlays/browserstack/browserstack-plan-api-overlay/)
+- [Browserstack Plan Api Phrasing Overlay](https://apis.io/overlays/browserstack/browserstack-plan-api-phrasing-overlay/)
+- [Browserstack Projects Api Overlay](https://apis.io/overlays/browserstack/browserstack-projects-api-overlay/)
+- [Browserstack Projects Api Phrasing Overlay](https://apis.io/overlays/browserstack/browserstack-projects-api-phrasing-overlay/)
+- [Browserstack Sessions Api Overlay](https://apis.io/overlays/browserstack/browserstack-sessions-api-overlay/)
+- [Browserstack Sessions Api Phrasing Overlay](https://apis.io/overlays/browserstack/browserstack-sessions-api-phrasing-overlay/)
 
-- [Documentation](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction)
-- [Authentication](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#authentication)
-- [Reference](https://www.browserstack.com/docs/automate/api-reference/selenium/automate-api)
-- [Getting Started](https://www.browserstack.com/docs/automate/selenium)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (4)
 
-### BrowserStack App Automate API
+Authentication, trust centre, and vulnerability disclosure.
 
-The BrowserStack App Automate REST API enables running mobile automation tests and integrating CI/CD pipelines with BrowserStack. It supports Appium, Espresso, XCUITest, Flutter, Detox, and Maestro frameworks for testing native and hybrid apps on real devices.
+- [Browserstack Authentication](https://apis.io/security/browserstack/browserstack-authentication/)
+- [Browserstack Domain Security](https://apis.io/security/browserstack/browserstack-domain-security/)
+- [Browserstack Trust Center](https://apis.io/security/browserstack/browserstack-trust-center/)
+- [Browserstack Vulnerability Disclosure](https://apis.io/security/browserstack/browserstack-vulnerability-disclosure/)
 
-- **Human URL:** [https://www.browserstack.com/docs/app-automate/api-reference/introduction](https://www.browserstack.com/docs/app-automate/api-reference/introduction)
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Appium
-- Automation
-- Espresso
-- Mobile Testing
-- XCUITest
+- [Browserstack Plans Pricing](https://apis.io/plans/browserstack/browserstack-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://www.browserstack.com/docs/app-automate/api-reference/introduction)
-- [Authentication](https://www.browserstack.com/docs/app-automate/api-reference/authentication)
-- [Getting Started](https://www.browserstack.com/docs/app-automate/appium)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### BrowserStack Screenshots API
+- [Browserstack Rate Limits](https://apis.io/rate-limits/browserstack/browserstack-rate-limits/)
 
-The BrowserStack Screenshots API enables headless screenshot creation for any URL across 3000+ real browser and OS combinations. It supports generating, managing, and retrieving screenshots via REST endpoints.
+#### FinOps (1)
 
-- **Human URL:** [https://www.browserstack.com/screenshots/api](https://www.browserstack.com/screenshots/api)
+What the API costs to run, by operation.
 
-#### Tags
+- [Browserstack Finops](https://apis.io/finops/browserstack/browserstack-finops/)
 
-- Cross-Browser Testing
-- Screenshots
-- Visual Testing
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://www.browserstack.com/screenshots/api)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack App Live API
-
-The BrowserStack App Live REST API supports uploading, viewing, and deleting mobile apps via command line or automation scripts. It enables managing .apk, .aab, and .ipa files for manual testing on real devices.
-
-- **Human URL:** [https://www.browserstack.com/app-live/rest-api](https://www.browserstack.com/app-live/rest-api)
-
-#### Tags
-
-- Applications
-- Mobile Testing
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/app-live/rest-api)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack Local Testing API
-
-The BrowserStack Local Testing API helps manage and debug multiple Local Testing connections. It provides endpoints to list active binary instances, retrieve instance details, and disconnect running binaries.
-
-- **Human URL:** [https://www.browserstack.com/docs/local-testing/api](https://www.browserstack.com/docs/local-testing/api)
-
-#### Tags
-
-- Debugging
-- Local Testing
-- Networking
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/local-testing/api)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack Automate TurboScale API
-
-The BrowserStack Automate TurboScale REST API provides access to projects, builds, sessions, grids, and browser information for tests run on BrowserStack TurboScale infrastructure, including self-hosted grid management.
-
-- **Human URL:** [https://www.browserstack.com/docs/automate-turboscale/api-reference/introduction](https://www.browserstack.com/docs/automate-turboscale/api-reference/introduction)
-
-#### Tags
-
-- Automation
-- Scaling
-- Selenium
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/automate-turboscale/api-reference/introduction)
-- [Getting Started](https://www.browserstack.com/docs/automate-turboscale)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack Test Management API
-
-The BrowserStack Test Management API provides REST access to manage test projects, folders, test cases, test runs, test plans, test results, attachments, configurations, and custom fields for organizing and executing quality assurance workflows.
-
-- **Human URL:** [https://www.browserstack.com/docs/test-management/api-reference/introduction](https://www.browserstack.com/docs/test-management/api-reference/introduction)
-
-#### Tags
-
-- QA
-- Test Management
-- Testing
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/test-management/api-reference/introduction)
-- [Authentication](https://www.browserstack.com/docs/test-management/api-reference/authentication)
-- [Rate Limits](https://www.browserstack.com/docs/test-management/api-reference/rate-limit-for-api-calls)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack Test Reporting and Analytics API
-
-The BrowserStack Test Reporting and Analytics API provides programmatic access to upload JUnit XML and Allure reports, manage projects and builds, retrieve test executions, and check Quality Gate status for automated quality workflows.
-
-- **Human URL:** [https://www.browserstack.com/docs/test-reporting-and-analytics/api-reference](https://www.browserstack.com/docs/test-reporting-and-analytics/api-reference)
-
-#### Tags
-
-- Analytics
-- Observability
-- Reporting
-- Testing
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/test-reporting-and-analytics/api-reference)
-- [Reference](https://www.browserstack.com/docs/test-reporting-and-analytics/api)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack Accessibility Testing API
-
-The BrowserStack Accessibility Testing API provides REST access to workflow analyzer, assisted tests, website scanner, and automated tests results for identifying and managing accessibility issues across web applications.
-
-- **Human URL:** [https://www.browserstack.com/docs/accessibility/api-reference](https://www.browserstack.com/docs/accessibility/api-reference)
-
-#### Tags
-
-- Accessibility
-- Testing
-- WCAG
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/accessibility/api-reference)
-- [Authentication](https://www.browserstack.com/docs/accessibility/api/authentication)
-- [Reference](https://www.browserstack.com/docs/accessibility/api)
-- [Getting Started](https://www.browserstack.com/docs/accessibility/overview/introduction)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack Percy API
-
-The BrowserStack Percy API provides REST access for managing visual testing projects, builds, snapshots, Visual Git synchronization, and Visual Scanner capabilities to detect visual regressions across browsers and screen widths.
-
-- **Human URL:** [https://www.browserstack.com/docs/percy/api-reference/percy-apis](https://www.browserstack.com/docs/percy/api-reference/percy-apis)
-
-#### Tags
-
-- Regression Testing
-- Screenshots
-- Visual Testing
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/percy/api-reference/percy-apis)
-- [Getting Started](https://www.browserstack.com/docs/percy)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack App Percy API
-
-The BrowserStack App Percy API provides automated visual testing for mobile applications across real iOS and Android devices, enabling teams to detect visual regressions and deploy with confidence.
-
-- **Human URL:** [https://www.browserstack.com/docs/app-percy/api-reference/authentication](https://www.browserstack.com/docs/app-percy/api-reference/authentication)
-
-#### Tags
-
-- Mobile Testing
-- Regression Testing
-- Visual Testing
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/app-percy/api-reference/authentication)
-- [Authentication](https://www.browserstack.com/docs/app-percy/api-reference/authentication)
-- [Reference](https://www.browserstack.com/docs/app-percy/references/overview)
-- [Getting Started](https://www.browserstack.com/docs/app-percy)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack User Management API
-
-The BrowserStack User Management REST API enables enterprise account management including creating and managing users, teams, service accounts, usage reports, and audit logs. It requires an Enterprise plan with Owner or Admin role access.
-
-- **Human URL:** [https://www.browserstack.com/docs/enterprise/api-reference/introduction](https://www.browserstack.com/docs/enterprise/api-reference/introduction)
-
-#### Tags
-
-- Administration
-- Enterprise
-- User Management
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/enterprise/api-reference/introduction)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack JavaScript Testing API
-
-The BrowserStack JavaScript Testing API provides HTTPS-based access to run JavaScript unit tests across 3000+ real desktop and mobile browsers in the cloud. It supports popular test frameworks including Jasmine, QUnit, Mocha, and Jest, with language bindings for Node.js, Ruby, and .NET.
-
-- **Human URL:** [https://www.browserstack.com/docs/automate/javascript-testing/api](https://www.browserstack.com/docs/automate/javascript-testing/api)
-
-#### Tags
-
-- Cross-Browser Testing
-- JavaScript
-- Testing
-- Unit Testing
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/automate/javascript-testing/api)
-- [Getting Started](https://www.browserstack.com/docs/automate/javascript-testing)
-- [GitHub Repository](https://github.com/browserstack/api)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack App Accessibility Testing API
-
-The BrowserStack App Accessibility REST API enables programmatic access to accessibility data for mobile app projects and builds. It provides endpoints for retrieving accessibility results from automated and manual tests, including project lists, build details, test cases, and issue-level analysis.
-
-- **Human URL:** [https://www.browserstack.com/docs/app-accessibility/api-reference/introduction](https://www.browserstack.com/docs/app-accessibility/api-reference/introduction)
-
-#### Tags
-
-- Accessibility
-- Mobile Testing
-- Testing
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/app-accessibility/api-reference/introduction)
-- [Getting Started](https://www.browserstack.com/docs/app-accessibility/overview/introduction)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### BrowserStack Low Code Automation API
-
-The BrowserStack Low Code Automation REST API enables triggering test suite executions and retrieving build statuses for CI/CD pipeline integration. It also supports exporting low-code tests as code in .side and Nightwatch.js formats.
-
-- **Human URL:** [https://www.browserstack.com/docs/low-code-automation/cicd-integrations/rest-api](https://www.browserstack.com/docs/low-code-automation/cicd-integrations/rest-api)
-
-#### Tags
-
-- Automation
-- CI/CD
-- Low Code
-- Testing
-
-#### Properties
-
-- [Documentation](https://www.browserstack.com/docs/low-code-automation/cicd-integrations/rest-api)
-- [Reference](https://www.browserstack.com/docs/low-code-automation/cicd-integrations/run-tests-api)
-- [Getting Started](https://www.browserstack.com/docs/low-code-automation)
-- [Postman Collection](collections/browserstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/browserstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/browserstack)
 - [Website](https://www.browserstack.com)
-- [Portal](https://www.browserstack.com/docs)
-- [Getting Started](https://www.browserstack.com/docs)
-- [Authentication](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#authentication)
-- [Status Page](https://status.browserstack.com)
-- [Blog](https://www.browserstack.com/blog)
+- [Documentation](https://www.browserstack.com/docs)
+- [Getting started](https://www.browserstack.com/docs)
+- [API reference](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction)
 - [Pricing](https://www.browserstack.com/pricing)
-- [Terms of Service](https://www.browserstack.com/terms)
-- [Privacy Policy](https://www.browserstack.com/privacy)
-- [Sign Up](https://www.browserstack.com/users/sign_up)
-- [Login](https://www.browserstack.com/users/sign_in)
-- [Contact](https://www.browserstack.com/contact)
 - [Support](https://www.browserstack.com/support)
-- [Integrations](https://www.browserstack.com/integrations)
 - [Changelog](https://www.browserstack.com/release-notes/en)
-- [Git Hub  Org](https://github.com/browserstack)
-- [Community](https://www.browserstack.com/community)
+- [Blog](https://www.browserstack.com/blog)
 - [Security](https://www.browserstack.com/vulnerability-disclosure-program)
-- [Developer  Tools](https://www.browserstack.com/docs/browserstack-mcp-server/overview)
+- [Terms of service](https://www.browserstack.com/terms)
+- [Privacy policy](https://www.browserstack.com/privacy)
+- [Status](https://status.browserstack.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**Email:** support@browserstack.com
-**URL:** https://www.browserstack.com
+**Kin Score 66.3** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.7 |
+| Contract quality | 47.1 |
+| Contract governance | 18.2 |
+| Operational transparency | 78.9 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 92.1 |
+
+**Agent readiness 43.7** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/browserstack/](https://apis.io/providers/browserstack/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BrowserStack: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/browserstack/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
