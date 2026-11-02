@@ -1,0 +1,298 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://www.browserstack.com/pricing
+sources:
+- https://www.browserstack.com/pricing
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+  managed_tier: Desktop
+published: true
+note: Multi-product pricing page (Live, Automate, Percy, App Live, Test & Monitor); annual-billing monthly
+  prices shown, user/parallel/screenshot tiers; Volume and Enterprise tiers are quote-based.
+plan_count: 18
+currency: USD
+plans:
+- name: Freelancer Plan
+  price_text: $ 12.50 / month
+  price: 12.5
+  currency: USD
+  period: month
+  unit: account
+  included_quota: 100 minutes of Live - Desktop & Mobile. Only 1 user/account.
+- name: Live Desktop
+  price_text: $ 29 / month (billed annually)
+  price: 29
+  currency: USD
+  period: month
+  unit: Single User Plan
+  included_quota: 3500+ Browser Combinations, Unlimited Testing Minutes
+- name: Live Desktop & Mobile
+  price_text: $ 39 / month (billed annually)
+  price: 39
+  currency: USD
+  period: month
+  unit: Single User Plan
+  included_quota: 35,000+ real devices
+- name: Live Team
+  price_text: $ 150 / month (billed annually)
+  price: 150
+  currency: USD
+  period: month
+  unit: 5 users
+  included_quota: 5 users
+- name: Live Team Pro
+  price_text: $ 249 / month (billed annually)
+  price: 249
+  currency: USD
+  period: month
+  unit: 5 users
+  included_quota: 5 users
+- name: Testing Toolkit Pack Team Ultimate
+  price_text: $ 375 / month (billed annually)
+  price: 375
+  currency: USD
+  period: month
+  unit: 3 users
+  included_quota: 15 Product Pack
+- name: Live Volume
+  price_text: Inquire for pricing
+  period: none
+- name: Enterprise
+  price_text: Inquire for Pricing
+  period: none
+- name: Test & Monitor plan (configured)
+  price_text: 1099 / month (billed annually)
+  price: 1099
+  period: month
+  unit: plan
+  included_quota: '5 users: $300 500 pages: $1039'
+- name: Automate Desktop
+  price_text: $ 99 / month (billed annually)
+  price: 99
+  currency: USD
+  period: month
+  unit: parallel test
+  included_quota: 1 parallel test
+- name: Automate Desktop & Mobile
+  price_text: $ 175 / month (billed annually)
+  price: 175
+  currency: USD
+  period: month
+  unit: parallel test
+  included_quota: 1 parallel test
+- name: Automate Desktop & Mobile Pro
+  price_text: $ 225 / month (billed annually)
+  price: 225
+  currency: USD
+  period: month
+  unit: parallel test
+  included_quota: 1 parallel test
+- name: Percy Free
+  price_text: $ 0 / month
+  price: 0
+  currency: USD
+  period: month
+  unit: account
+  included_quota: Unlimited users and 5000 free monthly screenshots
+- name: Percy Desktop
+  price_text: $ 199 / month (billed annually)
+  price: 199
+  currency: USD
+  period: month
+  unit: screenshots
+  included_quota: 10,000 screenshots/month
+  overage: Each additional screenshot at $0.036
+- name: Percy Desktop & Mobile
+  price_text: $ 599 / month (billed annually)
+  price: 599
+  currency: USD
+  period: month
+  unit: screenshots
+  included_quota: 25,000 screenshots/month
+  overage: Each additional screenshot at $0.048
+- name: App Live Individual
+  price_text: $ 39 / month (billed annually)
+  price: 39
+  currency: USD
+  period: month
+  unit: Single User Plan
+  included_quota: 35,000+ Real iOS & Android Device Units
+- name: App Live Team
+  price_text: $ 150 / month (billed annually)
+  price: 150
+  currency: USD
+  period: month
+  unit: 5 users
+  included_quota: 5 users
+- name: App Live Team Pro
+  price_text: $ 249 / month (billed annually)
+  price: 249
+  currency: USD
+  period: month
+  unit: 5 users
+  included_quota: 5 users
+rate_limit_statements:
+- 'AI Agents: Test Case Generator Agent (10 PRD uploads per user per month)'
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - seat
+  - subscription
+  units:
+  - object
+  - seat
+  plans:
+  - name: Freelancer Plan
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Live Desktop
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Live Desktop & Mobile
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Live Team
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Live Team Pro
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Testing Toolkit Pack Team Ultimate
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Live Volume
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Test & Monitor plan (configured)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Automate Desktop
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Automate Desktop & Mobile
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Automate Desktop & Mobile Pro
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Percy Free
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Percy Desktop
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Percy Desktop & Mobile
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: App Live Individual
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: App Live Team
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: App Live Team Pro
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
